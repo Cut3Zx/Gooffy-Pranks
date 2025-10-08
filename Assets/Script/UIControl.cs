@@ -55,6 +55,12 @@ public class UIControl : MonoBehaviour
         Time.timeScale = isActive ? 1f : 0f;
     }
 
+    //Chơi lại màn game
+    public void ReplayGame()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Gameplay");
+    }
+
     // Start is called before the first frame update
     void Start()
     {

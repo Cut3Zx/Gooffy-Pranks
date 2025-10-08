@@ -10,6 +10,7 @@ public class SceneChager : MonoBehaviour
         UnityEngine.SceneManagement.SceneManager.LoadScene("Gameplay");
     }
 
+
     public void exitGame()//ゲームを終了する
     {
         Application.Quit();
