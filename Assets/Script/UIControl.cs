@@ -8,6 +8,7 @@ public class UIControl : MonoBehaviour
     // Kéo thả panel Pause vào đây trong Inspector
     public GameObject pauseUI;
     public GameObject MainUI;
+    public GameObject MenuUI;
 
     public void WaybackHome()
     {
@@ -28,7 +29,7 @@ public class UIControl : MonoBehaviour
         }
         // Tạm dừng game
         Time.timeScale = 0f;
-    }
+    }// Not use this anymore
 
     // Gọi HidePauseUI() để ẩn panel và tiếp tục game
     public void HidePauseUI()
@@ -53,6 +54,14 @@ public class UIControl : MonoBehaviour
         bool isActive = pauseUI.activeSelf;
         pauseUI.SetActive(!isActive);
         Time.timeScale = isActive ? 1f : 0f;
+    }
+    public void ToggleMenuUI()
+    {
+        if (MenuUI == null)
+            return;
+
+        bool isActive = MenuUI.activeSelf;
+        MenuUI.SetActive(!isActive);
     }
 
     //Chơi lại màn game
