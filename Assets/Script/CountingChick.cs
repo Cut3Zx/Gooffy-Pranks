@@ -29,7 +29,7 @@ public class CountingChick : MonoBehaviour
     [Header("Found-only text option")]
     // Mặc định hiển thị chỉ số đã tìm (không hiện 0/0)
     public bool showFoundOnlyText = true; // nếu true sẽ hiển thị chỉ số đã tìm
-    public string foundOnlyTextFormat = "Số lượng gà con đã được tìm thấy là: {0}"; // {found}
+    public string foundOnlyTextFormat = "Đã tìm thấy: {0}"; // {found}
 
     int totalCount = 0;
     HashSet<GameObject> foundSet = new HashSet<GameObject>();
