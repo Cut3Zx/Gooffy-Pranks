@@ -197,6 +197,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8909921}
   m_CullTransparentMesh: 1
+--- !u!1 &61929154 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7959952150225616317, guid: accd21878007c1b4a92e214c804a5ef0, type: 3}
+  m_PrefabInstance: {fileID: 5831497865777037747}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &224378982
 GameObject:
   m_ObjectHideFlags: 0
@@ -431,7 +436,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1206420597}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: UIControl, Assembly-CSharp
         m_MethodName: ToggleMenuUI
         m_Mode: 1
@@ -1213,7 +1218,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1206420597}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: UIControl, Assembly-CSharp
         m_MethodName: ReplayGame
         m_Mode: 1
@@ -1562,7 +1567,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1206420597}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: UIControl, Assembly-CSharp
         m_MethodName: WaybackHome
         m_Mode: 1
@@ -2226,7 +2231,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 245323754}
-  - {fileID: 1015716290}
   - {fileID: 1409624939}
   - {fileID: 849192169}
   - {fileID: 836717122}
@@ -2241,6 +2245,7 @@ RectTransform:
   - {fileID: 911957655}
   - {fileID: 288585918}
   - {fileID: 1742693122}
+  - {fileID: 1015716290}
   - {fileID: 885105596}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2500,8 +2505,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1206420598}
-  - component: {fileID: 1206420597}
   - component: {fileID: 1206420599}
+  - component: {fileID: 1206420600}
   m_Layer: 0
   m_Name: GameController
   m_TagString: Untagged
@@ -2509,21 +2514,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1206420597
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1206420596}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9d1bcbabd7cab0c4db1c10f9cd05f9e5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pauseUI: {fileID: 1015716289}
-  MainUI: {fileID: 1742693121}
-  MenuUI: {fileID: 1483497279}
 --- !u!4 &1206420598
 Transform:
   m_ObjectHideFlags: 0
@@ -2562,8 +2552,22 @@ MonoBehaviour:
   progressTextTMP: {fileID: 1726884767}
   progressTextFormat: '{0}/{1} ({2:0}% )'
   showFoundOnlyText: 1
-  foundOnlyTextFormat: "S\u1ED1 l\u01B0\u1EE3ng g\xE0 con \u0111\xE3 \u0111\u01B0\u1EE3c
-    t\xECm th\u1EA5y l\xE0: {0}"
+  foundOnlyTextFormat: "S\u1ED1 g\xE0 t\xECm \u0111\u01B0\u1EE3c: {0}"
+--- !u!114 &1206420600
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1206420596}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11c62e48a7763da45b0bd48944140ce6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainMenuUI: {fileID: 61929154}
+  levelSelectUI: {fileID: 0}
+  pauseUI: {fileID: 1015716289}
 --- !u!1 &1221253557
 GameObject:
   m_ObjectHideFlags: 0
@@ -4207,7 +4211,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1206420597}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: UIControl, Assembly-CSharp
         m_MethodName: WaybackHome
         m_Mode: 1
@@ -4340,7 +4344,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1206420597}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: UIControl, Assembly-CSharp
         m_MethodName: WaybackHome
         m_Mode: 1
@@ -4732,11 +4736,11 @@ PrefabInstance:
     - target: {fileID: 7135198227013869284, guid: accd21878007c1b4a92e214c804a5ef0, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1206420597}
+      objectReference: {fileID: 0}
     - target: {fileID: 8187630656081190959, guid: accd21878007c1b4a92e214c804a5ef0, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1206420597}
+      objectReference: {fileID: 0}
     - target: {fileID: 8187630656081190959, guid: accd21878007c1b4a92e214c804a5ef0, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: ReplayGame
