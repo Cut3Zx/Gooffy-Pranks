@@ -474,13 +474,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f05e0302af0b11e44bba339a563ced1e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  key: 
-  textComponent: {fileID: 0}
---- !u!1 &197084245 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1921274099307135629, guid: accd21878007c1b4a92e214c804a5ef0, type: 3}
-  m_PrefabInstance: {fileID: 2690779040277579716}
-  m_PrefabAsset: {fileID: 0}
 --- !u!224 &197084249 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4050429948377560629, guid: accd21878007c1b4a92e214c804a5ef0, type: 3}
@@ -790,8 +783,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f05e0302af0b11e44bba339a563ced1e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  key: exit
-  textComponent: {fileID: 0}
 --- !u!1 &505023703
 GameObject:
   m_ObjectHideFlags: 0
@@ -1100,7 +1091,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 630165125}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: LanguageUIController, Assembly-CSharp
         m_MethodName: SelectLanguage
         m_Mode: 3
@@ -1159,8 +1150,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 630165127}
-  - component: {fileID: 630165126}
-  - component: {fileID: 630165125}
   m_Layer: 0
   m_Name: Language_Manager
   m_TagString: Untagged
@@ -1168,46 +1157,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &630165125
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 630165124}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7a7e3d20e89c72b488365037ff040a7a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  languagePanel: {fileID: 197084245}
-  isOpen: 0
---- !u!114 &630165126
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 630165124}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b8d2b5115fec93b45be5c7f63decb85a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentLanguage: 0
-  translations:
-  - key: play
-    english: PLay
-    vietnamese: "Ch\u01A1i"
-  - key: setting
-    english: Setting
-    vietnamese: "C\xE0i \u0111\u1EB7t"
-  - key: exit
-    english: Exit
-    vietnamese: "Tho\xE1t"
-  - key: languagge
-    english: Language
-    vietnamese: "Ng\xF4n Ng\u1EEF"
 --- !u!4 &630165127
 Transform:
   m_ObjectHideFlags: 0
@@ -2019,8 +1968,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f05e0302af0b11e44bba339a563ced1e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  key: setting
-  textComponent: {fileID: 0}
 --- !u!1 &1646956488
 GameObject:
   m_ObjectHideFlags: 0
@@ -2243,8 +2190,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f05e0302af0b11e44bba339a563ced1e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  key: play
-  textComponent: {fileID: 0}
 --- !u!1 &1857813194
 GameObject:
   m_ObjectHideFlags: 0
@@ -2595,7 +2540,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 630165125}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: LanguageUIController, Assembly-CSharp
         m_MethodName: SelectLanguage
         m_Mode: 3

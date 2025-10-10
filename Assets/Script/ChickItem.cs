@@ -1,76 +1,58 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.EventSystems;
 
 /// <summary>
-/// Attach this to each chicken (KFC) GameObject.
-/// Supports UI clicks (IPointerClickHandler), OnMouseDown (world objects with collider)
-/// and optional trigger-enter detection (e.g., player touching the object).
-/// When interacted, it calls CountingChick.Instance.RegisterFound(gameObject).
+/// Quản lý trạng thái của từng con gà (đã tìm thấy hay chưa),
+/// KHÔNG tự xử lý click, trigger, hoặc va chạm.
+/// Chỉ có thể được đánh dấu tìm thấy bằng cách gọi MarkFound() từ script khác.
 /// </summary>
-public class ChickItem : MonoBehaviour, IPointerClickHandler
+public class ChickItem : MonoBehaviour
 {
     [Header("Interaction")]
     public bool enabledInteraction = true;
-    public bool disableAfterFound = true; // disable GameObject after found (optional)
-
-    [Header("Trigger options (optional)")]
-    public bool registerOnTriggerEnter = false;
-    public string triggerPlayerTag = "Player"; // tag to check when using trigger
+    public bool disableAfterFound = true; // disable GameObject sau khi được tìm (tùy chọn)
 
     [Header("Local Events")]
-    public UnityEvent onLocalFound; // local feedback (sound, animation)
+    public UnityEvent onLocalFound; // hiệu ứng local khi được tìm
 
-    bool isFound = false;
+    private bool isFound = false;
 
-    // For UI Image/Button: pointer click
-    public void OnPointerClick(PointerEventData eventData)
+    /// <summary>
+    /// Gọi hàm này từ script khác (vd: khi người chơi click hoặc hoàn thành nhiệm vụ)
+    /// để đánh dấu con gà đã được tìm thấy.
+    /// </summary>
+    public void MarkFound()
     {
-        TryRegisterFound();
-    }
-
-    // For world objects with collider and camera raycast
-    void OnMouseDown()
-    {
-        TryRegisterFound();
-    }
-
-    void OnTriggerEnter(Collider other)
-    {
-        if (!registerOnTriggerEnter) return;
-        if (other == null) return;
-        if (!string.IsNullOrEmpty(triggerPlayerTag) && !other.CompareTag(triggerPlayerTag)) return;
-        TryRegisterFound();
-    }
-
-    void TryRegisterFound()
-    {
-        if (!enabledInteraction) return;
-        if (isFound) return;
+        if (!enabledInteraction || isFound)
+            return;
 
         isFound = true;
 
-        // Local feedback
+        // Gọi hiệu ứng cục bộ (animation, âm thanh, v.v.)
         onLocalFound?.Invoke();
 
-        // Notify manager
+        // Báo cho hệ thống CountingChick
         if (CountingChick.Instance != null)
         {
             CountingChick.Instance.RegisterFound(this.gameObject);
         }
 
+        // Ẩn nếu cần
         if (disableAfterFound)
         {
-            // If manager also hides it, this is redundant but safe
             gameObject.SetActive(false);
         }
+
+        Debug.Log($"🐣 {gameObject.name} đã được đánh dấu là tìm thấy!");
     }
 
-    // Public API to mark as found (from other scripts)
-    public void MarkFound()
+    /// <summary>
+    /// Cho phép reset lại trạng thái (nếu cần chơi lại level).
+    /// </summary>
+    public void ResetFound()
     {
-        TryRegisterFound();
+        isFound = false;
+        if (!gameObject.activeSelf)
+            gameObject.SetActive(true);
     }
 }

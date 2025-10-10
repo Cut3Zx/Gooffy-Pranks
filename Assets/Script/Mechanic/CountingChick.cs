@@ -3,12 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using TMPro;
-using UnityEngine.UI;
 
-/// <summary>
-/// Quản lý việc đếm "gà" (các GameObject có tag chỉ định, ví dụ "KFC").
-/// Gọi RegisterFound(gameObject) khi người chơi bấm vào object đó.
-/// </summary>
 public class CountingChick : MonoBehaviour
 {
     public static CountingChick Instance { get; private set; }
@@ -26,13 +21,13 @@ public class CountingChick : MonoBehaviour
     [Header("UI Text (text-only mode)")]
     public TextMeshProUGUI progressTextTMP; // hiển thị dạng "found/total (xx%)"
     public string progressTextFormat = "{0}/{1} ({2:0}% )"; // {found},{total},{percent}
-    [Header("Found-only text option")]
-    // Mặc định hiển thị chỉ số đã tìm (không hiện 0/0)
-    public bool showFoundOnlyText = true; // nếu true sẽ hiển thị chỉ số đã tìm
-    public string foundOnlyTextFormat = "Đã tìm thấy: {0}"; // {found}
 
-    int totalCount = 0;
-    HashSet<GameObject> foundSet = new HashSet<GameObject>();
+    [Header("Found-only text option")]
+    public bool showFoundOnlyText = true; // nếu true sẽ hiển thị chỉ số đã tìm
+    public string foundOnlyTextFormat = "Số lượng gà con đã được tìm thấy là: {0}"; // {found}
+
+    private int totalCount = 0;
+    private HashSet<GameObject> foundSet = new HashSet<GameObject>();
 
     void Awake()
     {
@@ -42,12 +37,18 @@ public class CountingChick : MonoBehaviour
             return;
         }
         Instance = this;
-
-        RefreshTotalCount();
-        UpdateUIText();
     }
 
-    // Đếm lại tổng số object có tag (gọi khi cần, ví dụ khi spawn động)
+    // 🧩 Đợi 1 khung hình hoặc 0.1s để chắc chắn mọi gà đã được kích hoạt
+    IEnumerator Start()
+    {
+        yield return new WaitForSeconds(0.1f);
+        RefreshTotalCount();
+        UpdateUIText();
+        Debug.Log($"🐥 Tổng số gà đếm được: {totalCount}");
+    }
+
+    // Đếm lại tổng số object có tag
     public void RefreshTotalCount()
     {
         if (string.IsNullOrEmpty(targetTag))
@@ -58,71 +59,54 @@ public class CountingChick : MonoBehaviour
 
         try
         {
-            var arr = GameObject.FindGameObjectsWithTag(targetTag);
-            totalCount = arr != null ? arr.Length : 0;
+            // Đếm cả object đang bị tắt trong scene (inactive)
+            var allObjects = Resources.FindObjectsOfTypeAll<GameObject>();
+            totalCount = 0;
+            foreach (var obj in allObjects)
+            {
+                if (obj.CompareTag(targetTag))
+                    totalCount++;
+            }
+
         }
         catch
         {
-            // nếu tag không tồn tại hoặc lỗi, đặt 0
             totalCount = 0;
         }
+
         UpdateUIText();
     }
 
-    // Gọi khi một object bị bấm/thu thập. Có thể gọi trực tiếp từ object đó.
+    // Gọi khi một object bị bấm/thu thập
     public void RegisterFound(GameObject obj)
     {
         if (obj == null) return;
 
-        // Chỉ xử lý nếu object thực sự có tag tương ứng (phòng trường hợp vô tình gọi nhầm)
         if (!string.IsNullOrEmpty(targetTag) && !obj.CompareTag(targetTag))
             return;
 
         if (foundSet.Contains(obj))
-            return; // đã đánh dấu trước đó
+            return;
 
         foundSet.Add(obj);
 
         if (hideOnFound)
-        {
             obj.SetActive(false);
-        }
 
-        // Gọi sự kiện
         onFound?.Invoke();
-
         UpdateUIText();
 
-        // Nếu đã tìm hết
         if (foundSet.Count >= totalCount && totalCount > 0)
         {
+            Debug.Log("🎉 Đã tìm thấy toàn bộ gà!");
             onAllFound?.Invoke();
         }
     }
 
-    // Hàm tiện: có thể gán cho Button.OnClick và truyền chính GameObject đó
-    public void OnClickMarkFound(GameObject obj)
-    {
-        RegisterFound(obj);
-    }
+    public int GetTotalCount() => totalCount;
+    public int GetFoundCount() => foundSet.Count;
+    public int GetRemainingCount() => Mathf.Max(0, totalCount - foundSet.Count);
 
-    // Trả về tổng số 'gà' trên map (theo tag) - lưu ý: nếu spawn động, hãy gọi RefreshTotalCount trước
-    public int GetTotalCount()
-    {
-        return totalCount;
-    }
-
-    public int GetFoundCount()
-    {
-        return foundSet.Count;
-    }
-
-    public int GetRemainingCount()
-    {
-        return Mathf.Max(0, totalCount - foundSet.Count);
-    }
-
-    // Reset (clear) danh sách đã tìm thấy - không ảnh hưởng đến các object
     public void ResetFound()
     {
         foundSet.Clear();
@@ -136,21 +120,13 @@ public class CountingChick : MonoBehaviour
         int found = GetFoundCount();
         int total = GetTotalCount();
         float percent = total > 0 ? (float)found / (float)total * 100f : 0f;
-        string txt;
-        if (showFoundOnlyText)
-        {
-            txt = string.Format(foundOnlyTextFormat, found);
-        }
-        else
-        {
-            txt = string.Format(progressTextFormat, found, total, percent);
-        }
+        string txt = showFoundOnlyText
+            ? string.Format(foundOnlyTextFormat, found)
+            : string.Format(progressTextFormat, found, total, percent);
 
-        if (progressTextTMP != null)
-            progressTextTMP.text = txt;
+        progressTextTMP.text = txt;
     }
 
-    // Thay đổi chế độ hiển thị
     public void SetShowFoundOnlyText(bool show)
     {
         showFoundOnlyText = show;

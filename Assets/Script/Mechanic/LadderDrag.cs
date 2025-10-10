@@ -6,12 +6,14 @@ public class LadderDrag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
     private RectTransform rectTransform;
     private Canvas canvas;
     private Vector2 startPos;
-    private bool isPlaced = false;
+
+    [Header("State")]
+    public bool isPlaced = false;
 
     [Header("References")]
     public RectTransform snapZone;        // vùng để thang cố định
-    public GameObject chickenOnTree;      // gà trên cây (sẽ bật click khi thang đúng chỗ)
-    public Vector2 snapOffset;            // tinh chỉnh vị trí dính so với zone
+    public GameObject chickenOnTree;      // gà trên cây
+    public Vector2 snapOffset;            // tinh chỉnh vị trí
 
     void Awake()
     {
@@ -36,12 +38,10 @@ public class LadderDrag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
     {
         if (isPlaced) return;
 
-        // Kiểm tra nếu thả gần zone
+        // kiểm tra khi thả gần vùng snap zone (UI)
         if (RectTransformUtility.RectangleContainsScreenPoint(snapZone, Input.mousePosition, canvas.worldCamera))
         {
-            Debug.Log("🪜 Thang chạm vùng snap zone!");
-
-            // Đặt thang cố định tại zone
+            Debug.Log("✅ Thang đã được đặt đúng vị trí!");
             rectTransform.anchoredPosition = snapZone.anchoredPosition + snapOffset;
             isPlaced = true;
 
@@ -49,7 +49,7 @@ public class LadderDrag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
         }
         else
         {
-            // Không đúng chỗ thì quay về vị trí cũ
+            Debug.Log("↩️ Thang không đúng vị trí, quay về chỗ cũ!");
             rectTransform.anchoredPosition = startPos;
         }
     }
@@ -58,16 +58,17 @@ public class LadderDrag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
     {
         if (chickenOnTree != null)
         {
-            var clickScript = chickenOnTree.GetComponent<ChickenClick>();
-            var image = chickenOnTree.GetComponent<UnityEngine.UI.Image>();
+            var clickScript = chickenOnTree.GetComponent<ChickenClickOnTree>();
 
             if (clickScript != null)
-                clickScript.enabled = state;
+                clickScript.SetCanClick(state); 
 
+            var image = chickenOnTree.GetComponent<UnityEngine.UI.Image>();
             if (image != null)
                 image.raycastTarget = state;
 
             Debug.Log($"🐔 Gà {(state ? "có thể click" : "bị khóa")}.");
         }
     }
+
 }
