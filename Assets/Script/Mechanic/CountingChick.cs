@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using TMPro;
+using UnityEngine.Localization;                // ✅ Dùng cho LocalizedString
+using UnityEngine.Localization.Settings;      // ✅ Dùng cho đổi ngôn ngữ runtime
 
 public class CountingChick : MonoBehaviour
 {
@@ -14,17 +16,20 @@ public class CountingChick : MonoBehaviour
     [Header("Hành vi khi đánh dấu đã tìm thấy")]
     public bool hideOnFound = true; // ẩn object khi tìm thấy
 
-    [Header("Events")]
-    public UnityEvent onFound; // gọi khi một object được tìm thấy
-    public UnityEvent onAllFound; // gọi khi đã tìm thấy tất cả
+    [Header("Sự kiện")]
+    public UnityEvent onFound;     // gọi khi một object được tìm thấy
+    public UnityEvent onAllFound;  // gọi khi đã tìm thấy tất cả
 
-    [Header("UI Text (text-only mode)")]
-    public TextMeshProUGUI progressTextTMP; // hiển thị dạng "found/total (xx%)"
-    public string progressTextFormat = "{0}/{1} ({2:0}% )"; // {found},{total},{percent}
+    [Header("UI hiển thị tiến độ")]
+    public TextMeshProUGUI progressTextTMP; // hiển thị text
+    public bool showFoundOnlyText = true;   // chỉ hiển thị số đã tìm
 
-    [Header("Found-only text option")]
-    public bool showFoundOnlyText = true; // nếu true sẽ hiển thị chỉ số đã tìm
-    public string foundOnlyTextFormat = "Số lượng gà con đã được tìm thấy là: {0}"; // {found}
+    [Header("Localization")]
+    public LocalizedString foundOnlyTextLocalized; // 🔹 Kết nối tới key trong bảng (VD: GameTextTable/hintlevel1)
+
+    [Header("Format fallback (nếu chưa có Localization)")]
+    public string fallbackFoundText = "Số lượng gà con đã được tìm thấy là: {0}";
+    public string fallbackProgressText = "{0}/{1} ({2:0}% )";
 
     private int totalCount = 0;
     private HashSet<GameObject> foundSet = new HashSet<GameObject>();
@@ -39,13 +44,16 @@ public class CountingChick : MonoBehaviour
         Instance = this;
     }
 
-    // 🧩 Đợi 1 khung hình hoặc 0.1s để chắc chắn mọi gà đã được kích hoạt
     IEnumerator Start()
     {
         yield return new WaitForSeconds(0.1f);
         RefreshTotalCount();
         UpdateUIText();
+
         Debug.Log($"🐥 Tổng số gà đếm được: {totalCount}");
+
+        // 🔹 Theo dõi khi người chơi đổi ngôn ngữ runtime
+        LocalizationSettings.SelectedLocaleChanged += (locale) => UpdateUIText();
     }
 
     // Đếm lại tổng số object có tag
@@ -59,7 +67,6 @@ public class CountingChick : MonoBehaviour
 
         try
         {
-            // Đếm cả object đang bị tắt trong scene (inactive)
             var allObjects = Resources.FindObjectsOfTypeAll<GameObject>();
             totalCount = 0;
             foreach (var obj in allObjects)
@@ -67,7 +74,6 @@ public class CountingChick : MonoBehaviour
                 if (obj.CompareTag(targetTag))
                     totalCount++;
             }
-
         }
         catch
         {
@@ -81,15 +87,10 @@ public class CountingChick : MonoBehaviour
     public void RegisterFound(GameObject obj)
     {
         if (obj == null) return;
-
-        if (!string.IsNullOrEmpty(targetTag) && !obj.CompareTag(targetTag))
-            return;
-
-        if (foundSet.Contains(obj))
-            return;
+        if (!obj.CompareTag(targetTag)) return;
+        if (foundSet.Contains(obj)) return;
 
         foundSet.Add(obj);
-
         if (hideOnFound)
             obj.SetActive(false);
 
@@ -119,13 +120,27 @@ public class CountingChick : MonoBehaviour
 
         int found = GetFoundCount();
         int total = GetTotalCount();
-        float percent = total > 0 ? (float)found / (float)total * 100f : 0f;
-        string txt = showFoundOnlyText
-            ? string.Format(foundOnlyTextFormat, found)
-            : string.Format(progressTextFormat, found, total, percent);
+        float percent = total > 0 ? (float)found / total * 100f : 0f;
 
-        progressTextTMP.text = txt;
+        if (showFoundOnlyText)
+        {
+            if (foundOnlyTextLocalized != null && !string.IsNullOrEmpty(foundOnlyTextLocalized.TableReference))
+            {
+                // ✅ Cách an toàn, tương thích với Unity 2022 trở lên
+                string localizedValue = foundOnlyTextLocalized.GetLocalizedString();
+                progressTextTMP.text = $"{localizedValue}: {found}";
+            }
+            else
+            {
+                progressTextTMP.text = string.Format(fallbackFoundText, found);
+            }
+        }
+        else
+        {
+            progressTextTMP.text = string.Format(fallbackProgressText, found, total, percent);
+        }
     }
+
 
     public void SetShowFoundOnlyText(bool show)
     {

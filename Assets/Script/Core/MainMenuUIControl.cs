@@ -36,6 +36,14 @@ public class MainMenuUIControl : MonoBehaviour
         }
         Time.timeScale = 1f;
     }
+    public void HideSelectUI()
+    {
+        if (levelSelectUI != null)
+        {
+            levelSelectUI.SetActive(false);
+        }
+    }
+
     public void TogglePauseUI()
     {
         if (pauseUI == null)
