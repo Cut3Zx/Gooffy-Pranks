@@ -81,7 +81,7 @@ public class MainMenuUIControl : MonoBehaviour
     }
     public void ReplayGame()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene("Gameplay");
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Level_1");
     }
 
 }
