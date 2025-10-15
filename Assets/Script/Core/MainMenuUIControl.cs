@@ -79,8 +79,12 @@ public class MainMenuUIControl : MonoBehaviour
     {
         Application.Quit();
     }
-    public void ReplayGame()
+    public void resetGame()
     {
+        if (GameManager.Instance != null) 
+        {
+            GameManager.Instance.resetGame();
+        }
         UnityEngine.SceneManagement.SceneManager.LoadScene("Level_1");
     }
 
