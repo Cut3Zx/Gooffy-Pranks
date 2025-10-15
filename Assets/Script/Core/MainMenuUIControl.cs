@@ -79,13 +79,21 @@ public class MainMenuUIControl : MonoBehaviour
     {
         Application.Quit();
     }
-    public void resetGame()
+    public void resetGame1()
     {
         if (GameManager.Instance != null) 
         {
             GameManager.Instance.resetGame();
         }
         UnityEngine.SceneManagement.SceneManager.LoadScene("Level_1");
+    }
+    public void resetGame2()
+    {
+        if (GameManager.Instance != null)
+        {
+            GameManager.Instance.resetGame();
+        }
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Level_2");
     }
 
 }
