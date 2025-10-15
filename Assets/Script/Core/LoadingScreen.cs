@@ -40,7 +40,8 @@ public class LoadingScreen : MonoBehaviour
                 operation.allowSceneActivation = true;
             }
 
-            yield return null;
+            // Thêm độ trễ để làm chậm quá trình tải
+            yield return new WaitForSeconds(0.1f); // Chờ 0.1 giây mỗi vòng lặp
         }
 
         // Ẩn màn hình tải sau khi hoàn tất
