@@ -212,8 +212,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enabledInteraction: 1
-  disableAfterFound: 1
-  onLocalFound:
+  disableAfterCollect: 1
+  canCollectOnce: 1
+  scoreValue: 10
+  itemType: Generic
+  onCollected:
     m_PersistentCalls:
       m_Calls: []
 --- !u!114 &8909926
@@ -280,8 +283,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enabledInteraction: 1
-  disableAfterFound: 1
-  onLocalFound:
+  disableAfterCollect: 1
+  canCollectOnce: 1
+  scoreValue: 10
+  itemType: Generic
+  onCollected:
     m_PersistentCalls:
       m_Calls: []
 --- !u!114 &17918695
@@ -794,6 +800,97 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 288585917}
+  m_CullTransparentMesh: 1
+--- !u!1 &431872287
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 431872288}
+  - component: {fileID: 431872291}
+  - component: {fileID: 431872290}
+  - component: {fileID: 431872289}
+  m_Layer: 5
+  m_Name: Red Phalk
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &431872288
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 431872287}
+  m_LocalRotation: {x: -0, y: -0, z: -0.7067609, w: 0.70745254}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1099682812}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -89.944}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -82, y: -505}
+  m_SizeDelta: {x: 16.8565, y: 93.018}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &431872289
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 431872287}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46d829d73c2a7e04f846057e3b163c1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uncoloredShape: {fileID: 912307834}
+  coloredShape: {fileID: 885105595}
+  finalCompass: {fileID: 1766052026}
+--- !u!114 &431872290
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 431872287}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: -2097146405, guid: 34a7501ce27dedd43834cc6368cea5d1, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &431872291
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 431872287}
   m_CullTransparentMesh: 1
 --- !u!1 &580022119
 GameObject:
@@ -1495,6 +1592,7 @@ RectTransform:
   - {fileID: 4235514097022126957}
   - {fileID: 885105596}
   - {fileID: 17918693}
+  - {fileID: 431872288}
   m_Father: {fileID: 1198608659}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -1818,9 +1916,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1206420598}
   - component: {fileID: 1206420600}
-  - component: {fileID: 1206420601}
   - component: {fileID: 1206420603}
   - component: {fileID: 1206420602}
+  - component: {fileID: 1206420604}
   m_Layer: 0
   m_Name: GameController
   m_TagString: Untagged
@@ -1858,43 +1956,6 @@ MonoBehaviour:
   mainMenuUI: {fileID: 7615324630662287011, guid: f866ab6f723384341a4d28cfed1a419b, type: 3}
   levelSelectUI: {fileID: 0}
   pauseUI: {fileID: 5323211695793482940}
---- !u!114 &1206420601
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1206420596}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 94e58e3abe065684bab52ecc43e7679d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetTag: KFC
-  hideOnFound: 1
-  onFound:
-    m_PersistentCalls:
-      m_Calls: []
-  onAllFound:
-    m_PersistentCalls:
-      m_Calls: []
-  progressTextTMP: {fileID: 0}
-  showFoundOnlyText: 1
-  foundOnlyTextLocalized:
-    m_TableReference:
-      m_TableCollectionName: GUID:8779a95a411fff647964fcaef0f404bd
-    m_TableEntryReference:
-      m_KeyId: 60899015471104
-      m_Key: 
-    m_FallbackState: 0
-    m_WaitForCompletion: 0
-    m_LocalVariables: []
-  fallbackFoundText: "S\u1ED1 l\u01B0\u1EE3ng g\xE0 con \u0111\xE3 \u0111\u01B0\u1EE3c
-    t\xECm th\u1EA5y l\xE0: {0}"
-  fallbackProgressText: '{0}/{1} ({2:0}% )'
-  references:
-    version: 2
-    RefIds: []
 --- !u!114 &1206420602
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1921,6 +1982,43 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buttonEnglish: {fileID: 2467917737393081814}
   buttonVietnamese: {fileID: 1347786930677616437}
+--- !u!114 &1206420604
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1206420596}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3add84f78e4f5d4697ab7b3ca11037b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetTag: Collectible
+  hideOnCollected: 1
+  onCollected:
+    m_PersistentCalls:
+      m_Calls: []
+  onAllCollected:
+    m_PersistentCalls:
+      m_Calls: []
+  progressTextTMP: {fileID: 0}
+  showFoundOnlyText: 1
+  foundOnlyTextLocalized:
+    m_TableReference:
+      m_TableCollectionName: 
+    m_TableEntryReference:
+      m_KeyId: 0
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  fallbackFoundText: "S\u1ED1 l\u01B0\u1EE3ng v\u1EADt ph\u1EA9m \u0111\xE3 \u0111\u01B0\u1EE3c
+    thu th\u1EADp: {0}"
+  fallbackProgressText: '{0}/{1} ({2:0}% )'
+  references:
+    version: 2
+    RefIds: []
 --- !u!1 &1225799212
 GameObject:
   m_ObjectHideFlags: 0
@@ -2191,7 +2289,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1315227163}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 06e5fca1f38811842b5951805f7f162e, type: 3}
   m_Name: 
@@ -3785,7 +3883,7 @@ PrefabInstance:
       objectReference: {fileID: 1206420600}
     - target: {fileID: 1577420219399033008, guid: 41198332bd98a2243845460e40b6a849, type: 3}
       propertyPath: m_text
-      value: "T\xECm ki\u1EBFm b\xE0i ki\u1EC3m tra"
+      value: "T\xECm ki\u1EBFm chi\u1EBFc compa"
       objectReference: {fileID: 0}
     - target: {fileID: 5007403529457648115, guid: 41198332bd98a2243845460e40b6a849, type: 3}
       propertyPath: m_Name
@@ -3821,7 +3919,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7473657500762410779, guid: 41198332bd98a2243845460e40b6a849, type: 3}
       propertyPath: m_StringReference.m_TableEntryReference.m_KeyId
-      value: 1262630072168448
+      value: 1263346178273280
       objectReference: {fileID: 0}
     - target: {fileID: 8933947677649603816, guid: 41198332bd98a2243845460e40b6a849, type: 3}
       propertyPath: m_Pivot.x

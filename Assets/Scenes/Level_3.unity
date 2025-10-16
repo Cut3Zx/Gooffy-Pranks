@@ -468,7 +468,7 @@ GameObject:
   - component: {fileID: 288585922}
   m_Layer: 5
   m_Name: Chick
-  m_TagString: Untagged
+  m_TagString: Collectible
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -555,8 +555,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enabledInteraction: 1
-  disableAfterFound: 1
-  onLocalFound:
+  disableAfterCollect: 1
+  canCollectOnce: 1
+  scoreValue: 10
+  itemType: Generic
+  onCollected:
     m_PersistentCalls:
       m_Calls: []
 --- !u!1 &580022119
@@ -667,7 +670,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &836717122
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1271,6 +1274,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2014958730}
     m_Modifications:
+    - target: {fileID: 1161547585375141213, guid: d787e4446730c9e4d9ea58047143911c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1206420600}
+    - target: {fileID: 1161547585375141213, guid: d787e4446730c9e4d9ea58047143911c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnSelectLevel
+      objectReference: {fileID: 0}
+    - target: {fileID: 1161547585375141213, guid: d787e4446730c9e4d9ea58047143911c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: MainMenuUIControl, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 1854991831755693390, guid: d787e4446730c9e4d9ea58047143911c, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1358,6 +1373,18 @@ PrefabInstance:
     - target: {fileID: 4668909772085879133, guid: d787e4446730c9e4d9ea58047143911c, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5826071983546945750, guid: d787e4446730c9e4d9ea58047143911c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1206420600}
+    - target: {fileID: 5826071983546945750, guid: d787e4446730c9e4d9ea58047143911c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnSelectLevel
+      objectReference: {fileID: 0}
+    - target: {fileID: 5826071983546945750, guid: d787e4446730c9e4d9ea58047143911c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: MainMenuUIControl, Assembly-CSharp
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1518,8 +1545,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enabledInteraction: 1
-  disableAfterFound: 1
-  onLocalFound:
+  disableAfterCollect: 1
+  canCollectOnce: 1
+  scoreValue: 10
+  itemType: Generic
+  onCollected:
     m_PersistentCalls:
       m_Calls: []
 --- !u!114 &1182941268
@@ -1615,9 +1645,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1206420598}
   - component: {fileID: 1206420600}
-  - component: {fileID: 1206420601}
   - component: {fileID: 1206420603}
   - component: {fileID: 1206420602}
+  - component: {fileID: 1206420604}
   m_Layer: 0
   m_Name: GameController
   m_TagString: Untagged
@@ -1655,43 +1685,6 @@ MonoBehaviour:
   mainMenuUI: {fileID: 7615324630662287011, guid: f866ab6f723384341a4d28cfed1a419b, type: 3}
   levelSelectUI: {fileID: 1129066207}
   pauseUI: {fileID: 5323211695793482940}
---- !u!114 &1206420601
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1206420596}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 94e58e3abe065684bab52ecc43e7679d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetTag: KFC
-  hideOnFound: 1
-  onFound:
-    m_PersistentCalls:
-      m_Calls: []
-  onAllFound:
-    m_PersistentCalls:
-      m_Calls: []
-  progressTextTMP: {fileID: 1726884767}
-  showFoundOnlyText: 1
-  foundOnlyTextLocalized:
-    m_TableReference:
-      m_TableCollectionName: GUID:8779a95a411fff647964fcaef0f404bd
-    m_TableEntryReference:
-      m_KeyId: 60899015471104
-      m_Key: 
-    m_FallbackState: 0
-    m_WaitForCompletion: 0
-    m_LocalVariables: []
-  fallbackFoundText: "S\u1ED1 l\u01B0\u1EE3ng g\xE0 con \u0111\xE3 \u0111\u01B0\u1EE3c
-    t\xECm th\u1EA5y l\xE0: {0}"
-  fallbackProgressText: '{0}/{1} ({2:0}% )'
-  references:
-    version: 2
-    RefIds: []
 --- !u!114 &1206420602
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1718,6 +1711,43 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buttonEnglish: {fileID: 2467917737393081814}
   buttonVietnamese: {fileID: 1347786930677616437}
+--- !u!114 &1206420604
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1206420596}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3add84f78e4f5d4697ab7b3ca11037b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetTag: Collectible
+  hideOnCollected: 1
+  onCollected:
+    m_PersistentCalls:
+      m_Calls: []
+  onAllCollected:
+    m_PersistentCalls:
+      m_Calls: []
+  progressTextTMP: {fileID: 0}
+  showFoundOnlyText: 1
+  foundOnlyTextLocalized:
+    m_TableReference:
+      m_TableCollectionName: 
+    m_TableEntryReference:
+      m_KeyId: 0
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  fallbackFoundText: "S\u1ED1 l\u01B0\u1EE3ng v\u1EADt ph\u1EA9m \u0111\xE3 \u0111\u01B0\u1EE3c
+    thu th\u1EADp: {0}"
+  fallbackProgressText: '{0}/{1} ({2:0}% )'
+  references:
+    version: 2
+    RefIds: []
 --- !u!1 &1225799212
 GameObject:
   m_ObjectHideFlags: 0
@@ -2018,8 +2048,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enabledInteraction: 1
-  disableAfterFound: 1
-  onLocalFound:
+  disableAfterCollect: 1
+  canCollectOnce: 1
+  scoreValue: 10
+  itemType: Generic
+  onCollected:
     m_PersistentCalls:
       m_Calls: []
 --- !u!114 &1315227166
@@ -2124,7 +2157,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 0
+  m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -2252,17 +2285,6 @@ MonoBehaviour:
   snapZone: {fileID: 885105596}
   chickenOnTree: {fileID: 1794868546}
   snapOffset: {x: 0, y: 0}
---- !u!114 &1726884767 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2450403812446345804, guid: 41198332bd98a2243845460e40b6a849, type: 3}
-  m_PrefabInstance: {fileID: 3333572362657450561}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!224 &1742693122 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8933947677649603816, guid: 41198332bd98a2243845460e40b6a849, type: 3}
@@ -2358,7 +2380,7 @@ GameObject:
   - component: {fileID: 1794868552}
   m_Layer: 5
   m_Name: Chicken Tree
-  m_TagString: KFC
+  m_TagString: Collectible
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2447,8 +2469,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enabledInteraction: 1
-  disableAfterFound: 1
-  onLocalFound:
+  disableAfterCollect: 1
+  canCollectOnce: 1
+  scoreValue: 10
+  itemType: Generic
+  onCollected:
     m_PersistentCalls:
       m_Calls: []
 --- !u!114 &1969401239 stripped
@@ -3668,7 +3693,8 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 2248014987714090462, guid: 41198332bd98a2243845460e40b6a849, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 41198332bd98a2243845460e40b6a849, type: 3}

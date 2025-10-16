@@ -212,8 +212,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enabledInteraction: 1
-  disableAfterFound: 1
-  onLocalFound:
+  disableAfterCollect: 1
+  canCollectOnce: 1
+  scoreValue: 10
+  itemType: Generic
+  onCollected:
     m_PersistentCalls:
       m_Calls: []
 --- !u!114 &8909926
@@ -243,7 +246,7 @@ GameObject:
   - component: {fileID: 17918694}
   m_Layer: 5
   m_Name: Exam riel
-  m_TagString: KFC
+  m_TagString: Collectible
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -280,8 +283,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enabledInteraction: 1
-  disableAfterFound: 1
-  onLocalFound:
+  disableAfterCollect: 1
+  canCollectOnce: 1
+  scoreValue: 10
+  itemType: Generic
+  onCollected:
     m_PersistentCalls:
       m_Calls: []
 --- !u!114 &17918695
@@ -1934,9 +1940,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1206420598}
   - component: {fileID: 1206420600}
-  - component: {fileID: 1206420601}
   - component: {fileID: 1206420603}
   - component: {fileID: 1206420602}
+  - component: {fileID: 1206420604}
   m_Layer: 0
   m_Name: GameController
   m_TagString: Untagged
@@ -1974,43 +1980,6 @@ MonoBehaviour:
   mainMenuUI: {fileID: 7615324630662287011, guid: f866ab6f723384341a4d28cfed1a419b, type: 3}
   levelSelectUI: {fileID: 1129066207}
   pauseUI: {fileID: 1122440876}
---- !u!114 &1206420601
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1206420596}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 94e58e3abe065684bab52ecc43e7679d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetTag: KFC
-  hideOnFound: 1
-  onFound:
-    m_PersistentCalls:
-      m_Calls: []
-  onAllFound:
-    m_PersistentCalls:
-      m_Calls: []
-  progressTextTMP: {fileID: 0}
-  showFoundOnlyText: 1
-  foundOnlyTextLocalized:
-    m_TableReference:
-      m_TableCollectionName: GUID:8779a95a411fff647964fcaef0f404bd
-    m_TableEntryReference:
-      m_KeyId: 60899015471104
-      m_Key: 
-    m_FallbackState: 0
-    m_WaitForCompletion: 0
-    m_LocalVariables: []
-  fallbackFoundText: "S\u1ED1 l\u01B0\u1EE3ng g\xE0 con \u0111\xE3 \u0111\u01B0\u1EE3c
-    t\xECm th\u1EA5y l\xE0: {0}"
-  fallbackProgressText: '{0}/{1} ({2:0}% )'
-  references:
-    version: 2
-    RefIds: []
 --- !u!114 &1206420602
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2037,6 +2006,43 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buttonEnglish: {fileID: 0}
   buttonVietnamese: {fileID: 0}
+--- !u!114 &1206420604
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1206420596}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3add84f78e4f5d4697ab7b3ca11037b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetTag: Collectible
+  hideOnCollected: 1
+  onCollected:
+    m_PersistentCalls:
+      m_Calls: []
+  onAllCollected:
+    m_PersistentCalls:
+      m_Calls: []
+  progressTextTMP: {fileID: 0}
+  showFoundOnlyText: 1
+  foundOnlyTextLocalized:
+    m_TableReference:
+      m_TableCollectionName: 
+    m_TableEntryReference:
+      m_KeyId: 0
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  fallbackFoundText: "S\u1ED1 l\u01B0\u1EE3ng v\u1EADt ph\u1EA9m \u0111\xE3 \u0111\u01B0\u1EE3c
+    thu th\u1EADp: {0}"
+  fallbackProgressText: '{0}/{1} ({2:0}% )'
+  references:
+    version: 2
+    RefIds: []
 --- !u!1 &1225799212
 GameObject:
   m_ObjectHideFlags: 0

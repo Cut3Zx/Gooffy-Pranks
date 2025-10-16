@@ -4,7 +4,8 @@ using UnityEngine.EventSystems;
 public class BaseObjectManager : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
     protected RectTransform rectTransform;
-
+    [System.NonSerialized]
+    protected Canvas canvas;
     // ⚠️ Dùng NonSerialized để tránh trùng serialize ở class con
     [System.NonSerialized]
     protected Vector3 startPos;
@@ -12,6 +13,7 @@ public class BaseObjectManager : MonoBehaviour, IPointerClickHandler, IBeginDrag
     protected virtual void Awake()
     {
         rectTransform = GetComponent<RectTransform>();
+        canvas = GetComponentInParent<Canvas>();
         if (rectTransform != null)
             startPos = rectTransform.anchoredPosition;
         else
