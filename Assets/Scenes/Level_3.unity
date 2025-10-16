@@ -649,11 +649,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   brokenRock: {fileID: 911957654}
   chicken: {fileID: 288585917}
---- !u!1 &795826037 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4668909772085879133, guid: d787e4446730c9e4d9ea58047143911c, type: 3}
-  m_PrefabInstance: {fileID: 1129066205}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &836717121
 GameObject:
   m_ObjectHideFlags: 0
@@ -1077,7 +1072,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &912307835
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1374,6 +1369,11 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 1854991831755693390, guid: d787e4446730c9e4d9ea58047143911c, type: 3}
   m_PrefabInstance: {fileID: 1129066205}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1129066207 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4668909772085879133, guid: d787e4446730c9e4d9ea58047143911c, type: 3}
+  m_PrefabInstance: {fileID: 1129066205}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1158447334
 GameObject:
   m_ObjectHideFlags: 0
@@ -1481,7 +1481,7 @@ GameObject:
   - component: {fileID: 1182941267}
   m_Layer: 5
   m_Name: Chick 1
-  m_TagString: KFC
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1653,7 +1653,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainMenuUI: {fileID: 7615324630662287011, guid: f866ab6f723384341a4d28cfed1a419b, type: 3}
-  levelSelectUI: {fileID: 795826037}
+  levelSelectUI: {fileID: 1129066207}
   pauseUI: {fileID: 5323211695793482940}
 --- !u!114 &1206420601
 MonoBehaviour:
@@ -1675,7 +1675,7 @@ MonoBehaviour:
   onAllFound:
     m_PersistentCalls:
       m_Calls: []
-  progressTextTMP: {fileID: 0}
+  progressTextTMP: {fileID: 1726884767}
   showFoundOnlyText: 1
   foundOnlyTextLocalized:
     m_TableReference:
@@ -2212,7 +2212,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 0
+  m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -2252,6 +2252,17 @@ MonoBehaviour:
   snapZone: {fileID: 885105596}
   chickenOnTree: {fileID: 1794868546}
   snapOffset: {x: 0, y: 0}
+--- !u!114 &1726884767 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2450403812446345804, guid: 41198332bd98a2243845460e40b6a849, type: 3}
+  m_PrefabInstance: {fileID: 3333572362657450561}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &1742693122 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8933947677649603816, guid: 41198332bd98a2243845460e40b6a849, type: 3}
@@ -2347,7 +2358,7 @@ GameObject:
   - component: {fileID: 1794868552}
   m_Layer: 5
   m_Name: Chicken Tree
-  m_TagString: Untagged
+  m_TagString: KFC
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2385,7 +2396,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 0
+  m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -2725,6 +2736,10 @@ PrefabInstance:
     - target: {fileID: 6962272087295301841, guid: 3880e50db2ea65841b264cf76b300ff4, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7718439863833161008, guid: 3880e50db2ea65841b264cf76b300ff4, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: Level_4
       objectReference: {fileID: 0}
     - target: {fileID: 8217648220426235217, guid: 3880e50db2ea65841b264cf76b300ff4, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -3653,8 +3668,7 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects:
-    - {fileID: 2248014987714090462, guid: 41198332bd98a2243845460e40b6a849, type: 3}
+    m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 41198332bd98a2243845460e40b6a849, type: 3}

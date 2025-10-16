@@ -1,55 +1,76 @@
 ﻿using UnityEngine;
 
-public class TrashShakeReveal : MonoBehaviour
+public class TrashShakeFall : MonoBehaviour
 {
-    [Header("Cục giấy sẽ rơi ra khi thùng đổ")]
+    [Header("Cục giấy rơi ra khi thùng đổ")]
     public GameObject paperCrumpled;
 
-    [Header("Tốc độ xoay khi đổ")]
-    public float tiltAngle = 25f;
-    public float tiltSpeed = 3f;
+    [Header("Góc đổ (90 độ là đổ hẳn)")]
+    public float fallAngle = 90f;
+
+    [Header("Tốc độ xoay thùng rác")]
+    public float rotationSpeed = 4f;
+
+    [Header("Độ nhạy lắc điện thoại")]
+    public float shakeThreshold = 2.8f;
+
+    [Header("Lực đẩy cục giấy khi rơi ra (theo hướng đổ)")]
+    public float pushPower = 3f;
+    public float pushUpward = 2f;
 
     private bool hasFallen = false;
-    private Quaternion startRotation;
+    private Quaternion startRot;
+    private Quaternion targetRot;
 
     void Start()
     {
-        startRotation = transform.rotation;
+        startRot = transform.rotation;
+        targetRot = Quaternion.Euler(0, 0, -fallAngle); // mặc định đổ sang trái
     }
 
     void Update()
     {
-        // Kiểm tra lắc điện thoại (mobile)
-        if (Input.acceleration.sqrMagnitude > 2.5f && !hasFallen)
-        {
-            StartCoroutine(TiltAndReveal());
-        }
+        // Lắc điện thoại
+        if (Input.acceleration.sqrMagnitude > shakeThreshold && !hasFallen)
+            StartCoroutine(FallTrash());
 
-        // Hoặc mô phỏng bằng phím "R" trên PC
-        if (Input.GetKeyDown(KeyCode.R) && !hasFallen)
-        {
-            StartCoroutine(TiltAndReveal());
-        }
+        // Click chuột để test trong Unity Editor
+        if (Input.GetMouseButtonDown(0) && !hasFallen)
+            StartCoroutine(FallTrash());
     }
 
-    private System.Collections.IEnumerator TiltAndReveal()
+    private System.Collections.IEnumerator FallTrash()
     {
         hasFallen = true;
 
-        // Xoay nghiêng thùng rác
         float t = 0;
-        Quaternion targetRot = Quaternion.Euler(0, 0, tiltAngle);
         while (t < 1)
         {
-            t += Time.deltaTime * tiltSpeed;
-            transform.rotation = Quaternion.Slerp(startRotation, targetRot, t);
+            t += Time.deltaTime * rotationSpeed;
+            transform.rotation = Quaternion.Slerp(startRot, targetRot, t);
             yield return null;
         }
 
-        // Hiện cục giấy sau khi thùng đổ
-        if (paperCrumpled != null)
-            paperCrumpled.SetActive(true);
+        yield return new WaitForSeconds(0.3f);
 
-        Debug.Log("🗑️ Thùng rác đổ, cục giấy rơi ra!");
+        // Bật cục giấy
+        if (paperCrumpled != null)
+        {
+            paperCrumpled.SetActive(true);
+            Rigidbody2D rb = paperCrumpled.GetComponent<Rigidbody2D>();
+            if (rb != null)
+            {
+                rb.simulated = true;
+
+                // Xác định hướng đổ của thùng rác
+                float dir = Mathf.Sign(transform.right.x); // +1 phải, -1 trái
+
+                // Đẩy cục giấy ra theo hướng đổ
+                Vector2 force = new Vector2(dir * pushPower, pushUpward);
+                rb.AddForce(force, ForceMode2D.Impulse);
+
+                Debug.Log($"🗑️ Thùng rác đổ (hướng {(dir > 0 ? "phải" : "trái")}), cục giấy bị đẩy ra!");
+            }
+        }
     }
 }

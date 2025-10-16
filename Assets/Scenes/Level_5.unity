@@ -468,7 +468,7 @@ GameObject:
   - component: {fileID: 288585922}
   m_Layer: 5
   m_Name: Chick
-  m_TagString: Untagged
+  m_TagString: KFC
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -542,6 +542,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 841c2b9b59dfb1f41885d604dc026f09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  completeEffect: {fileID: 0}
 --- !u!114 &288585922
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -611,7 +612,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 0
+  m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -649,11 +650,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   brokenRock: {fileID: 911957654}
   chicken: {fileID: 288585917}
---- !u!1 &795826037 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4668909772085879133, guid: d787e4446730c9e4d9ea58047143911c, type: 3}
-  m_PrefabInstance: {fileID: 1129066205}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &836717121
 GameObject:
   m_ObjectHideFlags: 0
@@ -706,7 +702,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 0
+  m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -1534,6 +1530,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 841c2b9b59dfb1f41885d604dc026f09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  completeEffect: {fileID: 0}
 --- !u!114 &1182941269
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1653,7 +1650,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainMenuUI: {fileID: 7615324630662287011, guid: f866ab6f723384341a4d28cfed1a419b, type: 3}
-  levelSelectUI: {fileID: 795826037}
+  levelSelectUI: {fileID: 0}
   pauseUI: {fileID: 5323211695793482940}
 --- !u!114 &1206420601
 MonoBehaviour:
@@ -1675,7 +1672,7 @@ MonoBehaviour:
   onAllFound:
     m_PersistentCalls:
       m_Calls: []
-  progressTextTMP: {fileID: 0}
+  progressTextTMP: {fileID: 1726884767}
   showFoundOnlyText: 1
   foundOnlyTextLocalized:
     m_TableReference:
@@ -1771,7 +1768,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 0
+  m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -1981,7 +1978,7 @@ GameObject:
   - component: {fileID: 1315227165}
   m_Layer: 5
   m_Name: Chick 2
-  m_TagString: Untagged
+  m_TagString: KFC
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2034,6 +2031,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 841c2b9b59dfb1f41885d604dc026f09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  completeEffect: {fileID: 0}
 --- !u!114 &1315227167
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2124,7 +2122,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 0
+  m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -2212,7 +2210,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 0
+  m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -2252,6 +2250,17 @@ MonoBehaviour:
   snapZone: {fileID: 885105596}
   chickenOnTree: {fileID: 1794868546}
   snapOffset: {x: 0, y: 0}
+--- !u!114 &1726884767 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2450403812446345804, guid: 41198332bd98a2243845460e40b6a849, type: 3}
+  m_PrefabInstance: {fileID: 3333572362657450561}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &1742693122 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8933947677649603816, guid: 41198332bd98a2243845460e40b6a849, type: 3}
@@ -2308,7 +2317,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 0
+  m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -2347,7 +2356,7 @@ GameObject:
   - component: {fileID: 1794868552}
   m_Layer: 5
   m_Name: Chicken Tree
-  m_TagString: Untagged
+  m_TagString: KFC
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2385,7 +2394,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 0
+  m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -3653,8 +3662,7 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects:
-    - {fileID: 2248014987714090462, guid: 41198332bd98a2243845460e40b6a849, type: 3}
+    m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 41198332bd98a2243845460e40b6a849, type: 3}
