@@ -115,9 +115,9 @@ public class GameManager : MonoBehaviour
         }
 
         // Kiểm tra nếu đã tìm đủ gà
-        if (CountingChick.Instance != null &&
-            CountingChick.Instance.GetFoundCount() >= CountingChick.Instance.GetTotalCount() &&
-            CountingChick.Instance.GetTotalCount() > 0)
+        if (CollectibleManager.Instance != null &&
+            CollectibleManager.Instance.GetCollectedCount() >= CollectibleManager.Instance.GetTotalCount() &&
+            CollectibleManager.Instance.GetTotalCount() > 0)
         {
             EndGame(true); // thắng
         }

@@ -1,41 +1,40 @@
 ﻿using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class RakeDrag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
+public class RakeDrag : BaseObjectManager
 {
-    private RectTransform rectTransform;
     private Canvas canvas;
-    private Vector2 startPos;
 
     [Header("References")]
-    public GameObject hay;    // đống lúa
-    public GameObject chick;  // gà con
+    public GameObject hay;    // Đống lúa
+    public GameObject chick;  // Gà con
 
-    void Awake()
+    protected override void Awake()
     {
-        rectTransform = GetComponent<RectTransform>();
+        base.Awake(); // gọi Awake() từ BaseObjectManager
         canvas = GetComponentInParent<Canvas>();
-        startPos = rectTransform.anchoredPosition;
     }
 
-    public void OnBeginDrag(PointerEventData eventData)
+    public override void OnBeginDrag(PointerEventData eventData)
     {
-        transform.SetAsLastSibling(); // Đưa cào lên trên cùng (tránh bị che)
+        HandleDragStart(); // Gọi hàm của class cha (log / hiệu ứng)
+        transform.SetAsLastSibling(); // Đưa cào lên trên cùng
     }
 
-    public void OnDrag(PointerEventData eventData)
+    public override void OnDrag(PointerEventData eventData)
     {
-        // Di chuyển theo chuột/touch trong canvas
-        rectTransform.anchoredPosition += eventData.delta / canvas.scaleFactor;
+        HandleDragging(eventData); // Di chuyển theo chuột/touch
     }
 
-    public void OnEndDrag(PointerEventData eventData)
+    public override void OnEndDrag(PointerEventData eventData)
     {
+        HandleDragEnd(); // Gọi hàm của class cha
+
         if (hay == null || chick == null) return;
 
         RectTransform hayRect = hay.GetComponent<RectTransform>();
 
-        // Kiểm tra xem cào có thả trúng đống lúa không
+        // Kiểm tra nếu thả trúng đống lúa
         if (RectTransformUtility.RectangleContainsScreenPoint(hayRect, Input.mousePosition, canvas.worldCamera))
         {
             Debug.Log("🧹 Cào chạm đống lúa — Gà con xuất hiện!");
@@ -43,7 +42,7 @@ public class RakeDrag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
             chick.SetActive(true);
         }
 
-        // Trả cào về vị trí cũ
-        rectTransform.anchoredPosition = startPos;
+        // ✅ Trả cào về vị trí cũ (dùng hàm sẵn của BaseObjectManager)
+        ResetPosition();
     }
 }

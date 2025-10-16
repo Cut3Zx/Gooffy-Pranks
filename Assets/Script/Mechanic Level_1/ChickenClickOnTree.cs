@@ -1,21 +1,30 @@
 ﻿using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class ChickenClickOnTree : MonoBehaviour, IPointerClickHandler
+public class ChickenClickOnTree : BaseObjectManager
 {
+    [Header("Hiệu ứng hoàn thành khi bắt gà")]
     public GameObject completeEffect;
-    public LadderDrag ladder; // 👈 gán trong Inspector (thang có biến isPlaced)
+
+    [Header("Thang liên kết")]
+    public LadderDrag ladder; // thang có biến isPlaced
+
     private bool canClick = false;
 
+    // Cho phép hoặc khóa click (từ script khác)
     public void SetCanClick(bool state)
     {
         canClick = state;
         Debug.Log($"🐔 Gà trên cây {(state ? "có thể click" : "bị khóa")}.");
     }
 
-    public void OnPointerClick(PointerEventData eventData)
+    // Khi click vào con gà
+    public override void OnPointerClick(PointerEventData eventData)
     {
-        // ⚠️ Nếu chưa được bật hoặc thang chưa đặt thì không làm gì
+        // ✅ Gọi hành vi click cơ bản (log, sound, v.v.)
+        HandleClick();
+
+        // ⚠️ Kiểm tra điều kiện
         if (!canClick || (ladder != null && !ladder.isPlaced))
         {
             Debug.Log("🚫 Thang chưa tới, chưa thể bắt gà!");
@@ -24,12 +33,15 @@ public class ChickenClickOnTree : MonoBehaviour, IPointerClickHandler
 
         Debug.Log("🐣 Bắt được con gà!");
 
+        // Ẩn con gà
         gameObject.SetActive(false);
 
+        // Hiện hiệu ứng
         if (completeEffect != null)
             completeEffect.SetActive(true);
 
-        if (CountingChick.Instance != null)
-            CountingChick.Instance.RegisterFound(gameObject);
+        // Gửi thông báo cho hệ thống CountingChick
+        if (CollectibleManager.Instance != null)
+            CollectibleManager.Instance.RegisterCollected(gameObject);
     }
 }

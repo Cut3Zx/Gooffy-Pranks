@@ -1,23 +1,21 @@
 ﻿using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class DoorClick : MonoBehaviour, IPointerClickHandler
+public class DoorClick : BaseObjectManager
 {
-    [Header("Object xuất hiện sau khi bấm")]
-    public GameObject chicken; // con gà sẽ xuất hiện
+    public GameObject chicken;
+    public bool hideDoor = true;
 
-    [Header("Tuỳ chọn")]
-    public bool hideDoor = true; // ẩn cửa khi bấm
-
-    public void OnPointerClick(PointerEventData eventData)
+    public override void OnPointerClick(PointerEventData eventData)
     {
+        // Chỉ dùng chức năng click từ cha
+        HandleClick();
+
         Debug.Log("🚪 Door clicked!");
 
-        // Ẩn cửa nếu bật tuỳ chọn
         if (hideDoor)
             gameObject.SetActive(false);
 
-        // Hiện con gà
         if (chicken != null)
             chicken.SetActive(true);
     }

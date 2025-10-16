@@ -1,33 +1,30 @@
 ﻿using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class ChickenClick : MonoBehaviour, IPointerClickHandler
+public class ChickenClick : BaseObjectManager
 {
-    
-    private ChickItem chickItem; // tham chiếu đến script ChickItem cùng object
+    private CollectibleItem collectibleItem; // Tham chiếu tới CollectibleItem (thay cho ChickItem cũ)
 
-    void Awake()
+    protected override void Awake()
     {
-        chickItem = GetComponent<ChickItem>(); // tự tìm trong cùng GameObject
+        base.Awake(); // Gọi Awake() từ BaseObjectManager
+        collectibleItem = GetComponent<CollectibleItem>(); // Tự tìm trong cùng GameObject
     }
 
-    public void OnPointerClick(PointerEventData eventData)
+    public override void OnPointerClick(PointerEventData eventData)
     {
-        
-        // Ẩn gà khi được click
-        gameObject.SetActive(false);
+        // ✅ Gọi xử lý click cơ bản từ class cha (âm thanh / hiệu ứng / log)
+        HandleClick();
 
-        // Gọi hiệu ứng hoặc popup hoàn thành
-      
-
-        // ✅ Gọi đếm trong hệ thống CountingChick
-        if (chickItem != null)
+        // 🐣 Đánh dấu đã thu thập
+        if (collectibleItem != null)
         {
-            chickItem.MarkFound();
+            collectibleItem.MarkCollected();
+            Debug.Log($"🐥 {gameObject.name} đã được thu thập và cộng điểm!");
         }
         else
         {
-            Debug.LogWarning($"⚠️ {gameObject.name} không có ChickItem để đăng ký vào CountingChick!");
+            Debug.LogWarning($"⚠️ {gameObject.name} không có CollectibleItem để đăng ký vào hệ thống!");
         }
     }
 }

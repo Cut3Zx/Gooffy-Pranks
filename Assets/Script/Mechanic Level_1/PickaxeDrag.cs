@@ -1,46 +1,51 @@
 ﻿using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class PickaxeDrag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
+public class PickaxeDrag : BaseObjectManager
 {
-    private RectTransform rectTransform;
     private Canvas canvas;
     private Vector2 startPos;
 
-    void Awake()
+    protected override void Awake()
     {
-        rectTransform = GetComponent<RectTransform>();
+        base.Awake(); // gọi hàm Awake() của BaseObjectManager
         canvas = GetComponentInParent<Canvas>();
-        startPos = rectTransform.anchoredPosition;
+        if (rectTransform != null)
+            startPos = rectTransform.anchoredPosition;
     }
 
-    public void OnBeginDrag(PointerEventData eventData)
+    public override void OnBeginDrag(PointerEventData eventData)
     {
+        HandleDragStart(); // log / hiệu ứng kéo nếu có
         transform.SetAsLastSibling(); // Đưa cuốc lên trên cùng
     }
 
-    public void OnDrag(PointerEventData eventData)
+    public override void OnDrag(PointerEventData eventData)
     {
-        // Di chuyển theo chuột/touch
-        rectTransform.anchoredPosition += eventData.delta / canvas.scaleFactor;
+        HandleDragging(eventData); // dùng hàm di chuyển từ Base
     }
 
-    public void OnEndDrag(PointerEventData eventData)
+    public override void OnEndDrag(PointerEventData eventData)
     {
-        // Tìm object Rock
-        GameObject rock = GameObject.Find("Rock"); // đặt đúng tên của cục đá
+        HandleDragEnd(); // log / âm thanh kết thúc nếu có
+
+        // 🔍 Tìm object Rock
+        GameObject rock = GameObject.Find("Rock"); // Đặt đúng tên cục đá
         if (rock != null)
         {
             RectTransform rockRect = rock.GetComponent<RectTransform>();
 
+            // Nếu thả trúng vùng cục đá
             if (RectTransformUtility.RectangleContainsScreenPoint(rockRect, Input.mousePosition, canvas.worldCamera))
             {
-                // Nếu thả vào đá → gọi phá
-                rock.GetComponent<RockInteraction>().BreakRock();
+                RockInteraction rockScript = rock.GetComponent<RockInteraction>();
+                if (rockScript != null)
+                    rockScript.BreakRock();
             }
         }
 
         // Trả cuốc về chỗ cũ
-        rectTransform.anchoredPosition = startPos;
+        if (rectTransform != null)
+            rectTransform.anchoredPosition = startPos;
     }
 }

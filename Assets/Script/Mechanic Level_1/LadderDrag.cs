@@ -1,11 +1,9 @@
 ﻿using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class LadderDrag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
+public class LadderDrag : BaseObjectManager
 {
-    private RectTransform rectTransform;
     private Canvas canvas;
-    private Vector2 startPos;
 
     [Header("State")]
     public bool isPlaced = false;
@@ -15,26 +13,26 @@ public class LadderDrag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
     public GameObject chickenOnTree;      // gà trên cây
     public Vector2 snapOffset;            // tinh chỉnh vị trí
 
-    void Awake()
+    protected override void Awake()
     {
-        rectTransform = GetComponent<RectTransform>();
+        base.Awake(); // gọi Awake() từ BaseObjectManager
         canvas = GetComponentInParent<Canvas>();
-        startPos = rectTransform.anchoredPosition;
     }
 
-    public void OnBeginDrag(PointerEventData eventData)
+    public override void OnBeginDrag(PointerEventData eventData)
     {
         if (isPlaced) return;
+        HandleDragStart(); // hàm từ class cha
         transform.SetAsLastSibling();
     }
 
-    public void OnDrag(PointerEventData eventData)
+    public override void OnDrag(PointerEventData eventData)
     {
         if (isPlaced) return;
-        rectTransform.anchoredPosition += eventData.delta / canvas.scaleFactor;
+        HandleDragging(eventData); // hàm kéo từ class cha
     }
 
-    public void OnEndDrag(PointerEventData eventData)
+    public override void OnEndDrag(PointerEventData eventData)
     {
         if (isPlaced) return;
 
@@ -50,8 +48,10 @@ public class LadderDrag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
         else
         {
             Debug.Log("↩️ Thang không đúng vị trí, quay về chỗ cũ!");
-            rectTransform.anchoredPosition = startPos;
+            ResetPosition(); // dùng hàm từ class cha
         }
+
+        HandleDragEnd(); // gọi hàm cha (log / sound)
     }
 
     private void EnableChickenInteraction(bool state)
@@ -59,9 +59,8 @@ public class LadderDrag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
         if (chickenOnTree != null)
         {
             var clickScript = chickenOnTree.GetComponent<ChickenClickOnTree>();
-
             if (clickScript != null)
-                clickScript.SetCanClick(state); 
+                clickScript.SetCanClick(state);
 
             var image = chickenOnTree.GetComponent<UnityEngine.UI.Image>();
             if (image != null)
@@ -70,5 +69,4 @@ public class LadderDrag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
             Debug.Log($"🐔 Gà {(state ? "có thể click" : "bị khóa")}.");
         }
     }
-
 }
