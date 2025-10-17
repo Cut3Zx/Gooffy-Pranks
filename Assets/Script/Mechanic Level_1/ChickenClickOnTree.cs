@@ -11,18 +11,17 @@ public class ChickenClickOnTree : BaseObjectManager
 
     private bool canClick = false;
 
-    // Cho phép hoặc khóa click (từ script khác)
+    // ✅ Cho phép hoặc khóa click (từ script khác)
     public void SetCanClick(bool state)
     {
         canClick = state;
         Debug.Log($"🐔 Gà trên cây {(state ? "có thể click" : "bị khóa")}.");
     }
 
-    // Khi click vào con gà
+    // ✅ Khi click vào con gà
     public override void OnPointerClick(PointerEventData eventData)
     {
-        // ✅ Gọi hành vi click cơ bản (log, sound, v.v.)
-        HandleClick();
+        HandleClick(); // log click cơ bản
 
         // ⚠️ Kiểm tra điều kiện
         if (!canClick || (ladder != null && !ladder.isPlaced))
@@ -40,8 +39,13 @@ public class ChickenClickOnTree : BaseObjectManager
         if (completeEffect != null)
             completeEffect.SetActive(true);
 
-        // Gửi thông báo cho hệ thống CountingChick
+        // Gửi thông báo cho hệ thống CollectibleManager
         if (CollectibleManager.Instance != null)
             CollectibleManager.Instance.RegisterCollected(gameObject);
     }
+
+    // ❌ Không cho phép kéo
+    public override void OnBeginDrag(PointerEventData e) { }
+    public override void OnDrag(PointerEventData e) { }
+    public override void OnEndDrag(PointerEventData e) { }
 }

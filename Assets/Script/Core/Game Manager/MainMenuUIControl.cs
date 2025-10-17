@@ -79,21 +79,19 @@ public class MainMenuUIControl : MonoBehaviour
     {
         Application.Quit();
     }
-    public void resetGame1()
+    public void ResetLevel(int levelNumber)
     {
-        if (GameManager.Instance != null) 
-        {
-            GameManager.Instance.resetGame();
-        }
-        UnityEngine.SceneManagement.SceneManager.LoadScene("Level_1");
-    }
-    public void resetGame2()
-    {
+        // Nếu có GameManager → reset dữ liệu trước
         if (GameManager.Instance != null)
         {
             GameManager.Instance.resetGame();
         }
-        UnityEngine.SceneManagement.SceneManager.LoadScene("Level_2");
+
+        // 🔹 Tạo tên scene tự động, ví dụ "Level_1", "Level_2"...
+        string sceneName = $"Level_{levelNumber}";
+
+        // Load lại scene
+        SceneManager.LoadScene(sceneName);
     }
 
 }

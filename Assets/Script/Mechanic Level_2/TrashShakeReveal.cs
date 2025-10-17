@@ -35,8 +35,7 @@ public class TrashShakeFall : MonoBehaviour
             StartCoroutine(FallTrash());
 
         // Click chuột để test trong Unity Editor
-        if (Input.GetMouseButtonDown(0) && !hasFallen)
-            StartCoroutine(FallTrash());
+        
     }
 
     private System.Collections.IEnumerator FallTrash()

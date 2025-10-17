@@ -66,6 +66,10 @@ MonoBehaviour:
     m_Localized: "T\xECm ki\u1EBFm chi\u1EBFc compa"
     m_Metadata:
       m_Items: []
+  - m_Id: 1336575706214400
+    m_Localized: "\u0110\xE1nh th\u1EE9c \xF4ng h\xE0ng x\xF3m"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

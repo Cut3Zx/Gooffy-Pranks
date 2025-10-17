@@ -66,6 +66,10 @@ MonoBehaviour:
     m_Localized: Find the Compass
     m_Metadata:
       m_Items: []
+  - m_Id: 1336575706214400
+    m_Localized: Wake the Neighbor
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
