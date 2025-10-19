@@ -1,13 +1,13 @@
-using GoogleMobileAds.Api;
+﻿using GoogleMobileAds.Api;
 using UnityEngine;
 
 public class AdsManager : MonoBehaviour
 {
     public static AdsManager Instance { get; private set; }
 
-    private string bannerId = "ca-app-pub-7458507592918500~7634830514";
-    private string interId = "ca-app-pub-7458507592918500~7634830514";
-    private string rewardId = "ca-app-pub-7458507592918500~7634830514";
+    private string bannerId = "ca-app-pub-7458507592918500/4274170001";
+    private string interId = "ca-app-pub-7458507592918500/2909117444";
+    private string rewardId = "ca-app-pub-7458507592918500/3863299988";
 
     private BannerView bannerView;
     private InterstitialAd interAd;
@@ -16,84 +16,66 @@ public class AdsManager : MonoBehaviour
     private void Awake()
     {
         Instance = this;
+        DontDestroyOnLoad(gameObject);
     }
+
     private void Start()
     {
-        // Initialize the google mobile ads SDK
+        // Initialize the Google Mobile Ads SDK
         MobileAds.Initialize(initStatus =>
         {
-            Debug.Log("Admob SDK Initilized");
-            //Load ads after initialization
+            Debug.Log("✅ Admob SDK Initialized");
+
+            // Load ads after initialization
             LoadBannerAd();
             LoadInterstitialAd();
             LoadRewardedAd();
-
         });
     }
 
+    // --------------------------
+    // Banner Ad
+    // --------------------------
     private void LoadBannerAd()
     {
-        // Create a banner view at the bottom of the screen
         bannerView = new BannerView(bannerId, AdSize.Banner, AdPosition.Bottom);
 
-        // Create an empty ad request
         AdRequest request = new AdRequest();
+        bannerView.OnBannerAdLoaded += () => Debug.Log("✅ Banner ad loaded.");
+        bannerView.OnBannerAdLoadFailed += (LoadAdError error) => Debug.Log("❌ Banner failed: " + error.GetMessage());
 
-        // Register event handlers for the banner ad
-        bannerView.OnBannerAdLoaded += () =>
-        {
-            Debug.Log("Banner ad loaded.");
-        };
-
-        bannerView.OnBannerAdLoadFailed += (LoadAdError error) =>
-        {
-            Debug.Log("Banner ad failed to load: " + error.GetMessage());
-        };
-
-        // Load the banner ad
         bannerView.LoadAd(request);
-
-
     }
 
+    // --------------------------
+    // Interstitial Ad
+    // --------------------------
     private void LoadInterstitialAd()
     {
-
-        // Clean up any existing interstitial ad
         if (interAd != null)
         {
             interAd.Destroy();
             interAd = null;
         }
 
-        // Load a new interstitial ad
-        InterstitialAd.Load(interId, new AdRequest(), (InterstitialAd ad, LoadAdError error) => {
-
+        InterstitialAd.Load(interId, new AdRequest(), (InterstitialAd ad, LoadAdError error) =>
+        {
             if (error != null || ad == null)
             {
-                Debug.LogError("Interstitial ad failed to load: " + error?.GetMessage());
+                Debug.LogError("❌ Interstitial failed to load: " + error?.GetMessage());
                 return;
             }
-            ;
 
             interAd = ad;
-            Debug.Log("Interstitial ad loaded");
+            Debug.Log("✅ Interstitial ad loaded");
 
-            // Register ad events
             interAd.OnAdFullScreenContentClosed += () =>
             {
-                Debug.Log("Interstitial ad closed");
-                LoadInterstitialAd(); // Preload the next ad
-            };
-
-            interAd.OnAdFullScreenContentFailed += (error) =>
-            {
-                Debug.Log("Interstitial ad failed to show: " + error.GetMessage());
+                Debug.Log("ℹ️ Interstitial ad closed — reloading...");
+                LoadInterstitialAd();
             };
         });
-
     }
-
 
     public void ShowInterstialAd()
     {
@@ -103,48 +85,39 @@ public class AdsManager : MonoBehaviour
         }
         else
         {
-            Debug.Log("Interstitial ad not ready");
+            Debug.Log("⚠️ Interstitial ad not ready");
         }
     }
 
+    // --------------------------
+    // Rewarded Ad
+    // --------------------------
     private void LoadRewardedAd()
     {
-
-        // Clean up any existing rewarded ad
         if (rewardedAd != null)
         {
             rewardedAd.Destroy();
             rewardedAd = null;
-
         }
 
-        // Load a new rewarded ad
         RewardedAd.Load(rewardId, new AdRequest(), (RewardedAd ad, LoadAdError error) =>
         {
             if (error != null || ad == null)
             {
-                Debug.LogError("Rewarded ad failed to load:" + error?.GetMessage());
+                Debug.LogError("❌ Rewarded ad failed to load: " + error?.GetMessage());
                 return;
             }
 
             rewardedAd = ad;
-            Debug.Log("Rewarded ad loaded.");
+            Debug.Log("✅ Rewarded ad loaded.");
 
-            // Register ad events
             rewardedAd.OnAdFullScreenContentClosed += () =>
             {
-                Debug.LogError("Rewarded ad closed.");
+                Debug.Log("ℹ️ Rewarded ad closed — reloading...");
                 LoadRewardedAd();
             };
-            rewardedAd.OnAdFullScreenContentFailed += (error) =>
-            {
-                Debug.LogError("Rewarded ad failed to show:" + error.GetMessage());
-            };
         });
-
-
     }
-
 
     public void ShowRewardedAd()
     {
@@ -152,16 +125,28 @@ public class AdsManager : MonoBehaviour
         {
             rewardedAd.Show((Reward reward) =>
             {
-                Debug.Log($"User earned reward: {reward.Amount} {reward.Type}");
-                //+1 hint
-                
+                Debug.Log($"🏆 User earned reward: {reward.Amount} {reward.Type}");
 
+                // 🏅 GỌI PHẦN THƯỞNG SAU KHI XEM XONG QUẢNG CÁO
+                AddHintReward();
             });
         }
         else
         {
-            Debug.Log("Rewarded ad not ready");
+            Debug.Log("⚠️ Rewarded ad not ready");
         }
     }
 
+    // --------------------------
+    // 🏆 PHẦN THƯỞNG SAU KHI XEM QUẢNG CÁO
+    // --------------------------
+    private void AddHintReward()
+    {
+        int currentHints = PlayerPrefs.GetInt("hintCount", 0);
+        currentHints++;
+        PlayerPrefs.SetInt("hintCount", currentHints);
+        PlayerPrefs.Save();
+
+        Debug.Log($"🎁 +1 Hint! Total hints now: {currentHints}");
+    }
 }

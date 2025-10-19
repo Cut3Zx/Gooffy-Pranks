@@ -1,9 +1,8 @@
 ﻿using UnityEngine;
 using TMPro;
-using System; // để dùng Action<>
-using UnityEngine.SceneManagement; // để bắt sự kiện load scene
+using System;
+using UnityEngine.SceneManagement;
 
-// 🌟 Enum định nghĩa trạng thái của game
 public enum GameState
 {
     MainMenu = 0,
@@ -12,11 +11,10 @@ public enum GameState
     GameOver = 3
 }
 
-// 🌟 Quản lý toàn bộ logic game (thời gian, UI, state, v.v.)
 public class GameManager : MonoBehaviour
 {
     [Header("Timer Settings")]
-    public float timeLimit = 30f; // thời gian giới hạn (giây)
+    public float timeLimit = 30f;
     private float currentTime;
     public TextMeshProUGUI timerText;
 
@@ -26,10 +24,7 @@ public class GameManager : MonoBehaviour
 
     private bool gameEnded = false;
 
-    // 🔔 Sự kiện khi thay đổi trạng thái game
     public static event Action<GameState> OnGameStateChanged;
-
-    // 🔧 Singleton (chỉ 1 GameManager trong scene)
     public static GameManager Instance { get; private set; }
 
     private GameState currentState;
@@ -62,7 +57,6 @@ public class GameManager : MonoBehaviour
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        // 🔁 Khi load scene mới, tìm lại các UI object bị mất tham chiếu
         if (timerText == null)
         {
             var timerObj = GameObject.Find("TimerText");
@@ -72,7 +66,6 @@ public class GameManager : MonoBehaviour
 
         if (winUI == null)
         {
-            // thử tìm theo tên hoặc theo đường dẫn phổ biến
             var w = GameObject.Find("Congrat");
             if (w == null) w = GameObject.Find("UI Manager/WL Manager/Congrat");
             if (w != null) winUI = w;
@@ -85,14 +78,10 @@ public class GameManager : MonoBehaviour
             if (l != null) loseUI = l;
         }
 
-        // Nếu vẫn không tìm thấy, log cảnh báo
         if (winUI == null || loseUI == null)
             Debug.LogWarning("⚠️ GameManager chưa tìm thấy WinUI hoặc LoseUI trong scene mới!");
 
-
-        // Sau khi tìm lại UI, reset timer
         ResetTimerUI();
-        
     }
 
     private void Start()
@@ -111,19 +100,17 @@ public class GameManager : MonoBehaviour
 
         if (currentTime <= 0)
         {
-            EndGame(false); // thua vì hết giờ
+            EndGame(false);
         }
 
-        // Kiểm tra nếu đã tìm đủ gà
         if (CollectibleManager.Instance != null &&
             CollectibleManager.Instance.GetCollectedCount() >= CollectibleManager.Instance.GetTotalCount() &&
             CollectibleManager.Instance.GetTotalCount() > 0)
         {
-            EndGame(true); // thắng
+            EndGame(true);
         }
     }
 
-    // 🕒 Cập nhật thời gian hiển thị
     private void UpdateTimerText()
     {
         if (timerText != null)
@@ -132,7 +119,6 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    // 🎯 Kết thúc game (thắng hoặc thua)
     public void EndGame(bool isWin)
     {
         gameEnded = true;
@@ -140,6 +126,7 @@ public class GameManager : MonoBehaviour
         if (isWin)
         {
             if (winUI != null) winUI.SetActive(true);
+            UnlockNextLevel(); // ✅ thêm dòng này
         }
         else
         {
@@ -150,13 +137,36 @@ public class GameManager : MonoBehaviour
         ChangeState(GameState.GameOver);
     }
 
-    // 🔄 Restart lại màn chơi
+    // ✅ Hàm mở khóa màn kế tiếp
+    private void UnlockNextLevel()
+    {
+        string currentScene = SceneManager.GetActiveScene().name;
+
+        if (currentScene.StartsWith("Level"))
+        {
+            try
+            {
+                int currentLevelNum = int.Parse(currentScene.Replace("Level", "").Trim('_'));
+                int nextLevelNum = currentLevelNum + 1;
+                string nextKey = $"Level_{nextLevelNum}_Unlocked";
+
+                PlayerPrefs.SetInt(nextKey, 1);
+                PlayerPrefs.Save();
+
+                Debug.Log($"✅ Đã mở khóa Level {nextLevelNum}");
+            }
+            catch (Exception e)
+            {
+                Debug.LogError("❌ Lỗi khi mở khóa level kế tiếp: " + e.Message);
+            }
+        }
+    }
+
     public void RestartLevel()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
-    // 🔁 Thay đổi trạng thái game
     public void ChangeState(GameState newState)
     {
         if (currentState == newState) return;
@@ -166,20 +176,17 @@ public class GameManager : MonoBehaviour
         OnGameStateChanged?.Invoke(newState);
     }
 
-    // 🧩 Lấy state hiện tại
     public GameState GetCurrentState()
     {
         return currentState;
     }
 
-    // 🧭 Reset game logic (gọi khi replay)
     public void resetGame()
     {
         ResetTimerUI();
         ChangeState(GameState.Playing);
     }
 
-    // 🔁 Hàm con đặt lại timer, ẩn UI và chạy lại game
     private void ResetTimerUI()
     {
         gameEnded = false;

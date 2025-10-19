@@ -1,9 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.google.unity.ads" android:versionName="1.0" android:versionCode="1">
+  <!-- ⚙️ Quy định mức SDK tối thiểu -->
   <uses-sdk android:minSdkVersion="21" />
+  <!-- ⚙️ Cấp quyền mạng (bắt buộc để tải quảng cáo) -->
+  <uses-permission android:name="android.permission.INTERNET" />
+  <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
   <application>
-    <uses-library android:required="false" android:name="org.apache.http.legacy" />
+    <!-- ⚙️ Dành cho các API cũ -->
+    <uses-library android:name="org.apache.http.legacy" android:required="false" />
+    <!-- ✅ App ID chính thức của bạn -->
     <meta-data android:name="com.google.android.gms.ads.APPLICATION_ID" android:value="ca-app-pub-7458507592918500~7634830514" />
+    <!-- ⚙️ Phiên bản Unity (tự động nhận) -->
     <meta-data android:name="com.google.unity.ads.UNITY_VERSION" android:value="2022.3.62f2" />
   </application>
 </manifest>

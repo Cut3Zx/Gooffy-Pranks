@@ -9,37 +9,61 @@ public class ChickenClickOnTree : BaseObjectManager
     [Header("Thang liên kết")]
     public LadderDrag ladder; // thang có biến isPlaced
 
-    private bool canClick = false;
+    [Header("Các phần hình ảnh con gà")]
+    public GameObject chickenWingOnly; // chỉ hiện cánh ban đầu
+    public GameObject fullChicken;     // con gà đầy đủ (ẩn ban đầu)
 
-    // ✅ Cho phép hoặc khóa click (từ script khác)
+    private bool canClick = false;
+    private bool isFullVisible = false; // đã hiện con gà đầy đủ chưa
+
     public void SetCanClick(bool state)
     {
         canClick = state;
         Debug.Log($"🐔 Gà trên cây {(state ? "có thể click" : "bị khóa")}.");
     }
 
-    // ✅ Khi click vào con gà
+    protected override void Awake()
+    {
+        base.Awake();
+        if (chickenWingOnly != null) chickenWingOnly.SetActive(true);
+        if (fullChicken != null) fullChicken.SetActive(false);
+    }
+
     public override void OnPointerClick(PointerEventData eventData)
     {
-        HandleClick(); // log click cơ bản
+        HandleClick();
 
-        // ⚠️ Kiểm tra điều kiện
+        // Nếu chưa được phép click (chưa có thang)
         if (!canClick || (ladder != null && !ladder.isPlaced))
         {
             Debug.Log("🚫 Thang chưa tới, chưa thể bắt gà!");
             return;
         }
 
+        // 👀 Nếu chưa hiện toàn bộ con gà → hiện ra, chưa bắt luôn
+        if (!isFullVisible)
+        {
+            Debug.Log("👀 Người chơi đã phát hiện ra con gà!");
+            isFullVisible = true;
+
+            if (chickenWingOnly != null) chickenWingOnly.SetActive(false);
+            if (fullChicken != null) fullChicken.SetActive(true);
+
+            return; // ⛔ Dừng ở đây, chưa bắt gà
+        }
+
+        // 🐣 Nếu đã hiện đầy đủ → cho phép bắt
         Debug.Log("🐣 Bắt được con gà!");
 
         // Ẩn con gà
-        gameObject.SetActive(false);
+        if (fullChicken != null)
+            fullChicken.SetActive(false);
 
         // Hiện hiệu ứng
         if (completeEffect != null)
             completeEffect.SetActive(true);
 
-        // Gửi thông báo cho hệ thống CollectibleManager
+        // Báo cho CollectibleManager
         if (CollectibleManager.Instance != null)
             CollectibleManager.Instance.RegisterCollected(gameObject);
     }
