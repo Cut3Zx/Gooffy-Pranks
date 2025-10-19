@@ -155,6 +155,10 @@ MonoBehaviour:
     m_Localized: "T\u1EA1o ra m\xE0u cam"
     m_Metadata:
       m_Items: []
+  - m_Id: 2496442806513664
+    m_Localized: "N\u1EA5u ch\xEDn c\xE1"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

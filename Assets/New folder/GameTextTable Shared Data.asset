@@ -151,6 +151,10 @@ MonoBehaviour:
     m_Key: quest9
     m_Metadata:
       m_Items: []
+  - m_Id: 2496442806513664
+    m_Key: quest10
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

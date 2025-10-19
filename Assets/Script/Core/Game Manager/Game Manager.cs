@@ -45,15 +45,8 @@ public class GameManager : MonoBehaviour
         ChangeState(GameState.MainMenu);
     }
 
-    private void OnEnable()
-    {
-        SceneManager.sceneLoaded += OnSceneLoaded;
-    }
-
-    private void OnDisable()
-    {
-        SceneManager.sceneLoaded -= OnSceneLoaded;
-    }
+    private void OnEnable() => SceneManager.sceneLoaded += OnSceneLoaded;
+    private void OnDisable() => SceneManager.sceneLoaded -= OnSceneLoaded;
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
@@ -114,9 +107,7 @@ public class GameManager : MonoBehaviour
     private void UpdateTimerText()
     {
         if (timerText != null)
-        {
             timerText.text = Mathf.CeilToInt(currentTime).ToString() + "s";
-        }
     }
 
     public void EndGame(bool isWin)
@@ -126,7 +117,7 @@ public class GameManager : MonoBehaviour
         if (isWin)
         {
             if (winUI != null) winUI.SetActive(true);
-            UnlockNextLevel(); // ✅ thêm dòng này
+            UnlockNextLevel();
         }
         else
         {
@@ -137,7 +128,6 @@ public class GameManager : MonoBehaviour
         ChangeState(GameState.GameOver);
     }
 
-    // ✅ Hàm mở khóa màn kế tiếp
     private void UnlockNextLevel()
     {
         string currentScene = SceneManager.GetActiveScene().name;
@@ -148,12 +138,15 @@ public class GameManager : MonoBehaviour
             {
                 int currentLevelNum = int.Parse(currentScene.Replace("Level", "").Trim('_'));
                 int nextLevelNum = currentLevelNum + 1;
+
+                // ✅ Đảm bảo không vượt quá số lượng level hiện có
                 string nextKey = $"Level_{nextLevelNum}_Unlocked";
-
-                PlayerPrefs.SetInt(nextKey, 1);
-                PlayerPrefs.Save();
-
-                Debug.Log($"✅ Đã mở khóa Level {nextLevelNum}");
+                if (PlayerPrefs.GetInt(nextKey, 0) == 0)
+                {
+                    PlayerPrefs.SetInt(nextKey, 1);
+                    PlayerPrefs.Save();
+                    Debug.Log($"🔓 Đã mở khóa Level {nextLevelNum}");
+                }
             }
             catch (Exception e)
             {
@@ -176,10 +169,7 @@ public class GameManager : MonoBehaviour
         OnGameStateChanged?.Invoke(newState);
     }
 
-    public GameState GetCurrentState()
-    {
-        return currentState;
-    }
+    public GameState GetCurrentState() => currentState;
 
     public void resetGame()
     {

@@ -1,46 +1,41 @@
 ﻿using UnityEngine;
 using UnityEngine.EventSystems;
-using System.Collections;
 
 public class CloudController : BaseObjectManager
 {
-    public GameObject sun;
-    public GameObject lightning;
-    public StoveController stove;
+    [Header("Liên kết đối tượng")]
+    public GameObject darkCloud;     // mây đen (ẩn sẵn)
+    public LightningController lightning; // script trong mây đen
 
-    private bool triggered = false;
+    private bool hasTriggered = false;
 
     public override void OnEndDrag(PointerEventData eventData)
     {
         base.OnEndDrag(eventData);
 
-        // chỉ kích hoạt một lần
-        if (triggered) return;
-
-        // nếu kéo mây gần mặt trời
-        if (Vector2.Distance(transform.position, sun.transform.position) < 100f)
+        if (!hasTriggered)
         {
-            triggered = true;
-            Debug.Log("☁️ Mây đã che mặt trời → tạo sét!");
-            StartCoroutine(ShowLightningAndIgnite());
+            hasTriggered = true;
+            ShowDarkCloud();
         }
 
-        // mây quay lại vị trí cũ
         ResetPosition();
     }
 
-    private IEnumerator ShowLightningAndIgnite()
+    private void ShowDarkCloud()
     {
-        // Ẩn mặt trời, hiện sét
-        sun.SetActive(false);
-        lightning.SetActive(true);
+        // 1️⃣ Ẩn mây trắng
+        gameObject.SetActive(false);
 
-        yield return new WaitForSeconds(0.5f); // ⚡ hiển thị sét trong 0.5s
+        // 2️⃣ Hiện mây đen
+        if (darkCloud != null)
+        {
+            darkCloud.SetActive(true);
+            Debug.Log("🌑 Mây đen xuất hiện");
 
-        lightning.SetActive(false);
-        Debug.Log("⚡ Sét đánh trúng bếp!");
-
-        if (stove != null)
-            stove.Ignite(); // 🔥 kích hoạt bếp cháy
+            // 3️⃣ Gọi script trong mây đen để đánh sét
+            if (lightning != null)
+                lightning.StartLightningSequence();
+        }
     }
 }

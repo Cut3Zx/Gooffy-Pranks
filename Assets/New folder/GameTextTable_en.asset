@@ -154,6 +154,10 @@ MonoBehaviour:
     m_Localized: Create the color orange
     m_Metadata:
       m_Items: []
+  - m_Id: 2496442806513664
+    m_Localized: Cooking Fish
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

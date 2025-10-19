@@ -1,38 +1,25 @@
 ﻿using UnityEngine;
-using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class FishController : BaseObjectManager
 {
     public Sprite rawFish;
     public Sprite cookedFish;
 
+    private Image image;
     private bool isCooked = false;
-    private UnityEngine.UI.Image img;
 
     protected override void Awake()
     {
         base.Awake();
-        img = GetComponent<UnityEngine.UI.Image>();
-        img.sprite = rawFish;
+        image = GetComponent<Image>();
     }
 
     public void CookFish()
     {
+        if (isCooked || image == null) return;
         isCooked = true;
-        img.sprite = cookedFish;
-        Debug.Log("🐟 Cá đã chín!");
+        image.sprite = cookedFish;
+        Debug.Log("🍳 Cá đã chín!");
     }
-
-    public override void OnPointerClick(PointerEventData eventData)
-    {
-        base.OnPointerClick(eventData);
-
-        if (isCooked)
-        {
-            Debug.Log("🏆 Ăn cá → thắng!");
-            GameManager.Instance.EndGame(true);
-        }
-    }
-
-    public override void OnDrag(PointerEventData eventData) { } // cá không kéo
 }

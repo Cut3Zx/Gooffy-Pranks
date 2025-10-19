@@ -8225,26 +8225,32 @@ MonoBehaviour:
   levels:
   - sceneName: Level_1
     button: {fileID: 1118240028}
+    backgroundImage: {fileID: 0}
     label: {fileID: 0}
     lockIcon: {fileID: 0}
   - sceneName: Level_2
     button: {fileID: 1198345328}
-    label: {fileID: 0}
-    lockIcon: {fileID: 1984970394}
+    backgroundImage: {fileID: 1984970396}
+    label: {fileID: 2098207393}
+    lockIcon: {fileID: 1141370414}
   - sceneName: Level_3
     button: {fileID: 352687}
+    backgroundImage: {fileID: 0}
     label: {fileID: 0}
     lockIcon: {fileID: 1628049630}
   - sceneName: Level_4
     button: {fileID: 1362467747}
+    backgroundImage: {fileID: 0}
     label: {fileID: 0}
     lockIcon: {fileID: 1628049630}
   - sceneName: Level_5
     button: {fileID: 352687}
+    backgroundImage: {fileID: 0}
     label: {fileID: 0}
     lockIcon: {fileID: 1628049630}
   - sceneName: Level_3
     button: {fileID: 352687}
+    backgroundImage: {fileID: 0}
     label: {fileID: 0}
     lockIcon: {fileID: 1628049630}
   unlockedColor: {r: 1, g: 1, b: 1, a: 1}

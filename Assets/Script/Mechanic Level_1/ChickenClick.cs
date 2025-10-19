@@ -27,4 +27,8 @@ public class ChickenClick : BaseObjectManager
             Debug.LogWarning($"⚠️ {gameObject.name} không có CollectibleItem để đăng ký vào hệ thống!");
         }
     }
+    public override void OnBeginDrag(PointerEventData e) { }
+    public override void OnDrag(PointerEventData e) { }
+    public override void OnEndDrag(PointerEventData e) { }
 }
+
