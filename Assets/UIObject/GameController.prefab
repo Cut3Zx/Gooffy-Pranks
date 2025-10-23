@@ -10,8 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5757291932627739932}
   - component: {fileID: 1440218487309082014}
-  - component: {fileID: 1769899185320353958}
-  - component: {fileID: 8302231002255621641}
   - component: {fileID: 7190559702590383100}
   - component: {fileID: 91275233917218368}
   m_Layer: 0
@@ -51,32 +49,6 @@ MonoBehaviour:
   mainMenuUI: {fileID: 7615324630662287011, guid: f866ab6f723384341a4d28cfed1a419b, type: 3}
   levelSelectUI: {fileID: 0}
   pauseUI: {fileID: 9207429257946962009, guid: accd21878007c1b4a92e214c804a5ef0, type: 3}
---- !u!114 &1769899185320353958
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5208262269772516046}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 247f9fcdae9081349a10d4606092b5f3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  buttonEnglish: {fileID: 0}
-  buttonVietnamese: {fileID: 0}
---- !u!114 &8302231002255621641
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5208262269772516046}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e7c0cdb6c18e8e24fbf5dfd6fb797743, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &7190559702590383100
 MonoBehaviour:
   m_ObjectHideFlags: 0

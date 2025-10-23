@@ -19,7 +19,7 @@ MonoBehaviour:
     m_Items: []
   m_TableData:
   - m_Id: 21524066304
-    m_Localized: Start
+    m_Localized: PLAY
     m_Metadata:
       m_Items: []
   - m_Id: 25110196224
@@ -156,6 +156,22 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 2496442806513664
     m_Localized: Cooking Fish
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3449392051728384
+    m_Localized: Find the raw egg
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3479867499687936
+    m_Localized: How manny slice pizza ?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3533267130068992
+    m_Localized: What is the bigest star
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3757935048994816
+    m_Localized: help the bee gather nectar
     m_Metadata:
       m_Items: []
   references:

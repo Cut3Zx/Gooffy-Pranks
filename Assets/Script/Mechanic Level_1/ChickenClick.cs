@@ -20,7 +20,7 @@ public class ChickenClick : BaseObjectManager
         if (collectibleItem != null)
         {
             collectibleItem.MarkCollected();
-            Debug.Log($"🐥 {gameObject.name} đã được thu thập và cộng điểm!");
+            
         }
         else
         {

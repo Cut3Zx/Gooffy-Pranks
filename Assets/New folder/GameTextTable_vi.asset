@@ -19,7 +19,7 @@ MonoBehaviour:
     m_Items: []
   m_TableData:
   - m_Id: 21524066304
-    m_Localized: "B\u1EAFt \u0110\u1EA7u"
+    m_Localized: "CH\u01A0I"
     m_Metadata:
       m_Items: []
   - m_Id: 1858341239205888
@@ -157,6 +157,22 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 2496442806513664
     m_Localized: "N\u1EA5u ch\xEDn c\xE1"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3449392051728384
+    m_Localized: "T\xECm ki\u1EBFm qu\u1EA3 tr\u1EE9ng s\u1ED1ng"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3479867499687936
+    m_Localized: "C\xF3 bao nhi\xEAu mi\u1EBFng pizza ?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3533267130068992
+    m_Localized: "H\xE0nh tinh n\xE0o to nh\u1EA5t"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3757935048994816
+    m_Localized: "Gi\xFAp ong l\u1EA5y m\u1EADt hoa"
     m_Metadata:
       m_Items: []
   references:

@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.Collections;
 
 public class CleanupManager : MonoBehaviour
 {
@@ -23,9 +24,18 @@ public class CleanupManager : MonoBehaviour
         if (fixedCount >= totalObjects)
         {
             Debug.Log("🎉 Phòng khách đã dọn xong!");
-            if (GameManager.Instance != null)
-                GameManager.Instance.EndGame(true);
+            StartCoroutine(DelayWin(1f)); // ⏳ delay 3 giây
         }
+    }
+
+    private IEnumerator DelayWin(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+
+        if (GameManager.Instance != null)
+            GameManager.Instance.EndGame(true);
+        else
+            Debug.LogWarning("⚠️ Không tìm thấy GameManager!");
     }
 
     public void ResetProgress()
