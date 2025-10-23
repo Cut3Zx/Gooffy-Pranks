@@ -116,11 +116,18 @@ public class GameManager : MonoBehaviour
 
         if (isWin)
         {
+            if (SoundManager.Instance != null)
+                SoundManager.Instance.PlayWin();
+            HintUI hintUI = FindObjectOfType<HintUI>();
+            if (hintUI != null)
+                hintUI.AddHint(1);
             if (winUI != null) winUI.SetActive(true);
             UnlockNextLevel();
         }
         else
         {
+            if (SoundManager.Instance != null)
+                SoundManager.Instance.PlayLose();
             if (loseUI != null) loseUI.SetActive(true);
         }
 

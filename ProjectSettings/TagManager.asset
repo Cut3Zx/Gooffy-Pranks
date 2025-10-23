@@ -8,6 +8,11 @@ TagManager:
   - WinUI
   - LoseUI
   - Collectible
+  - KFC
+  - Hammer
+  - Paper
+  - Scissors
+  - Rock
   layers:
   - Default
   - TransparentFX

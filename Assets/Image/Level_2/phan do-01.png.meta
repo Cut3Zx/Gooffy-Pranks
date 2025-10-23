@@ -113,12 +113,12 @@ TextureImporter:
       name: phan do-01_0
       rect:
         serializedVersion: 2
-        x: 442
-        y: 574
-        width: 235
-        height: 1297
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 0
+        y: 0
+        width: 1125
+        height: 2436
+      alignment: 9
+      pivot: {x: 0.4523401, y: 0.4737136}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []

@@ -16,8 +16,18 @@ public class HintUI : MonoBehaviour
     [TextArea(2, 3)]
     public string currentHint = "💭 Gợi ý mặc định";
 
+    [Header("Hint Config")]
+    public int defaultHint = 3;
+    public int maxHint = 1000;
+
     private void Start()
     {
+        if (!PlayerPrefs.HasKey("hintCount"))
+        {
+            PlayerPrefs.SetInt("hintCount", defaultHint);
+            PlayerPrefs.Save();
+        }
+
         UpdateHintUI();
 
         if (rewardButton != null)
@@ -38,21 +48,18 @@ public class HintUI : MonoBehaviour
     private void UpdateHintUI()
     {
         int hint = PlayerPrefs.GetInt("hintCount", 0);
-        hintText.text = $"{hint}";
+        if (hintText != null)
+            hintText.text = $"{hint}";
     }
 
     private void OnWatchAdClicked()
     {
-        Debug.Log("🎬 Người chơi bấm xem quảng cáo nhận hint...");
+        Debug.Log("🎬 Người chơi xem quảng cáo nhận hint...");
 
         if (AdsManager.Instance != null)
-        {
             AdsManager.Instance.ShowRewardedAd();
-        }
         else
-        {
-            Debug.LogError("❌ AdsManager chưa được khởi tạo!");
-        }
+            Debug.LogWarning("⚠️ AdsManager chưa được khởi tạo!");
     }
 
     private void OnUseHintClicked()
@@ -61,7 +68,7 @@ public class HintUI : MonoBehaviour
 
         if (hint > 0)
         {
-            hint--;
+            hint-=0;
             PlayerPrefs.SetInt("hintCount", hint);
             PlayerPrefs.Save();
             UpdateHintUI();
@@ -86,5 +93,37 @@ public class HintUI : MonoBehaviour
         yield return new WaitForSeconds(delay);
         if (hintPanel != null)
             hintPanel.SetActive(false);
+    }
+
+    // ===============================
+    // 🧩 HÀM THÊM / GIẢM / RESET HINT TRỰC TIẾP = CODE
+    // ===============================
+
+    public void AddHint(int amount = 1)
+    {
+        int hint = PlayerPrefs.GetInt("hintCount", 0);
+        hint = Mathf.Min(hint + amount, maxHint);
+        PlayerPrefs.SetInt("hintCount", hint);
+        PlayerPrefs.Save();
+        UpdateHintUI();
+        Debug.Log($"➕ Đã cộng {amount} hint! Tổng: {hint}");
+    }
+
+    public void RemoveHint(int amount = 1)
+    {
+        int hint = PlayerPrefs.GetInt("hintCount", 0);
+        hint = Mathf.Max(hint - amount, 0);
+        PlayerPrefs.SetInt("hintCount", hint);
+        PlayerPrefs.Save();
+        UpdateHintUI();
+        Debug.Log($"➖ Đã trừ {amount} hint! Còn lại: {hint}");
+    }
+
+    public void ResetHint()
+    {
+        PlayerPrefs.SetInt("hintCount", defaultHint);
+        PlayerPrefs.Save();
+        UpdateHintUI();
+        Debug.Log($"♻️ Reset hint về {defaultHint}");
     }
 }

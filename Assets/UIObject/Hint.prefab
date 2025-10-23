@@ -129,6 +129,8 @@ MonoBehaviour:
   hintPanel: {fileID: 331561412899786936}
   hintMessage: {fileID: 5349181527623058597}
   currentHint: "s\u1EED d\u1EE5ng c\u1EE5c ph\u1EA5n"
+  defaultHint: 3
+  maxHint: 1000
 --- !u!1 &3806253461916523799
 GameObject:
   m_ObjectHideFlags: 0
@@ -275,6 +277,7 @@ GameObject:
   - component: {fileID: 4716795939243521289}
   - component: {fileID: 3837557876006553405}
   - component: {fileID: 4478727988522626192}
+  - component: {fileID: 4978679656839354667}
   m_Layer: 5
   m_Name: 'UseHintButton '
   m_TagString: Untagged
@@ -383,6 +386,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &4978679656839354667
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4605626984323523681}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc754310d5fff8a4fbc13f9fa6e6e38c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7597816659763448195
 GameObject:
   m_ObjectHideFlags: 0

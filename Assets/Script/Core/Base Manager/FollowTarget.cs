@@ -8,25 +8,25 @@ public class FollowAndWin : BaseObjectManager
     public float stopDistance = 0.2f; // Khoảng cách để tính là "chạm"
     public bool faceTarget = false;   // Xoay hướng theo mục tiêu
 
-    [Header("Tùy chọn hành vi")]
+    [Header("Hành vi khi chạm")]
     public bool callWinOnTouch = true;      // Có gọi thắng khi chạm không
     public bool onlyFollowWhenActive = true;// Chỉ đuổi khi target đang bật
+    public GameObject replacementObject;    // ✅ Object thay thế khi chạm
 
     private bool isFollowing = false;
-    private bool hasTouched = false; // ✅ Trạng thái đã chạm rồi thì dừng hoàn toàn
+    private bool hasTouched = false;
 
     private void Update()
     {
         if (hasTouched || target == null) return;
 
-        // Nếu chọn chỉ đuổi khi active
+        // Nếu chọn chỉ đuổi khi target active
         if (onlyFollowWhenActive && !target.gameObject.activeInHierarchy)
         {
             isFollowing = false;
             return;
         }
 
-        // Bắt đầu đuổi nếu chưa
         if (!isFollowing)
         {
             isFollowing = true;
@@ -41,16 +41,25 @@ public class FollowAndWin : BaseObjectManager
         Vector3 direction = target.position - transform.position;
         float distance = direction.magnitude;
 
-        // ✅ Nếu chạm rồi
+        // ✅ Khi chạm target
         if (distance <= stopDistance)
         {
-            Debug.Log($"🎯 {gameObject.name} đã chạm {target.name}!");
-
-            // Dừng hoàn toàn việc di chuyển
             hasTouched = true;
             isFollowing = false;
 
-            // ✅ Gọi thắng (nếu được phép)
+            Debug.Log($"🎯 {gameObject.name} đã chạm {target.name}!");
+
+            // ✅ Ẩn object hiện tại
+            gameObject.SetActive(false);
+
+            // ✅ Hiện object thay thế (nếu có)
+            if (replacementObject != null)
+            {
+                replacementObject.SetActive(true);
+                Debug.Log($"🔄 Hiện object thay thế: {replacementObject.name}");
+            }
+
+            // ✅ Gọi thắng (nếu được bật)
             if (callWinOnTouch && GameManager.Instance != null)
             {
                 GameManager.Instance.EndGame(true);
@@ -60,29 +69,20 @@ public class FollowAndWin : BaseObjectManager
             return;
         }
 
-        // Di chuyển mượt hơn (không vượt quá target)
+        // Di chuyển mượt
         Vector3 moveDir = direction.normalized;
         Vector3 moveStep = moveDir * speed * Time.deltaTime;
 
-        // Nếu bước đi vượt quá khoảng cách còn lại thì dừng lại ở mép
         if (moveStep.magnitude > distance)
             moveStep = moveDir * distance;
 
         transform.position += moveStep;
 
-        // Xoay mặt theo hướng
+        // Xoay mặt theo hướng di chuyển
         if (faceTarget && moveDir != Vector3.zero)
         {
             float angle = Mathf.Atan2(moveDir.y, moveDir.x) * Mathf.Rad2Deg;
             transform.rotation = Quaternion.Euler(0, 0, angle);
         }
-    }
-
-    // Cho phép gán target từ script khác
-    public void SetTarget(Transform newTarget)
-    {
-        target = newTarget;
-        hasTouched = false;
-        isFollowing = false;
     }
 }
