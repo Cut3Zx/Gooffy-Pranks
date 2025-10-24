@@ -73,6 +73,33 @@ public class MainMenuUIControl : MonoBehaviour
         Debug.Log("🔹 Load scene: " + sceneName);
         SceneManager.LoadScene(sceneName);
     }
+    public void AutoNextLevel()
+    {
+        string currentScene = SceneManager.GetActiveScene().name;
+
+        if (currentScene.StartsWith("Level"))
+        {
+            try
+            {
+                // Lấy số hiện tại và tăng thêm 1
+                int currentLevel = int.Parse(currentScene.Replace("Level_", ""));
+                int nextLevel = currentLevel + 1;
+
+                string nextSceneName = $"Level_{nextLevel}";
+                Debug.Log($"➡️ Chuyển từ {currentScene} sang {nextSceneName}...");
+                SceneManager.LoadScene(nextSceneName);
+            }
+            catch
+            {
+                Debug.LogWarning("⚠️ Không thể xác định level hiện tại!");
+            }
+        }
+        else
+        {
+            Debug.LogWarning("⚠️ Không phải scene Level_...");
+        }
+    }
+
 
     // Thoát game
     public void OnExit()

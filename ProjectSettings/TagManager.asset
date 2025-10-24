@@ -13,6 +13,8 @@ TagManager:
   - Paper
   - Scissors
   - Rock
+  - Elephant
+  - Dino
   layers:
   - Default
   - TransparentFX

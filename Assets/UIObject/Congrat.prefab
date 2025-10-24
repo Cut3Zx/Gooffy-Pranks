@@ -422,8 +422,8 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1419840572659908281, guid: c30ddbac40a98ce42b3d3ec621a8acd1, type: 3}
         m_TargetAssemblyTypeName: MainMenuUIControl, Assembly-CSharp
-        m_MethodName: OnSelectLevel
-        m_Mode: 5
+        m_MethodName: AutoNextLevel
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

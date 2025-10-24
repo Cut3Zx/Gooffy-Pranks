@@ -694,14 +694,14 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 245323754}
-  - {fileID: 1742693122}
-  - {fileID: 856505888}
-  - {fileID: 1301874602}
   - {fileID: 1836185907}
   - {fileID: 1777150046}
   - {fileID: 415947485}
   - {fileID: 607669061}
   - {fileID: 1784818122}
+  - {fileID: 1742693122}
+  - {fileID: 856505888}
+  - {fileID: 1301874602}
   m_Father: {fileID: 1198608659}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -1083,6 +1083,10 @@ PrefabInstance:
     - target: {fileID: 9207429257946962009, guid: accd21878007c1b4a92e214c804a5ef0, type: 3}
       propertyPath: m_Name
       value: PauseUI
+      objectReference: {fileID: 0}
+    - target: {fileID: 9207429257946962009, guid: accd21878007c1b4a92e214c804a5ef0, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
