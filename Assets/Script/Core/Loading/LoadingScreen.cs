@@ -41,7 +41,7 @@ public class LoadingScreen : MonoBehaviour
             }
 
             // Thêm độ trễ để làm chậm quá trình tải
-            yield return new WaitForSeconds(0.1f); // Chờ 0.1 giây mỗi vòng lặp
+            yield return new WaitForSeconds(1f); // Chờ 0.1 giây mỗi vòng lặp
         }
 
         // Ẩn màn hình tải sau khi hoàn tất

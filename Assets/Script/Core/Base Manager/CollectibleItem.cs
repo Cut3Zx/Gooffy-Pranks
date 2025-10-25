@@ -62,14 +62,25 @@ public class CollectibleItem : MonoBehaviour
         //}
 
         // 🔹 Ẩn object nếu được bật tuỳ chọn
+        // 🔹 Nếu được bật tuỳ chọn, ẩn object sau khi thu thập
         if (disableAfterCollect)
         {
             gameObject.SetActive(false);
         }
+        else
+        {
+            // ✅ Nếu không ẩn, vẫn cần kiểm tra xem đã thu đủ chưa
+            if (CollectibleManager.Instance != null)
+            {
+                // Gọi cập nhật tiến độ để kích hoạt thắng nếu đủ
+                CollectibleManager.Instance.RegisterCollected(gameObject);
+            }
+        }
 
         Debug.Log($"🏆 {gameObject.name} ({itemType}) đã được thu thập, +{scoreValue} điểm!");
-    }
 
+
+    }
     /// <summary>
     /// Cho phép reset trạng thái (dùng khi restart level).
     /// </summary>
@@ -85,4 +96,5 @@ public class CollectibleItem : MonoBehaviour
     /// Trả về trạng thái hiện tại của vật phẩm.
     /// </summary>
     public bool IsCollected() => isCollected;
+    
 }

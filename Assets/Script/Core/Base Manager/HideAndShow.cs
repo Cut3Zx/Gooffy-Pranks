@@ -11,7 +11,7 @@ public class HideAndShowUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
 
     private RectTransform rectTransform;
     private Canvas canvas;
-
+    int originalIndex;
     private void Awake()
     {
         rectTransform = GetComponent<RectTransform>();
@@ -20,7 +20,7 @@ public class HideAndShowUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        transform.SetAsLastSibling(); // để kéo luôn nằm trên cùng
+        originalIndex = transform.GetSiblingIndex(); // để kéo luôn nằm trên cùng
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -45,5 +45,6 @@ public class HideAndShowUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
                     objectToShow.SetActive(true);
             }
         }
+        transform.SetSiblingIndex(originalIndex);
     }
 }

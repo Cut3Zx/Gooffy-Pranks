@@ -170,4 +170,5 @@ public class CollectibleManager : MonoBehaviour
         showFoundOnlyText = show;
         UpdateUIText();
     }
+
 }

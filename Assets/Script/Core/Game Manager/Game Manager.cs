@@ -103,11 +103,6 @@ public class GameManager : MonoBehaviour
             EndGame(true);
         }
         // ⚡ Skip level bằng phím K
-        if (Input.GetKeyDown(KeyCode.K))
-        {
-            Debug.Log("⏩ Bỏ qua màn chơi - thắng ngay!");
-            EndGame(true); // gọi hàm thắng có sẵn trong GameManager
-        }
 
     }
 

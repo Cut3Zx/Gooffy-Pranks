@@ -301,7 +301,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43d155de2a66e494c8dc8eabbcecb07d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeLimit: 30
+  timeLimit: 90
   timerText: {fileID: 1969401239}
   winUI: {fileID: 2489785520879721770}
   loseUI: {fileID: 3895376613010576847}
@@ -480,6 +480,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1099682812}
     m_Modifications:
+    - target: {fileID: 1334459663711177230, guid: 37024e9ae6fddea40b235dc06cb98639, type: 3}
+      propertyPath: m_StringReference.m_TableEntryReference.m_KeyId
+      value: 4230878921175040
+      objectReference: {fileID: 0}
     - target: {fileID: 1944388809332605937, guid: 37024e9ae6fddea40b235dc06cb98639, type: 3}
       propertyPath: m_Name
       value: Hint
@@ -1517,7 +1521,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -1917,11 +1921,11 @@ PrefabInstance:
       objectReference: {fileID: 487612790}
     - target: {fileID: 1341231267016272956, guid: 41198332bd98a2243845460e40b6a849, type: 3}
       propertyPath: m_StringReference.m_TableEntryReference.m_KeyId
-      value: 3533267130068992
+      value: 4211115893403648
       objectReference: {fileID: 0}
     - target: {fileID: 4587106762078610221, guid: 41198332bd98a2243845460e40b6a849, type: 3}
       propertyPath: m_text
-      value: "H\xE0nh tinh n\xE0o to nh\u1EA5t"
+      value: "Gi\xFAp g\u1EA5u l\u1EA5y m\u1EADt"
       objectReference: {fileID: 0}
     - target: {fileID: 5007403529457648115, guid: 41198332bd98a2243845460e40b6a849, type: 3}
       propertyPath: m_Name
