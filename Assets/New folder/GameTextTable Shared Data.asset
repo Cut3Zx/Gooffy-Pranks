@@ -327,6 +327,10 @@ MonoBehaviour:
     m_Key: quest30
     m_Metadata:
       m_Items: []
+  - m_Id: 4656890372894720
+    m_Key: quest31
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

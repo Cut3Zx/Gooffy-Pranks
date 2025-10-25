@@ -321,6 +321,10 @@ MonoBehaviour:
     m_Localized: Arrange the elephants from shortest to tallest!
     m_Metadata:
       m_Items: []
+  - m_Id: 4656890372894720
+    m_Localized: Find the fake glass of water!
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
