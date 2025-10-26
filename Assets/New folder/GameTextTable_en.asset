@@ -501,6 +501,30 @@ MonoBehaviour:
     m_Localized: ' '
     m_Metadata:
       m_Items: []
+  - m_Id: 5113979327164416
+    m_Localized: Help Prankster fill his stomach
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5114181857521664
+    m_Localized: Combine the two burgers together
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5114285599436800
+    m_Localized: Help Prankster fly up
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5114368319500288
+    m_Localized: "Hold your hand on Prankster\u2019s face"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5115096429703168
+    m_Localized: Level 41
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5115116566556672
+    m_Localized: Level42
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

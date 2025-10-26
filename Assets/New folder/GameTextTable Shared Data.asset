@@ -507,6 +507,30 @@ MonoBehaviour:
     m_Key: hint40
     m_Metadata:
       m_Items: []
+  - m_Id: 5113979327164416
+    m_Key: quest41
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5114181857521664
+    m_Key: hint41
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5114285599436800
+    m_Key: quest42
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5114368319500288
+    m_Key: hint42
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5115096429703168
+    m_Key: level41
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5115116566556672
+    m_Key: level42
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
