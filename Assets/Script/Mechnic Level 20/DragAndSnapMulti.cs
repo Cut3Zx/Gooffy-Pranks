@@ -1,10 +1,11 @@
 ﻿using UnityEngine;
 using UnityEngine.EventSystems;
+using System.Collections.Generic;
 
 public class DragAndSnapMulti : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
     [Header("Vùng gắn (Drop Zones)")]
-    public RectTransform[] snapZones; // cho phép nhiều vùng
+    public RectTransform[] snapZones;
     public float snapDistance = 100f;
 
     [Header("Tuỳ chọn")]
@@ -13,6 +14,9 @@ public class DragAndSnapMulti : MonoBehaviour, IBeginDragHandler, IDragHandler, 
     private RectTransform rectTransform;
     private Canvas canvas;
     private bool isSnapped = false;
+
+    // Danh sách vùng đã có vật thể gắn vào
+    private static Dictionary<RectTransform, GameObject> occupiedZones = new Dictionary<RectTransform, GameObject>();
 
     private void Awake()
     {
@@ -39,8 +43,20 @@ public class DragAndSnapMulti : MonoBehaviour, IBeginDragHandler, IDragHandler, 
 
         if (closest != null)
         {
+            // ❌ Nếu vùng này đã bị chiếm thì không cho gắn nữa
+            if (occupiedZones.ContainsKey(closest))
+            {
+                Debug.LogWarning($"❌ {closest.name} đã có vật thể khác gắn vào!");
+                return;
+            }
+
+            // ✅ Nếu vùng trống thì gắn vào
             rectTransform.anchoredPosition = closest.anchoredPosition;
             isSnapped = lockAfterSnap;
+
+            // Đánh dấu vùng này là đã bị chiếm
+            occupiedZones[closest] = gameObject;
+
             Debug.Log($"✅ {gameObject.name} đã gắn vào vùng {closest.name}");
 
             WeighSnapManager.Instance?.RegisterSnappedObject();
@@ -55,6 +71,7 @@ public class DragAndSnapMulti : MonoBehaviour, IBeginDragHandler, IDragHandler, 
         foreach (RectTransform zone in snapZones)
         {
             if (zone == null) continue;
+
             float distance = Vector2.Distance(rectTransform.anchoredPosition, zone.anchoredPosition);
             if (distance < snapDistance && distance < minDistance)
             {
@@ -64,5 +81,18 @@ public class DragAndSnapMulti : MonoBehaviour, IBeginDragHandler, IDragHandler, 
         }
 
         return closest;
+    }
+
+    private void OnDestroy()
+    {
+        // Nếu bị xoá thì giải phóng vùng
+        foreach (var kvp in occupiedZones)
+        {
+            if (kvp.Value == gameObject)
+            {
+                occupiedZones.Remove(kvp.Key);
+                break;
+            }
+        }
     }
 }

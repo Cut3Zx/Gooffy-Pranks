@@ -3,48 +3,59 @@ using UnityEngine.EventSystems;
 
 public class HideAndShowUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
-    [Header("Đối tượng khi chạm sẽ ẩn đi")]
-    public GameObject objectToHide;
+    [Header("Các đối tượng cần ẩn khi chạm")]
+    public GameObject objectToHide1;
+    public GameObject objectToHide2;
 
-    [Header("Đối tượng sẽ hiện ra khi chạm")]
-    public GameObject objectToShow;
+    [Header("Các đối tượng cần hiện ra khi chạm")]
+    public GameObject objectToShow1;
+    public GameObject objectToShow2;
 
-    private RectTransform rectTransform;
+    private RectTransform rect;
     private Canvas canvas;
-    int originalIndex;
-    private void Awake()
+    private Vector2 startPos;
+    private int originalIndex;
+
+    void Awake()
     {
-        rectTransform = GetComponent<RectTransform>();
+        rect = GetComponent<RectTransform>();
         canvas = GetComponentInParent<Canvas>();
+        startPos = rect.anchoredPosition;
     }
 
-    public void OnBeginDrag(PointerEventData eventData)
+    public void OnBeginDrag(PointerEventData e)
     {
-        originalIndex = transform.GetSiblingIndex(); // để kéo luôn nằm trên cùng
+        originalIndex = transform.GetSiblingIndex();
+        transform.SetAsLastSibling();
     }
 
-    public void OnDrag(PointerEventData eventData)
+    public void OnDrag(PointerEventData e)
     {
-        rectTransform.anchoredPosition += eventData.delta / canvas.scaleFactor;
+        rect.anchoredPosition += e.delta / canvas.scaleFactor;
     }
 
-    public void OnEndDrag(PointerEventData eventData)
+    public void OnEndDrag(PointerEventData e)
     {
-        // Kiểm tra chạm với objectToHide (thường là vùng mục tiêu)
-        if (objectToHide != null)
+        // Nếu chạm vùng ẩn chính
+        if (objectToHide1 != null)
         {
-            RectTransform targetRect = objectToHide.GetComponent<RectTransform>();
-            if (targetRect != null && RectTransformUtility.RectangleContainsScreenPoint(targetRect, Input.mousePosition, canvas.worldCamera))
+            RectTransform targetRect = objectToHide1.GetComponent<RectTransform>();
+            if (targetRect && RectTransformUtility.RectangleContainsScreenPoint(targetRect, Input.mousePosition, canvas.worldCamera))
             {
-                Debug.Log($"🎯 {gameObject.name} chạm {objectToHide.name}");
+                Debug.Log($"🎯 {name} chạm {objectToHide1.name}");
 
-                if (objectToHide != null)
-                    objectToHide.SetActive(false);
+                // Ẩn
+                if (objectToHide1) objectToHide1.SetActive(false);
+                if (objectToHide2) objectToHide2.SetActive(false);
 
-                if (objectToShow != null)
-                    objectToShow.SetActive(true);
+                // Hiện
+                if (objectToShow1) objectToShow1.SetActive(true);
+                if (objectToShow2) objectToShow2.SetActive(true);
             }
         }
+
+        // Quay lại vị trí cũ
+        rect.anchoredPosition = startPos;
         transform.SetSiblingIndex(originalIndex);
     }
 }

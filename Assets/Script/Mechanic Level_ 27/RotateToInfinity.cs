@@ -4,52 +4,47 @@ using System.Collections;
 
 public class EightToInfinityOnPull : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
-    [Header("Cấu hình kéo")]
-    public float dragThreshold = 80f;   // Kéo sang trái/phải bao nhiêu pixel thì kích hoạt xoay
-    public float rotationSpeed = 300f;  // Tốc độ xoay (độ/giây)
+    [Header("⚙️ Cấu hình kéo")]
+    public float dragThreshold = 80f;   // Kéo ngang bao nhiêu pixel thì xoay
+    public float rotationSpeed = 300f;  // Tốc độ xoay
     public float targetAngle = 90f;     // Xoay ngang 90 độ
 
-    [Header("UI Thắng")]
-    public GameObject winUI;
+    [Header("🎭 Prankster đổi mặt")]
+    public GameObject pranksterSad;     // Prankster buồn
+    public GameObject pranksterHappy;   // Prankster vui (ẩn sẵn)
 
     private Vector2 startDragPos;
     private bool isRotating = false;
-    private bool hasWon = false;
+    private bool hasRotated = false;
     private RectTransform rectTransform;
 
     private void Awake()
     {
         rectTransform = GetComponent<RectTransform>();
+        if (pranksterHappy != null)
+            pranksterHappy.SetActive(false);
     }
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        if (hasWon || isRotating) return;
+        if (hasRotated || isRotating) return;
         startDragPos = eventData.position;
     }
 
-    public void OnDrag(PointerEventData eventData)
-    {
-        // không làm gì khi đang kéo – chỉ theo dõi vị trí
-    }
+    public void OnDrag(PointerEventData eventData) { }
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        if (hasWon || isRotating) return;
+        if (hasRotated || isRotating) return;
 
         float dragDistanceX = eventData.position.x - startDragPos.x;
-        float dragDistanceY = eventData.position.y - startDragPos.y;
-
-        Debug.Log($"📏 Kéo ngang: {dragDistanceX}, dọc: {dragDistanceY}");
-
-        // chỉ tính kéo ngang đủ xa
         if (Mathf.Abs(dragDistanceX) >= dragThreshold)
         {
-            StartCoroutine(RotateAndWin());
+            StartCoroutine(RotateThenChangeFace());
         }
     }
 
-    private IEnumerator RotateAndWin()
+    private IEnumerator RotateThenChangeFace()
     {
         isRotating = true;
 
@@ -57,6 +52,7 @@ public class EightToInfinityOnPull : MonoBehaviour, IBeginDragHandler, IDragHand
         float endZ = startZ + targetAngle;
         float t = 0;
 
+        // 🌀 Xoay số 8
         while (t < 1f)
         {
             t += Time.deltaTime * (rotationSpeed / targetAngle);
@@ -65,15 +61,16 @@ public class EightToInfinityOnPull : MonoBehaviour, IBeginDragHandler, IDragHand
             yield return null;
         }
 
+        // 😢 → 😄
+        if (pranksterSad != null)
+            pranksterSad.SetActive(false);
+
+        if (pranksterHappy != null)
+            pranksterHappy.SetActive(true);
+
+        Debug.Log("♾️ Số 8 đã xoay xong — Prankster vui lên!");
+
+        hasRotated = true;
         isRotating = false;
-        hasWon = true;
-
-        Debug.Log("♾️ Số 8 đã xoay thành vô cực!");
-
-        if (GameManager.Instance != null)
-            GameManager.Instance.EndGame(true);
-
-        if (winUI != null)
-            winUI.SetActive(true);
     }
 }

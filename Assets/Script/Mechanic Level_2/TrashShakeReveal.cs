@@ -15,8 +15,8 @@ public class TrashShakeFall : MonoBehaviour
     public float shakeThreshold = 2.8f;
 
     [Header("Lực đẩy cục giấy khi rơi ra (theo hướng đổ)")]
-    public float pushPower = 3f;
-    public float pushUpward = 2f;
+    public float pushPower = 5f;
+    public float pushUpward = 3f;
 
     private bool hasFallen = false;
     private Quaternion startRot;
@@ -30,12 +30,13 @@ public class TrashShakeFall : MonoBehaviour
 
     void Update()
     {
-        // Lắc điện thoại
+        // 📱 Lắc điện thoại
         if (Input.acceleration.sqrMagnitude > shakeThreshold && !hasFallen)
             StartCoroutine(FallTrash());
 
-        // Click chuột để test trong Unity Editor
-        
+        // 🖱️ Test bằng chuột hoặc phím cách
+        if (( Input.GetKeyDown(KeyCode.Space)) && !hasFallen)
+            StartCoroutine(FallTrash());
     }
 
     private System.Collections.IEnumerator FallTrash()
@@ -50,9 +51,9 @@ public class TrashShakeFall : MonoBehaviour
             yield return null;
         }
 
-        yield return new WaitForSeconds(0.3f);
+        yield return new WaitForSeconds(0.15f);
 
-        // Bật cục giấy
+        // 🗑️ Bật cục giấy
         if (paperCrumpled != null)
         {
             paperCrumpled.SetActive(true);
@@ -60,15 +61,17 @@ public class TrashShakeFall : MonoBehaviour
             if (rb != null)
             {
                 rb.simulated = true;
+                rb.gravityScale = 2f; // ✅ rơi nhanh và thật hơn
 
-                // Xác định hướng đổ của thùng rác
-                float dir = Mathf.Sign(transform.right.x); // +1 phải, -1 trái
+                // Xác định hướng đổ
+                float dir = (transform.eulerAngles.z > 0 && transform.eulerAngles.z < 180) ? -1f : 1f;
+                // +1 phải, -1 trái
 
-                // Đẩy cục giấy ra theo hướng đổ
-                Vector2 force = new Vector2(dir * pushPower, pushUpward);
-                rb.AddForce(force, ForceMode2D.Impulse);
+                // Thêm lực mạnh và thật hơn
+                rb.AddForce(new Vector2(dir * pushPower, pushUpward), ForceMode2D.Impulse);
+                rb.AddTorque(Random.Range(-3f, 3f), ForceMode2D.Impulse); // thêm xoay nhẹ cho tự nhiên
 
-                Debug.Log($"🗑️ Thùng rác đổ (hướng {(dir > 0 ? "phải" : "trái")}), cục giấy bị đẩy ra!");
+                Debug.Log($"🗑️ Thùng rác đổ ({(dir > 0 ? "phải" : "trái")}), cục giấy rơi ra thật!");
             }
         }
     }

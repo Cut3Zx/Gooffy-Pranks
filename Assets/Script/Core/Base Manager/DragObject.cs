@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.EventSystems;
+using System.Collections.Generic;
 
 public class DragAndSnap : BaseObjectManager
 {
@@ -7,67 +8,59 @@ public class DragAndSnap : BaseObjectManager
     public RectTransform snapZone1;
     public RectTransform snapZone2;
     public float snapDistance = 100f;
-
-    [Header("Tuỳ chọn")]
     public bool lockAfterSnap = true;
 
-    private bool isSnapped = false;
+    static Dictionary<RectTransform, GameObject> occupied = new();
 
-    public override void OnBeginDrag(PointerEventData eventData)
+    bool isSnapped = false;
+    Vector2 startPos;
+
+    public override void OnBeginDrag(PointerEventData e)
     {
         if (isSnapped) return;
-
-        if (rectTransform == null) rectTransform = GetComponent<RectTransform>();
-        if (canvas == null) canvas = GetComponentInParent<Canvas>();
+        rectTransform ??= GetComponent<RectTransform>();
+        canvas ??= GetComponentInParent<Canvas>();
+        startPos = rectTransform.anchoredPosition; // 📍 lưu vị trí ban đầu
     }
 
-    public override void OnDrag(PointerEventData eventData)
+    public override void OnDrag(PointerEventData e)
     {
         if (isSnapped || rectTransform == null || canvas == null) return;
-        rectTransform.anchoredPosition += eventData.delta / canvas.scaleFactor;
+        rectTransform.anchoredPosition += e.delta / canvas.scaleFactor;
     }
 
-    public override void OnEndDrag(PointerEventData eventData)
+    public override void OnEndDrag(PointerEventData e)
     {
         if (isSnapped) return;
 
-        RectTransform closestZone = GetClosestSnapZone();
-        if (closestZone != null)
+        RectTransform closest = GetClosestSnapZone();
+        if (closest && !occupied.ContainsKey(closest))
         {
-            rectTransform.anchoredPosition = closestZone.anchoredPosition;
-            isSnapped = true;
-            Debug.Log($"✅ {gameObject.name} đã gắn vào vùng {closestZone.name}");
+            rectTransform.anchoredPosition = closest.anchoredPosition;
+            isSnapped = lockAfterSnap;
+            occupied[closest] = gameObject;
 
-            // 🔔 Báo về Manager
+            Debug.Log($"✅ {gameObject.name} đã gắn vào vùng {closest.name}");
             SnapManager.Instance?.RegisterSnappedObject();
+        }
+        else
+        {
+            // ⏪ Không đúng vùng thì quay lại chỗ cũ
+            rectTransform.anchoredPosition = startPos;
+            Debug.Log("↩️ Không đặt đúng vị trí, quay lại chỗ cũ!");
         }
     }
 
-    private RectTransform GetClosestSnapZone()
+    RectTransform GetClosestSnapZone()
     {
         RectTransform closest = null;
-        float minDistance = float.MaxValue;
-
-        if (snapZone1 != null)
+        float min = float.MaxValue;
+        foreach (var z in new[] { snapZone1, snapZone2 })
         {
-            float dist1 = Vector2.Distance(rectTransform.anchoredPosition, snapZone1.anchoredPosition);
-            if (dist1 < snapDistance && dist1 < minDistance)
-            {
-                minDistance = dist1;
-                closest = snapZone1;
-            }
+            if (z == null) continue;
+            float d = Vector2.Distance(rectTransform.anchoredPosition, z.anchoredPosition);
+            if (d < snapDistance && d < min) { min = d; closest = z; }
         }
-
-        if (snapZone2 != null)
-        {
-            float dist2 = Vector2.Distance(rectTransform.anchoredPosition, snapZone2.anchoredPosition);
-            if (dist2 < snapDistance && dist2 < minDistance)
-            {
-                minDistance = dist2;
-                closest = snapZone2;
-            }
-        }
-
         return closest;
     }
 }

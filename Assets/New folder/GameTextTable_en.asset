@@ -155,11 +155,11 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 2496442806513664
-    m_Localized: Cooking Fish
+    m_Localized: 'Grill the fish '
     m_Metadata:
       m_Items: []
   - m_Id: 3449392051728384
-    m_Localized: Find the raw egg
+    m_Localized: Tap each egg to peel its shell!
     m_Metadata:
       m_Items: []
   - m_Id: 3479867499687936
@@ -199,7 +199,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 4219719593701376
-    m_Localized: Shake the screen
+    m_Localized: Shake the phone to tip over the trash can!
     m_Metadata:
       m_Items: []
   - m_Id: 4219944655859712
@@ -249,8 +249,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 4229700363694080
-    m_Localized: Turn the wooden trophy into a diamond trophy and break the tower
-      to rescue the princess!
+    m_Localized: Upgrade the pickaxe with the diamond in the bush to break the tower!
     m_Metadata:
       m_Items: []
   - m_Id: 4230630765178880
@@ -266,7 +265,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 4231457051455488
-    m_Localized: "Only\uFE0F Scissors can be the winner!"
+    m_Localized: "Use the Rock \u2013 Paper \u2013 Scissors rule to win!"
     m_Metadata:
       m_Items: []
   - m_Id: 4231975316434944
@@ -278,7 +277,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 4235550750879744
-    m_Localized: The sixth pencil on the fist row
+    m_Localized: Find the darkest pen
     m_Metadata:
       m_Items: []
   - m_Id: 4288965484949504
@@ -286,7 +285,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 4300050569048064
-    m_Localized: Put the princess in front of the mirror!
+    m_Localized: "What\u2019s left in the mirror"
     m_Metadata:
       m_Items: []
   - m_Id: 4300331209928704
@@ -318,11 +317,147 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 4647994107310080
-    m_Localized: Arrange the elephants from shortest to tallest!
+    m_Localized: Low to high
     m_Metadata:
       m_Items: []
   - m_Id: 4656890372894720
     m_Localized: Find the fake glass of water!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4762374689992704
+    m_Localized: Help old man catch fish
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4769261531639808
+    m_Localized: Help Dr. Prankster beat this level!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4787199579992064
+    m_Localized: Complete the correct equation to win!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4933404444274688
+    m_Localized: Level 21
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4933408512749568
+    m_Localized: Level 22
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4933412421840896
+    m_Localized: "Level 23\t"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4933415462711296
+    m_Localized: Level 24
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4933416955883520
+    m_Localized: Level 25
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4933418302255104
+    m_Localized: Level 26
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4933419711541248
+    m_Localized: Level 27
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4933421020164096
+    m_Localized: Level 28
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4933422626582528
+    m_Localized: Level 29
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4933424224612352
+    m_Localized: Level 30
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4933425763921920
+    m_Localized: Level 31
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4933427269677056
+    m_Localized: Level 32
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4933428741877760
+    m_Localized: Level 33
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4933430398627840
+    m_Localized: Level 34
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4933432017629184
+    m_Localized: Level 35
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4933433603076096
+    m_Localized: Level 36
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4933435188523008
+    m_Localized: Level 37
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4933441723248640
+    m_Localized: Level 38
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4933444214665216
+    m_Localized: Level 39
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4933448224419840
+    m_Localized: Level 40
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4951503151247360
+    m_Localized: Pick the biggest number!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4316881971261440
+    m_Localized: Pay attention to the title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4953059418386432
+    m_Localized: Use the branch, trash can, bush, broom, and ants wisely
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4953434271723520
+    m_Localized: Turn the number 8 sideways.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4954603505266688
+    m_Localized: Pay attention to the content of the title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4954766042935296
+    m_Localized: Shake the phone
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4955099704012800
+    m_Localized: Use it on the title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4955395209506816
+    m_Localized: Pull the rope
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4956876172111872
+    m_Localized: Enlarge the pond.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4957279215366144
+    m_Localized: Wake up the chicken
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4966674225639424
+    m_Localized: Use the scissors and needle on the princess.
     m_Metadata:
       m_Items: []
   references:

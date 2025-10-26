@@ -1,84 +1,51 @@
 ﻿using UnityEngine;
 using UnityEngine.EventSystems;
+using System.Collections.Generic;
 
 public class DragAndPlaceUniversal : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
-    private RectTransform rectTransform;
-    private Canvas canvas;
-
-    [Header("Danh sách các vùng có thể đặt")]
     public RectTransform[] stepZones;
     public float snapDistance = 100f;
 
-    private bool isPlaced = false;
-    private RectTransform snappedZone;
+    static Dictionary<RectTransform, GameObject> occupied = new();
+    RectTransform rect, snappedZone;
+    Canvas canvas;
+    bool isPlaced;
 
-    private void Awake()
+    void Awake() { rect = GetComponent<RectTransform>(); canvas = GetComponentInParent<Canvas>(); }
+
+    public void OnBeginDrag(PointerEventData e)
     {
-        rectTransform = GetComponent<RectTransform>();
-        canvas = GetComponentInParent<Canvas>();
+        if (!isPlaced) return;
+        if (snappedZone && occupied.ContainsKey(snappedZone)) occupied.Remove(snappedZone);
+        isPlaced = false; snappedZone = null;
     }
 
-    public void OnBeginDrag(PointerEventData eventData)
-    {
-        if (isPlaced)
-        {
-            // Nếu muốn cho phép kéo ra lại, bỏ comment dòng dưới
-            // ClimbManager.Instance.UnregisterStepFilled();
-            // isPlaced = false;
-        }
-    }
-
-    public void OnDrag(PointerEventData eventData)
+    public void OnDrag(PointerEventData e)
     {
         if (isPlaced) return;
-
-        Vector2 localPos;
         RectTransformUtility.ScreenPointToLocalPointInRectangle(
-            canvas.transform as RectTransform,
-            eventData.position,
-            canvas.worldCamera,
-            out localPos
-        );
-        rectTransform.anchoredPosition = localPos;
+            canvas.transform as RectTransform, e.position, canvas.worldCamera, out var p);
+        rect.anchoredPosition = p;
     }
 
-    public void OnEndDrag(PointerEventData eventData)
+    public void OnEndDrag(PointerEventData e)
     {
         if (isPlaced) return;
+        RectTransform closest = null; float min = float.MaxValue;
 
-        RectTransform closestZone = GetClosestStepZone();
-
-        if (closestZone != null)
+        foreach (var z in stepZones)
         {
-            rectTransform.anchoredPosition = closestZone.anchoredPosition;
-            isPlaced = true;
-            snappedZone = closestZone;
+            float d = Vector2.Distance(rect.anchoredPosition, z.anchoredPosition);
+            if (d < snapDistance && d < min) { min = d; closest = z; }
+        }
 
+        if (closest && !occupied.ContainsKey(closest))
+        {
+            rect.anchoredPosition = closest.anchoredPosition;
+            occupied[closest] = gameObject;
+            snappedZone = closest; isPlaced = true;
             ClimbManager.Instance?.RegisterStepFilled();
-            Debug.Log($"✅ {name} đã được đặt vào bậc {closestZone.name}");
         }
-        else
-        {
-            Debug.Log("❌ Không có bậc nào gần để gắn!");
-        }
-    }
-
-    private RectTransform GetClosestStepZone()
-    {
-        RectTransform closest = null;
-        float minDistance = float.MaxValue;
-
-        foreach (var zone in stepZones)
-        {
-            float dist = Vector2.Distance(rectTransform.anchoredPosition, zone.anchoredPosition);
-            if (dist < snapDistance && dist < minDistance)
-            {
-                minDistance = dist;
-                closest = zone;
-            }
-        }
-
-        return closest;
     }
 }

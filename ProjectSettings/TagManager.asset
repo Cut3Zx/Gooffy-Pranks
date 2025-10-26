@@ -15,6 +15,7 @@ TagManager:
   - Rock
   - Elephant
   - Dino
+  - DropZone
   layers:
   - Default
   - TransparentFX
