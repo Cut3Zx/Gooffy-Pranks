@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class TrashCanInteract : MonoBehaviour, IPointerClickHandler
+public class TrashCanInteract : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
     [Header("Thùng rác sau khi đổ")]
     public GameObject spilledTrashCan;   // prefab hoặc object hình thùng rác bị đổ (ẩn sẵn)
@@ -28,8 +28,10 @@ public class TrashCanInteract : MonoBehaviour, IPointerClickHandler
         // Hiện đống rác
         if (trashPile != null)
             trashPile.SetActive(true);
-
-        // Hiệu ứng âm thanh (tùy chọn)
-       
     }
+
+    // 🚫 Ngăn không cho drag
+    public void OnBeginDrag(PointerEventData eventData) { /* không làm gì cả */ }
+    public void OnDrag(PointerEventData eventData) { /* không làm gì cả */ }
+    public void OnEndDrag(PointerEventData eventData) { /* không làm gì cả */ }
 }

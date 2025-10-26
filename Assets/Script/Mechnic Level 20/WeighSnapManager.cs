@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.Collections;
 
 [DefaultExecutionOrder(-5)]
 public class WeighSnapManager : MonoBehaviour
@@ -19,6 +20,9 @@ public class WeighSnapManager : MonoBehaviour
     public GameObject elephant;
     public GameObject dino;
 
+    [Header("⏱️ Thời gian chờ trước khi hiển thị win (giây)")]
+    public float winDelay = 0.8f;
+
     private void Awake()
     {
         if (Instance == null) Instance = this;
@@ -31,14 +35,13 @@ public class WeighSnapManager : MonoBehaviour
         Debug.Log($"🧩 Đã gắn {snappedCount}/{totalObjects}");
 
         if (snappedCount >= totalObjects)
-        {
-            ShowWinImmediately();
-        }
+            StartCoroutine(ShowWinWithDelay());
     }
 
-    private void ShowWinImmediately()
+    private IEnumerator ShowWinWithDelay()
     {
-        Debug.Log("🎉 Đủ vật — hiện ảnh thắng NGAY LẬP TỨC!");
+        Debug.Log("🎉 Đủ vật — chuẩn bị hiện ảnh thắng...");
+        yield return new WaitForSeconds(winDelay);
 
         // Ẩn tất cả vật và cân
         if (weighBase) weighBase.SetActive(false);
@@ -47,11 +50,11 @@ public class WeighSnapManager : MonoBehaviour
         if (elephant) elephant.SetActive(false);
         if (dino) dino.SetActive(false);
 
-        // Hiện ảnh thắng ngay
+        // Hiện ảnh thắng
         if (winImage)
         {
             winImage.SetActive(true);
-            Debug.Log("🏆 Ảnh thắng đã hiện!");
+            Debug.Log($"🏆 Ảnh thắng đã hiện sau {winDelay} giây!");
         }
     }
 }

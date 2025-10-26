@@ -411,7 +411,12 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2919340134986183146, guid: 37024e9ae6fddea40b235dc06cb98639, type: 3}
   m_PrefabInstance: {fileID: 495671732}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &863305877
+--- !u!1 &881958571 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9181610453472938125, guid: accd21878007c1b4a92e214c804a5ef0, type: 3}
+  m_PrefabInstance: {fileID: 1463175191}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1047965141
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -419,34 +424,73 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 863305878}
-  m_Layer: 0
-  m_Name: GameObject
+  - component: {fileID: 1047965144}
+  - component: {fileID: 1047965143}
+  - component: {fileID: 1047965142}
+  m_Layer: 5
+  m_Name: Prankster  (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &863305878
-Transform:
+  m_IsActive: 0
+--- !u!114 &1047965142
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 863305877}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -6, y: -202, z: 0}
+  m_GameObject: {fileID: 1047965141}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: b4df727a1da5bbb40a93608be4834178, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1047965143
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1047965141}
+  m_CullTransparentMesh: 1
+--- !u!224 &1047965144
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1047965141}
+  m_LocalRotation: {x: -0.7071068, y: -0.7071068, z: 0, w: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1129478306}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &881958571 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 9181610453472938125, guid: accd21878007c1b4a92e214c804a5ef0, type: 3}
-  m_PrefabInstance: {fileID: 1463175191}
-  m_PrefabAsset: {fileID: 0}
+  m_Father: {fileID: 1099682812}
+  m_LocalEulerAnglesHint: {x: 0, y: -180, z: 90}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 30, y: -242}
+  m_SizeDelta: {x: 255.04, y: 501.351}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1099682808
 GameObject:
   m_ObjectHideFlags: 0
@@ -543,6 +587,7 @@ RectTransform:
   m_Children:
   - {fileID: 245323754}
   - {fileID: 1129478306}
+  - {fileID: 1047965144}
   - {fileID: 1295098652}
   - {fileID: 1742693122}
   - {fileID: 856505888}
@@ -621,13 +666,12 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 863305878}
+  m_Children: []
   m_Father: {fileID: 1099682812}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 77.51999, y: -69.00018}
+  m_AnchoredPosition: {x: -217, y: -28}
   m_SizeDelta: {x: 255.04, y: 501.351}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1158447334
@@ -867,13 +911,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2884e87c70e74504ab5407eb281042ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tiltThreshold: 30
-  shakeSensitivity: 0.3
-  startDelay: 1
-  prankster: {fileID: 1129478303}
-  fallPivot: {fileID: 863305878}
-  fallSpeed: 300
-  winUI: {fileID: 2489785520879721770}
+  shakeThreshold: 2.8
+  objectToHide: {fileID: 1129478303}
+  objectToShow: {fileID: 1047965141}
 --- !u!1 &1301874601 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 9207429257946962009, guid: accd21878007c1b4a92e214c804a5ef0, type: 3}

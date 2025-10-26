@@ -1787,7 +1787,7 @@ GameObject:
   - component: {fileID: 2087592378}
   - component: {fileID: 2087592381}
   - component: {fileID: 2087592380}
-  - component: {fileID: 2087592379}
+  - component: {fileID: 2087592382}
   m_Layer: 5
   m_Name: Grass
   m_TagString: Untagged
@@ -1814,22 +1814,6 @@ RectTransform:
   m_AnchoredPosition: {x: -297.05, y: -755}
   m_SizeDelta: {x: 384.1823, y: 354.9766}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &2087592379
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2087592377}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d584bf0c800bc284eb686f1d2d398d4e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  snapZone1: {fileID: 0}
-  snapZone2: {fileID: 0}
-  snapDistance: 100
-  lockAfterSnap: 1
 --- !u!114 &2087592380
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1868,6 +1852,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2087592377}
   m_CullTransparentMesh: 1
+--- !u!114 &2087592382
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2087592377}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9911e45c140875f4bac0c3412b0e25cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stepZones: []
+  snapDistance: 100
 --- !u!114 &2119844460 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4183298208526280063, guid: c646c8ded57603740a60b6635754c40e, type: 3}

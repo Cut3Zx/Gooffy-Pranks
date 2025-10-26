@@ -25,9 +25,10 @@ public class HideAndShowUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
 
     public void OnBeginDrag(PointerEventData e)
     {
-        originalIndex = transform.GetSiblingIndex();
-        transform.SetAsLastSibling();
+        originalIndex = transform.GetSiblingIndex(); // chỉ lưu thứ tự gốc
+                                                     // không đưa lên top
     }
+
 
     public void OnDrag(PointerEventData e)
     {

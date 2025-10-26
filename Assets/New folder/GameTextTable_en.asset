@@ -460,6 +460,47 @@ MonoBehaviour:
     m_Localized: Use the scissors and needle on the princess.
     m_Metadata:
       m_Items: []
+  - m_Id: 5000112689328128
+    m_Localized: Help Prankster organize the pencil case.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5000458375475200
+    m_Localized: Place the object in its shadow
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5001746836303872
+    m_Localized: A rainbow has seven colors, so how many colors do seven rainbows
+      have?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5001855267450880
+    m_Localized: 7 color
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5069505574154240
+    m_Localized: Find difference
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5069861272104960
+    m_Localized: Painting, broom, book, TV, carpet
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5090999167561728
+    m_Localized: find matching cards
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5091240872718336
+    m_Localized: Pull Prankster to the left
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5091260674027520
+    m_Localized: Don't pull to the right
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5091218605158400
+    m_Localized: ' '
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

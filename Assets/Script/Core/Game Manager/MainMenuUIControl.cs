@@ -62,15 +62,29 @@ public class MainMenuUIControl : MonoBehaviour
     {
         string currentScene = SceneManager.GetActiveScene().name;
 
-        if (currentScene.StartsWith("Level"))
+        if (currentScene.StartsWith("Level_"))
         {
             try
             {
                 int currentLevel = int.Parse(currentScene.Replace("Level_", ""));
                 int nextLevel = currentLevel + 1;
                 string nextSceneName = $"Level_{nextLevel}";
-                Debug.Log($"➡️ Chuyển từ {currentScene} sang {nextSceneName}...");
-                SceneManager.LoadScene(nextSceneName);
+
+                // 🔎 Kiểm tra xem scene tiếp theo có tồn tại không
+                if (Application.CanStreamedLevelBeLoaded(nextSceneName))
+                {
+                    Debug.Log($"➡️ Chuyển từ {currentScene} sang {nextSceneName}...");
+                    SceneManager.LoadScene(nextSceneName);
+                }
+                else
+                {
+                    // ⚠️ Không còn level tiếp theo → random level cũ
+                    int randomLevel = Random.Range(1, currentLevel + 1);
+                    string randomSceneName = $"Level_{randomLevel}";
+
+                    Debug.Log($"🎲 Không còn level tiếp theo — random về {randomSceneName}");
+                    SceneManager.LoadScene(randomSceneName);
+                }
             }
             catch
             {
@@ -82,6 +96,7 @@ public class MainMenuUIControl : MonoBehaviour
             Debug.LogWarning("⚠️ Không phải scene Level_...");
         }
     }
+
 
     // ✅ NEW — Retry tự động lấy tên scene hiện tại
     public void RetryCurrentLevel()
