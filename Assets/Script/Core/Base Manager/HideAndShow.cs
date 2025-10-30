@@ -6,6 +6,7 @@ public class HideAndShowUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     [Header("Các đối tượng cần ẩn khi chạm")]
     public GameObject objectToHide1;
     public GameObject objectToHide2;
+    public GameObject objectToHide3;
 
     [Header("Các đối tượng cần hiện ra khi chạm")]
     public GameObject objectToShow1;
@@ -48,6 +49,7 @@ public class HideAndShowUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
                 // Ẩn
                 if (objectToHide1) objectToHide1.SetActive(false);
                 if (objectToHide2) objectToHide2.SetActive(false);
+                if (objectToHide3) objectToHide3.SetActive(false);
 
                 // Hiện
                 if (objectToShow1) objectToShow1.SetActive(true);

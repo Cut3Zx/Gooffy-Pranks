@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.Collections;
 
 public class FindDifferenceManager : MonoBehaviour
 {
@@ -9,6 +10,9 @@ public class FindDifferenceManager : MonoBehaviour
 
     [Header("UI thắng khi tìm đủ")]
     public GameObject winUI;
+
+    [Header("⏱️ Thời gian chờ trước khi hiển thị win (giây)")]
+    public float winDelay = 0.8f;
 
     private int foundCount = 0;
 
@@ -24,13 +28,24 @@ public class FindDifferenceManager : MonoBehaviour
         Debug.Log($"🔍 Đã tìm được {foundCount}/{totalDifferences}");
 
         if (foundCount >= totalDifferences)
-            ShowWin();
+            StartCoroutine(ShowWinWithDelay());
     }
 
-    private void ShowWin()
+    private IEnumerator ShowWinWithDelay()
     {
+        Debug.Log("🎯 Đã tìm đủ khác biệt — chuẩn bị hiện Win!");
+        yield return new WaitForSeconds(winDelay);
+
+        // Hiện UI thắng
         if (winUI != null)
             winUI.SetActive(true);
+
+        // 🏆 Gọi GameManager nếu có
+        if (GameManager.Instance != null)
+            GameManager.Instance.EndGame(true);
+
+        // 🔓 Mở khóa màn kế tiếp (nếu có hệ thống mở khóa)
+        
 
         Debug.Log("🏆 Tìm đủ điểm khác biệt — WIN!");
     }

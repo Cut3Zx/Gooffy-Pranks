@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.EventSystems;
+using System.Collections;
 
 public class NeighborSleep : BaseObjectManager
 {
@@ -42,13 +43,20 @@ public class NeighborSleep : BaseObjectManager
             Debug.Log("🐈 Mèo bị ẩn khi ông dậy.");
         }
 
-        // 🏆 Gọi GameManager thắng
+        // 🏆 Delay 1s rồi mới gọi win
+        gameManager.StartCoroutine(DelayWin());
+    }
+
+    private IEnumerator DelayWin()
+    {
+        yield return new WaitForSeconds(1f); // ⏱️ chờ 1 giây
+
         if (gameManager == null)
             gameManager = FindFirstObjectByType<GameManager>();
 
         if (gameManager != null)
         {
-            Debug.Log("🏆 Chiến thắng! Ông hàng xóm tỉnh dậy!");
+            Debug.Log("🏆 Chiến thắng sau 1 giây delay!");
             gameManager.EndGame(true);
         }
         else

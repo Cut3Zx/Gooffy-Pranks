@@ -16,7 +16,8 @@ MonoBehaviour:
     m_Code: vi
   m_SharedData: {fileID: 11400000, guid: 8779a95a411fff647964fcaef0f404bd, type: 2}
   m_Metadata:
-    m_Items: []
+    m_Items:
+    - rid: 8508728574438539279
   m_TableData:
   - m_Id: 21524066304
     m_Localized: "CH\u01A0I"
@@ -160,8 +161,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 3449392051728384
-    m_Localized: "\u1EA4n v\xE0o t\u1EEBng qu\u1EA3 tr\u1EE9ng \u0111\u1EC3 b\xF3c
-      v\u1ECF"
+    m_Localized: "T\xECm ki\u1EBFm qu\u1EA3 tr\u1EE9ng s\u1ED1ng"
     m_Metadata:
       m_Items: []
   - m_Id: 3479867499687936
@@ -235,7 +235,8 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 4228646502871040
-    m_Localized: "Ch\u1EA1m 2 l\u1EA7n v\xE0o qu\u1EA3 tr\u1EE9ng!"
+    m_Localized: "\u1EA5n v\xE0o t\u1EEBng qu\u1EA3 tr\u1EE9ng \u0111\u1EC3 b\xF3c
+      v\u1ECF"
     m_Metadata:
       m_Items: []
   - m_Id: 4228979975204864
@@ -251,8 +252,8 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 4229700363694080
-    m_Localized: "n\xE2ng c\u1EA5p cu\u1ED1c b\u1EB1ng kim c\u01B0\u01A1ng trong
-      b\u1EE5i \u0111\u1EC3 ph\xE1 th\xE1p "
+    m_Localized: "n\xE2ng c\u1EA5p cu\u1ED1c kim c\u01B0\u01A1ng \u0111\u1EC3 ph\xE1
+      th\xE1p "
     m_Metadata:
       m_Items: []
   - m_Id: 4230630765178880
@@ -273,11 +274,11 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 4231975316434944
-    m_Localized: "Bi\u1EBFn g\xE0 tr\u1EDF th\xE0nh kh\u1EE7ng long "
+    m_Localized: "Bi\u1EBFn g\xE0 th\xE0nh kh\u1EE7ng long "
     m_Metadata:
       m_Items: []
   - m_Id: 4235162165391360
-    m_Localized: "T\xCCm chi\u1EBFc b\xFAt ch\xEC kh\xE1c bi\u1EC7t"
+    m_Localized: "T\xECm chi\u1EBFc b\xFAt ch\xEC kh\xE1c bi\u1EC7t"
     m_Metadata:
       m_Items: []
   - m_Id: 4235550750879744
@@ -302,7 +303,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 4316867656101888
-    m_Localized: "\u201C\u0111\u01B0a chong ch\xF3ng cho prankster\u201C\r"
+    m_Localized: "L\u1EA5y chong ch\xF3ng \u0111\u01B0a cho \"Prankster\""
     m_Metadata:
       m_Items: []
   - m_Id: 4643798054285312
@@ -318,9 +319,10 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 4647762246184960
-    m_Localized: "\u0110\u1EA9y ng\xE3 Prankster"
+    m_Localized: "L\xE0m ng\xE3 Prankster"
     m_Metadata:
-      m_Items: []
+      m_Items:
+      - rid: 8508728574438539279
   - m_Id: 4647994107310080
     m_Localized: "Th\u1EA5p \u0111\u1EBFn cao"
     m_Metadata:
@@ -334,7 +336,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 4769261531639808
-    m_Localized: "Gi\xFAp Prankster ti\u1EBFn s\u0129 v\u01B0\u1EE3t qua m\xE0n n\xE0y"
+    m_Localized: "Gi\xFAp Prankster r\xE8n luy\u1EC7n t\xEDnh ki\xEAn nh\u1EABn"
     m_Metadata:
       m_Items: []
   - m_Id: 4787199579992064
@@ -464,7 +466,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 4966674225639424
-    m_Localized: "D\xF9ng k\xE9o v\xE0 kim l\xEAn c\xF4ng ch\xFAa"
+    m_Localized: "D\xF9ng k\xE9o v\xE0 kim l\xEAn v\xE1y c\xF4ng ch\xFAa"
     m_Metadata:
       m_Items: []
   - m_Id: 5000112689328128
@@ -477,8 +479,8 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 5001746836303872
-    m_Localized: "M\u1ED9t c\u1EA7u v\u1ED3ng c\xF3 7 m\xE0u, v\u1EADy n\u1EBFu c\xF3
-      7 c\u1EA7u v\u1ED3ng th\xEC s\u1EBD c\xF3 bao nhi\xEAu m\xE0u?"
+    m_Localized: "1 c\u1EA7u v\u1ED3ng c\xF3 7 m\xE0u, v\u1EADy n\u1EBFu c\xF3 7
+      c\u1EA7u v\u1ED3ng th\xEC s\u1EBD c\xF3 bao nhi\xEAu m\xE0u?"
     m_Metadata:
       m_Items: []
   - m_Id: 5001855267450880
@@ -533,6 +535,32 @@ MonoBehaviour:
     m_Localized: "M\xE0n 42"
     m_Metadata:
       m_Items: []
+  - m_Id: 5226347013025792
+    m_Localized: "TI\u1EBENG ANH"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5226424876085248
+    m_Localized: "TI\u1EBENG VI\u1EC6T"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5680771560845312
+    m_Localized: "M\xE0n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6010792037003264
+    m_Localized: "HI\u1EC6U \u1EE8NG"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6239019967918080
+    m_Localized: "H\xCCNH \u1EA2NH"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
-    RefIds: []
+    RefIds:
+    - rid: 8508728574438539279
+      type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
+      data:
+        m_Entries: 
+        m_SharedEntries:
+        - id: 4647762246184960

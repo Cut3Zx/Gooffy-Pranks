@@ -50,6 +50,7 @@ public class ChalkDrag : BaseObjectManager
         if (hasDrawn) return;
         if (rectTransform != null && canvas != null)
             rectTransform.anchoredPosition += eventData.delta / canvas.scaleFactor;
+
     }
 
     // ============================================
@@ -92,6 +93,7 @@ public class ChalkDrag : BaseObjectManager
         return RectTransformUtility.RectangleContainsScreenPoint(targetRect, Input.mousePosition, canvas.worldCamera);
     }
 
+
     // ============================================
     // 🔹 Coroutine: Tô hình → hiện compa thật → phấn biến mất
     // ============================================
@@ -114,4 +116,5 @@ public class ChalkDrag : BaseObjectManager
         // 💨 Ẩn phấn sau khi hoàn tất
         gameObject.SetActive(false);
     }
+    
 }

@@ -220,8 +220,7 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 4226815869530112
     m_Localized: Hang the picture on the wall, lift up the cabinet, and clean up
-      the trash!Hang the picture on the wall, lift up the cabinet, and clean up the
-      trash!
+      the trash!
     m_Metadata:
       m_Items: []
   - m_Id: 4227383702794240
@@ -233,7 +232,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 4228646502871040
-    m_Localized: Double tap the egg!
+    m_Localized: Tap on the egg to open
     m_Metadata:
       m_Items: []
   - m_Id: 4228979975204864
@@ -297,7 +296,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 4316867656101888
-    m_Localized: '"Give the pinwheel to the prankster"'
+    m_Localized: Give the pinwheel to the "Prankster"
     m_Metadata:
       m_Items: []
   - m_Id: 4643798054285312
@@ -313,7 +312,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 4647762246184960
-    m_Localized: Find a way to make the Prankster fall!
+    m_Localized: Make Prankster fall
     m_Metadata:
       m_Items: []
   - m_Id: 4647994107310080
@@ -329,7 +328,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 4769261531639808
-    m_Localized: Help Dr. Prankster beat this level!
+    m_Localized: Help Prankster practice patience
     m_Metadata:
       m_Items: []
   - m_Id: 4787199579992064
@@ -457,7 +456,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 4966674225639424
-    m_Localized: Use the scissors and needle on the princess.
+    m_Localized: Use the scissors and needle on the princess's dress.
     m_Metadata:
       m_Items: []
   - m_Id: 5000112689328128
@@ -522,7 +521,27 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 5115116566556672
-    m_Localized: Level42
+    m_Localized: Level 42
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5226347013025792
+    m_Localized: ENGLISH
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5226424876085248
+    m_Localized: VIETNAMESE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5680771560845312
+    m_Localized: Level
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6010792037003264
+    m_Localized: SFX
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6239019967918080
+    m_Localized: IMAGE
     m_Metadata:
       m_Items: []
   references:

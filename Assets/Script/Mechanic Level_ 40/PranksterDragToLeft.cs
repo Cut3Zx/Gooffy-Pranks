@@ -53,11 +53,16 @@ public class PranksterDragToLeft : MonoBehaviour, IBeginDragHandler, IDragHandle
             Debug.Log("✅ Kéo sang trái — WIN!");
             isWin = true;
 
+            // 🏁 Gọi GameManager
+            if (GameManager.Instance != null)
+                GameManager.Instance.EndGame(true);
+
+            // 🔓 Mở khóa level tiếp theo
+            
+
+            // 🎉 Hiện UI thắng
             if (winUI != null)
                 winUI.SetActive(true);
-            Time.timeScale = 0f; // ⏸️ dừng toàn bộ thời gian trong game
-            AudioListener.pause = true; // (tuỳ chọn) dừng cả âm thanh
-
         }
         else
         {

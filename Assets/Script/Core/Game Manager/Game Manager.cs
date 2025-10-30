@@ -1,15 +1,11 @@
 ﻿using UnityEngine;
 using TMPro;
 using System;
+using System.Collections;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
-public enum GameState
-{
-    MainMenu = 0,
-    Playing = 1,
-    Paused = 2,
-    GameOver = 3
-}
+public enum GameState { MainMenu, Playing, Paused, GameOver }
 
 public class GameManager : MonoBehaviour
 {
@@ -19,29 +15,25 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI timerText;
 
     [Header("UI References")]
-    public GameObject winUI;
-    public GameObject loseUI;
+    public GameObject winUI, loseUI, winImage;
+    public GameObject bagImage, winBackground;
+    public Image flashImage;
+    public RectTransform winTarget;
 
-    private bool gameEnded = false;
+    [Header("Animation Settings")]
+    public float flashSpeed = 0.2f, flashAlpha = 1f;
+    public float winDelay = 1.2f, flyDuration = 1.2f;
+    public float rotateSpeed = 360f, shrinkScale = 0.3f;
 
-    public static event Action<GameState> OnGameStateChanged;
-    public static GameManager Instance { get; private set; }
-
+    private bool gameEnded;
     private GameState currentState;
+    public static GameManager Instance { get; private set; }
+    public static event Action<GameState> OnGameStateChanged;
 
     private void Awake()
     {
-        if (Instance == null)
-        {
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
-            return;
-        }
-
+        if (Instance == null) Instance = this;
+        else { Destroy(gameObject); return; }
         ChangeState(GameState.MainMenu);
     }
 
@@ -50,30 +42,13 @@ public class GameManager : MonoBehaviour
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        if (timerText == null)
-        {
-            var timerObj = GameObject.Find("TimerText");
-            if (timerObj != null)
-                timerText = timerObj.GetComponent<TextMeshProUGUI>();
-        }
-
-        if (winUI == null)
-        {
-            var w = GameObject.Find("Congrat");
-            if (w == null) w = GameObject.Find("UI Manager/WL Manager/Congrat");
-            if (w != null) winUI = w;
-        }
-
-        if (loseUI == null)
-        {
-            var l = GameObject.Find("GameOver");
-            if (l == null) l = GameObject.Find("UI Manager/WL Manager/GameOver");
-            if (l != null) loseUI = l;
-        }
-
-        if (winUI == null || loseUI == null)
-            Debug.LogWarning("⚠️ GameManager chưa tìm thấy WinUI hoặc LoseUI trong scene mới!");
-
+        timerText ??= GameObject.Find("TimerText")?.GetComponent<TextMeshProUGUI>();
+        winImage ??= GameObject.Find("WinImage");
+        winUI ??= GameObject.Find("Congrat") ?? GameObject.Find("UI Manager/WL Manager/Congrat");
+        loseUI ??= GameObject.Find("GameOver") ?? GameObject.Find("UI Manager/WL Manager/GameOver");
+        flashImage ??= GameObject.Find("FlashEffect")?.GetComponent<Image>();
+        winBackground ??= GameObject.Find("WinBG");
+        bagImage ??= GameObject.Find("BagImage");
         ResetTimerUI();
     }
 
@@ -91,94 +66,165 @@ public class GameManager : MonoBehaviour
         currentTime -= Time.deltaTime;
         UpdateTimerText();
 
-        if (currentTime <= 0)
-        {
-            EndGame(false);
-        }
+        if (currentTime <= 0) EndGame(false);
 
-        if (CollectibleManager.Instance != null &&
-            CollectibleManager.Instance.GetCollectedCount() >= CollectibleManager.Instance.GetTotalCount() &&
-            CollectibleManager.Instance.GetTotalCount() > 0)
-        {
+        var cm = CollectibleManager.Instance;
+        if (cm != null && cm.GetCollectedCount() >= cm.GetTotalCount() && cm.GetTotalCount() > 0)
             EndGame(true);
-        }
-        // ⚡ Skip level bằng phím K
-
     }
 
     private void UpdateTimerText()
     {
-        if (timerText != null)
-            timerText.text = Mathf.CeilToInt(currentTime).ToString() + "s";
+        if (timerText) timerText.text = Mathf.CeilToInt(currentTime) + "s";
     }
 
     public void EndGame(bool isWin)
     {
+        if (gameEnded) return;
         gameEnded = true;
 
-        if (isWin)
+        if (isWin) StartCoroutine(HandleWinSequence());
+        else HandleLose();
+    }
+
+    private IEnumerator HandleWinSequence()
+    {
+        SoundManager.Instance?.PlayWin();
+
+        yield return new WaitForSeconds(0.5f);
+        if (flashImage) yield return FlashEffectRoutine();
+
+        winBackground?.SetActive(true);
+        bagImage?.SetActive(true);
+
+        if (winImage)
         {
-            if (SoundManager.Instance != null)
-                SoundManager.Instance.PlayWin();
-            HintUI hintUI = FindObjectOfType<HintUI>();
-            if (hintUI != null)
-                hintUI.AddHint(1);
-            if (winUI != null) winUI.SetActive(true);
-            UnlockNextLevel();
+            winImage.SetActive(true);
+            yield return new WaitForSeconds(1f); // 👈 hiển thị 1 giây trước khi xoay
+
+            var rect = winImage.GetComponent<RectTransform>();
+            if (winTarget) yield return AnimateWinImage(rect, winTarget.anchoredPosition);
         }
-        else
-        {
-            if (SoundManager.Instance != null)
-                SoundManager.Instance.PlayLose();
-            if (loseUI != null) loseUI.SetActive(true);
-        }
+
+        UnlockPhoto();
+        yield return new WaitForSeconds(winDelay);
+        winUI?.SetActive(true);
+
+        FindObjectOfType<HintUI>()?.AddHint(1);
+        UnlockNextLevel();
 
         Time.timeScale = 0f;
         ChangeState(GameState.GameOver);
     }
 
-    private void UnlockNextLevel()
+    private IEnumerator FlashEffectRoutine()
     {
-        string currentScene = SceneManager.GetActiveScene().name;
+        if (!flashImage) yield break;
+        flashImage.gameObject.SetActive(true);
+        var c = flashImage.color;
 
-        if (currentScene.StartsWith("Level"))
+        for (float t = 0; t < 1; t += Time.unscaledDeltaTime / flashSpeed)
         {
-            try
-            {
-                int currentLevelNum = int.Parse(currentScene.Replace("Level", "").Trim('_'));
-                int nextLevelNum = currentLevelNum + 1;
+            c.a = Mathf.Lerp(0, flashAlpha, t);
+            flashImage.color = c;
+            yield return null;
+        }
 
-                // ✅ Đảm bảo không vượt quá số lượng level hiện có
-                string nextKey = $"Level_{nextLevelNum}_Unlocked";
-                if (PlayerPrefs.GetInt(nextKey, 0) == 0)
-                {
-                    PlayerPrefs.SetInt(nextKey, 1);
-                    PlayerPrefs.Save();
-                    Debug.Log($"🔓 Đã mở khóa Level {nextLevelNum}");
-                }
-            }
-            catch (Exception e)
+        for (float t = 0; t < 1; t += Time.unscaledDeltaTime / flashSpeed)
+        {
+            c.a = Mathf.Lerp(flashAlpha, 0, t);
+            flashImage.color = c;
+            yield return null;
+        }
+
+        flashImage.gameObject.SetActive(false);
+    }
+
+    private IEnumerator AnimateWinImage(RectTransform rect, Vector2 targetPos)
+    {
+        if (!rect) yield break;
+        var group = rect.GetComponent<CanvasGroup>() ?? rect.gameObject.AddComponent<CanvasGroup>();
+        Vector2 startPos = rect.anchoredPosition;
+        Vector3 startScale = rect.localScale;
+        float elapsed = 0f, rotation = 0f;
+
+        while (elapsed < flyDuration)
+        {
+            elapsed += Time.unscaledDeltaTime;
+            float t = elapsed / flyDuration;
+            rect.anchoredPosition = Vector2.Lerp(startPos, targetPos, t);
+            rect.localScale = Vector3.Lerp(startScale, startScale * shrinkScale, t);
+            rotation += rotateSpeed * Time.unscaledDeltaTime;
+            rect.localRotation = Quaternion.Euler(0, 0, rotation);
+            group.alpha = Mathf.Lerp(1, 0, t);
+            yield return null;
+        }
+
+        rect.gameObject.SetActive(false);
+    }
+
+    private void HandleLose()
+    {
+        SoundManager.Instance?.PlayLose();
+        loseUI?.SetActive(true);
+        Time.timeScale = 0f;
+        ChangeState(GameState.GameOver);
+    }
+
+    private void UnlockPhoto()
+    {
+        string scene = SceneManager.GetActiveScene().name;
+        if (!scene.StartsWith("Level_")) return;
+
+        try
+        {
+            int level = int.Parse(scene.Replace("Level_", "").Trim());
+            string key = $"Collected_Level_{level}";
+
+            if (PlayerPrefs.GetInt(key, 0) == 0)
             {
-                Debug.LogError("❌ Lỗi khi mở khóa level kế tiếp: " + e.Message);
+                PlayerPrefs.SetInt(key, 1);
+                PlayerPrefs.Save();
+                Debug.Log($"📸 Đã mở khóa ảnh cho Level {level}");
             }
+        }
+        catch (Exception e)
+        {
+            Debug.LogWarning($"⚠️ Lỗi xác định level: {e.Message}");
         }
     }
 
-    public void RestartLevel()
+    private void UnlockNextLevel()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        string scene = SceneManager.GetActiveScene().name;
+        if (!scene.StartsWith("Level")) return;
+
+        try
+        {
+            int level = int.Parse(scene.Replace("Level", "").Trim('_'));
+            string nextKey = $"Level_{level + 1}_Unlocked";
+
+            if (PlayerPrefs.GetInt(nextKey, 0) == 0)
+            {
+                PlayerPrefs.SetInt(nextKey, 1);
+                PlayerPrefs.Save();
+                Debug.Log($"🔓 Mở khóa Level {level + 1}");
+            }
+        }
+        catch (Exception e)
+        {
+            Debug.LogError($"❌ Lỗi mở khóa kế: {e.Message}");
+        }
     }
+
+    public void RestartLevel() => SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 
     public void ChangeState(GameState newState)
     {
         if (currentState == newState) return;
         currentState = newState;
-
-        Debug.Log($"Game State changed to {newState}");
         OnGameStateChanged?.Invoke(newState);
     }
-
-    public GameState GetCurrentState() => currentState;
 
     public void resetGame()
     {
@@ -188,12 +234,17 @@ public class GameManager : MonoBehaviour
 
     private void ResetTimerUI()
     {
+        StopAllCoroutines();
         gameEnded = false;
         currentTime = timeLimit;
         Time.timeScale = 1f;
 
-        if (winUI != null) winUI.SetActive(false);
-        if (loseUI != null) loseUI.SetActive(false);
+        winUI?.SetActive(false);
+        loseUI?.SetActive(false);
+        winImage?.SetActive(false);
+        bagImage?.SetActive(false);
+        winBackground?.SetActive(false);
+        if (flashImage) flashImage.gameObject.SetActive(false);
 
         UpdateTimerText();
     }

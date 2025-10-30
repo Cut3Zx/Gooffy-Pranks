@@ -6,35 +6,107 @@ public class MainMenuUIControl : MonoBehaviour
     [Header("UI Panels")]
     public GameObject mainMenuUI;
     public GameObject levelSelectUI;
+    public GameObject albumUI;
     public GameObject pauseUI;
 
-    public void WaybackHome()
+    [Header("Loading (Prefab)")]
+    [SerializeField] private GameObject loadingPrefab;
+    [SerializeField] private string loadingResourceName = "SceneLoading";
+
+    // ---------- Helpers ----------
+    void EnsureLoader()
     {
-        SceneManager.LoadScene("MainMenu");
+        if (SimpleSceneLoader.I != null) return;
+
+        if (loadingPrefab != null)
+            Instantiate(loadingPrefab);
+        else
+        {
+            var go = Resources.Load<GameObject>(loadingResourceName);
+            if (go != null) Instantiate(go);
+        }
+    }
+
+    void LoadWithLoading(string sceneName)
+    {
+        Time.timeScale = 1f;
+        EnsureLoader();
+
+        if (SimpleSceneLoader.I != null)
+            SimpleSceneLoader.I.Load(sceneName);
+        else
+            SceneManager.LoadScene(sceneName);
+    }
+    // -----------------------------
+
+    private void Start()
+    {
+        int shouldOpenSelect = PlayerPrefs.GetInt("OpenLevelSelect", 0);
+
+        if (shouldOpenSelect == 1)
+        {
+            // ✅ Reset flag sau khi mở 1 lần
+            PlayerPrefs.SetInt("OpenLevelSelect", 0);
+            PlayerPrefs.Save();
+
+            if (mainMenuUI) mainMenuUI.SetActive(false);
+            if (levelSelectUI) levelSelectUI.SetActive(true);
+
+            Debug.Log("📜 Tự động mở Level Select sau khi quay lại Main Menu!");
+        }
+        else
+        {
+            // ✅ Trạng thái mặc định: hiện menu chính
+            if (mainMenuUI) mainMenuUI.SetActive(true);
+            if (levelSelectUI) levelSelectUI.SetActive(false);
+        }
+        if (albumUI) albumUI.SetActive(false);
+    }
+
+    public void WaybackHome() => LoadWithLoading("MainMenu");
+
+    // ✅ Gọi hàm này để quay về MainMenu + mở LevelSelect đúng lúc
+    public void GoToLevelSelect()
+    {
+        string currentScene = SceneManager.GetActiveScene().name;
+
+        if (currentScene != "MainMenu")
+        {
+            Debug.Log("🏠 Quay về MainMenu và mở Level Select...");
+            PlayerPrefs.SetInt("OpenLevelSelect", 1);
+            PlayerPrefs.Save();
+            LoadWithLoading("MainMenu");
+        }
+        else
+        {
+            // Nếu đang ở menu sẵn → chỉ mở bình thường
+            if (mainMenuUI) mainMenuUI.SetActive(false);
+            if (levelSelectUI) levelSelectUI.SetActive(true);
+        }
     }
 
     public void ShowPauseUI()
     {
-        if (pauseUI != null) pauseUI.SetActive(true);
-        if (mainMenuUI != null) mainMenuUI.SetActive(false);
+        if (pauseUI) pauseUI.SetActive(true);
+        if (mainMenuUI) mainMenuUI.SetActive(false);
         Time.timeScale = 0f;
     }
 
     public void HidePauseUI()
     {
-        if (pauseUI != null) pauseUI.SetActive(false);
-        if (mainMenuUI != null) mainMenuUI.SetActive(true);
+        if (pauseUI) pauseUI.SetActive(false);
+        if (mainMenuUI) mainMenuUI.SetActive(true);
         Time.timeScale = 1f;
     }
 
     public void HideSelectUI()
     {
-        if (levelSelectUI != null) levelSelectUI.SetActive(false);
+        if (levelSelectUI) levelSelectUI.SetActive(false);
     }
 
     public void TogglePauseUI()
     {
-        if (pauseUI == null) return;
+        if (!pauseUI) return;
         bool isActive = pauseUI.activeSelf;
         pauseUI.SetActive(!isActive);
         Time.timeScale = isActive ? 1f : 0f;
@@ -42,20 +114,20 @@ public class MainMenuUIControl : MonoBehaviour
 
     public void OnPlayButton()
     {
-        mainMenuUI.SetActive(false);
-        levelSelectUI.SetActive(true);
+        if (mainMenuUI) mainMenuUI.SetActive(false);
+        if (levelSelectUI) levelSelectUI.SetActive(true);
     }
 
     public void OnBackButton()
     {
-        levelSelectUI.SetActive(false);
-        mainMenuUI.SetActive(true);
+        if (levelSelectUI) levelSelectUI.SetActive(false);
+        if (mainMenuUI) mainMenuUI.SetActive(true);
     }
 
     public void OnSelectLevel(string sceneName)
     {
         Debug.Log("🔹 Load scene: " + sceneName);
-        SceneManager.LoadScene(sceneName);
+        LoadWithLoading(sceneName);
     }
 
     public void AutoNextLevel()
@@ -67,66 +139,79 @@ public class MainMenuUIControl : MonoBehaviour
             try
             {
                 int currentLevel = int.Parse(currentScene.Replace("Level_", ""));
-                int nextLevel = currentLevel + 1;
-                string nextSceneName = $"Level_{nextLevel}";
+                string nextSceneName = $"Level_{currentLevel + 1}";
 
-                // 🔎 Kiểm tra xem scene tiếp theo có tồn tại không
                 if (Application.CanStreamedLevelBeLoaded(nextSceneName))
                 {
-                    Debug.Log($"➡️ Chuyển từ {currentScene} sang {nextSceneName}...");
-                    SceneManager.LoadScene(nextSceneName);
+                    Debug.Log($"➡️ {currentScene} -> {nextSceneName}");
+                    LoadWithLoading(nextSceneName);
                 }
                 else
                 {
-                    // ⚠️ Không còn level tiếp theo → random level cũ
                     int randomLevel = Random.Range(1, currentLevel + 1);
-                    string randomSceneName = $"Level_{randomLevel}";
-
-                    Debug.Log($"🎲 Không còn level tiếp theo — random về {randomSceneName}");
-                    SceneManager.LoadScene(randomSceneName);
+                    LoadWithLoading($"Level_{randomLevel}");
                 }
             }
-            catch
-            {
-                Debug.LogWarning("⚠️ Không thể xác định level hiện tại!");
-            }
+            catch { Debug.LogWarning("⚠️ Không thể xác định level hiện tại!"); }
         }
-        else
-        {
-            Debug.LogWarning("⚠️ Không phải scene Level_...");
-        }
+        else Debug.LogWarning("⚠️ Không phải scene Level_...");
     }
 
-
-    // ✅ NEW — Retry tự động lấy tên scene hiện tại
     public void RetryCurrentLevel()
     {
         string currentScene = SceneManager.GetActiveScene().name;
-        Debug.Log($"🔁 Retry lại scene: {currentScene}");
-
-        // Nếu có GameManager, reset lại dữ liệu
-        if (GameManager.Instance != null)
-        {
-            GameManager.Instance.resetGame();
-        }
-
-        // Load lại chính scene hiện tại
-        SceneManager.LoadScene(currentScene);
+        Debug.Log($"🔁 Retry: {currentScene}");
+        if (GameManager.Instance) GameManager.Instance.resetGame();
+        LoadWithLoading(currentScene);
     }
 
-    public void OnExit()
-    {
-        Application.Quit();
-    }
+    public void OnExit() => Application.Quit();
 
     public void ResetLevel(int levelNumber)
     {
-        if (GameManager.Instance != null)
-        {
-            GameManager.Instance.resetGame();
-        }
-
-        string sceneName = $"Level_{levelNumber}";
-        SceneManager.LoadScene(sceneName);
+        if (GameManager.Instance) GameManager.Instance.resetGame();
+        LoadWithLoading($"Level_{levelNumber}");
     }
+
+    // ----- Unlock / Lock All -----
+    public void UnlockAllLevels()
+    {
+        int totalLevels = 50;
+        for (int i = 1; i <= totalLevels; i++)
+            PlayerPrefs.SetInt($"Level_{i}_Unlocked", 1);
+
+        PlayerPrefs.Save();
+        Debug.Log($"🔓 Mở khóa toàn bộ {totalLevels} màn!");
+        var levelManager = FindObjectOfType<LevelSelectManager>();
+        if (levelManager) levelManager.RefreshLevelsUI();
+    }
+
+    public void LockAllLevelsExceptFirst()
+    {
+        int totalLevels = 50;
+        for (int i = 1; i <= totalLevels; i++)
+            PlayerPrefs.SetInt($"Level_{i}_Unlocked", i == 1 ? 1 : 0);
+
+        PlayerPrefs.Save();
+        Debug.Log("🔒 Khóa toàn bộ (trừ Level_1).");
+        var levelManager = FindObjectOfType<LevelSelectManager>();
+        if (levelManager) levelManager.RefreshLevelsUI();
+    }
+    public void OnOpenAlbum()
+    {
+        if (mainMenuUI) mainMenuUI.SetActive(false);
+        if (levelSelectUI) levelSelectUI.SetActive(false);
+        if (albumUI) albumUI.SetActive(true);
+
+        var albumManager = albumUI.GetComponent<AlbumManager>();
+        if (albumManager != null)
+            albumManager.RefreshAlbum();
+    }
+
+    public void OnCloseAlbum()
+    {
+        if (albumUI) albumUI.SetActive(false);
+        if (mainMenuUI) mainMenuUI.SetActive(true);
+    }
+
 }

@@ -5,9 +5,9 @@ public class AdsManager : MonoBehaviour
 {
     public static AdsManager Instance { get; private set; }
 
-    private string bannerId = "ca-app-pub-7458507592918500/4274170001";
-    private string interId = "ca-app-pub-7458507592918500/2909117444";
-    private string rewardId = "ca-app-pub-7458507592918500/3863299988";
+    private string bannerId = "ca-app-pub-1945244255127558/2361559821";
+    private string interId = "ca-app-pub-1945244255127558/9815160974";
+    private string rewardId = "ca-app-pub-1945244255127558/1375781213";
 
     private BannerView bannerView;
     private InterstitialAd interAd;

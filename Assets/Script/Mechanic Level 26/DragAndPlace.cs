@@ -4,47 +4,61 @@ using System.Collections.Generic;
 
 public class DragAndPlaceUniversal : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
+    [Header("Các vùng có thể gắn")]
     public RectTransform[] stepZones;
     public float snapDistance = 100f;
 
     static Dictionary<RectTransform, GameObject> occupied = new();
-    RectTransform rect, snappedZone;
-    Canvas canvas;
-    bool isPlaced;
 
-    void Awake() { rect = GetComponent<RectTransform>(); canvas = GetComponentInParent<Canvas>(); }
+    private RectTransform rect;
+    private Canvas canvas;
+    private bool isPlaced = false;
+
+    void Awake()
+    {
+        rect = GetComponent<RectTransform>();
+        canvas = GetComponentInParent<Canvas>();
+    }
 
     public void OnBeginDrag(PointerEventData e)
     {
-        if (!isPlaced) return;
-        if (snappedZone && occupied.ContainsKey(snappedZone)) occupied.Remove(snappedZone);
-        isPlaced = false; snappedZone = null;
+        // ❌ Nếu đã đặt rồi thì không cho kéo nữa
+        if (isPlaced) return;
     }
 
     public void OnDrag(PointerEventData e)
     {
         if (isPlaced) return;
+
         RectTransformUtility.ScreenPointToLocalPointInRectangle(
-            canvas.transform as RectTransform, e.position, canvas.worldCamera, out var p);
-        rect.anchoredPosition = p;
+            canvas.transform as RectTransform, e.position, canvas.worldCamera, out var localPos);
+
+        rect.anchoredPosition = localPos;
     }
 
     public void OnEndDrag(PointerEventData e)
     {
         if (isPlaced) return;
-        RectTransform closest = null; float min = float.MaxValue;
 
-        foreach (var z in stepZones)
+        RectTransform closest = null;
+        float minDist = float.MaxValue;
+
+        foreach (var zone in stepZones)
         {
-            float d = Vector2.Distance(rect.anchoredPosition, z.anchoredPosition);
-            if (d < snapDistance && d < min) { min = d; closest = z; }
+            float dist = Vector2.Distance(rect.anchoredPosition, zone.anchoredPosition);
+            if (dist < snapDistance && dist < minDist)
+            {
+                minDist = dist;
+                closest = zone;
+            }
         }
 
-        if (closest && !occupied.ContainsKey(closest))
+        // ✅ Gắn vào vùng trống gần nhất
+        if (closest != null && !occupied.ContainsKey(closest))
         {
             rect.anchoredPosition = closest.anchoredPosition;
             occupied[closest] = gameObject;
-            snappedZone = closest; isPlaced = true;
+            isPlaced = true; // 🔒 Cố định – không kéo lại được
             ClimbManager.Instance?.RegisterStepFilled();
         }
     }

@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using TMPro;
 
 public class ElephantOrderManager : MonoBehaviour
 {
@@ -15,9 +14,17 @@ public class ElephantOrderManager : MonoBehaviour
     private int currentClick = 0;
     private bool gameEnded = false;
 
+    private GameManager gameManager; // 🔗 Tham chiếu nội bộ
+
     private void Awake()
     {
         Instance = this;
+
+        // 🔍 Tự động tìm GameManager nếu chưa có tham chiếu
+        if (GameManager.Instance != null)
+            gameManager = GameManager.Instance;
+        else
+            gameManager = FindObjectOfType<GameManager>();
     }
 
     private void Start()
@@ -63,15 +70,18 @@ public class ElephantOrderManager : MonoBehaviour
         {
             Debug.Log("🏆 Bấm đúng thứ tự → Thắng!");
             if (winUI != null) winUI.SetActive(true);
-            if (GameManager.Instance != null)
-                GameManager.Instance.EndGame(true);
+
+            // ✅ Gọi GameManager nếu có
+            if (gameManager != null)
+                gameManager.EndGame(true);
         }
         else
         {
             Debug.Log("❌ Sai thứ tự → Thua!");
             if (loseUI != null) loseUI.SetActive(true);
-            if (GameManager.Instance != null)
-                GameManager.Instance.EndGame(false);
+
+            if (gameManager != null)
+                gameManager.EndGame(false);
         }
     }
 }

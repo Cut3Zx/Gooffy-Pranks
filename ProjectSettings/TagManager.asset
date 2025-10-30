@@ -16,6 +16,7 @@ TagManager:
   - Elephant
   - Dino
   - DropZone
+  - card
   layers:
   - Default
   - TransparentFX

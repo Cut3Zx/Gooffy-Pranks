@@ -9,7 +9,7 @@
     <!-- ⚙️ Dành cho các API cũ -->
     <uses-library android:name="org.apache.http.legacy" android:required="false" />
     <!-- ✅ App ID chính thức của bạn -->
-    <meta-data android:name="com.google.android.gms.ads.APPLICATION_ID" android:value="ca-app-pub-7458507592918500~7634830514" />
+    <meta-data android:name="com.google.android.gms.ads.APPLICATION_ID" android:value="ca-app-pub-1945244255127558~9822899831" />
     <!-- ⚙️ Phiên bản Unity (tự động nhận) -->
     <meta-data android:name="com.google.unity.ads.UNITY_VERSION" android:value="2022.3.62f2" />
   </application>

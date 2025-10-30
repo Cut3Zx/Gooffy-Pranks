@@ -82,4 +82,32 @@ public class LevelSelectManager : MonoBehaviour
             Debug.LogWarning($"⚠️ Scene name for Level {index + 1} is missing!");
         }
     }
+    public void RefreshLevelsUI()
+    {
+        Debug.Log("🔁 Làm mới giao diện Level Select...");
+
+        for (int i = 0; i < levels.Length; i++)
+        {
+            string key = $"Level_{i + 1}_Unlocked";
+            bool unlocked = PlayerPrefs.GetInt(key, 0) == 1;
+
+            var lv = levels[i];
+            if (lv.button == null) continue;
+
+            // ✅ Cập nhật trạng thái UI
+            lv.button.interactable = unlocked;
+
+            if (lv.backgroundImage != null)
+                lv.backgroundImage.color = unlocked ? unlockedColor : lockedColor;
+
+            if (lv.label != null)
+                lv.label.color = unlocked ? Color.white : new Color(1f, 1f, 1f, 0.6f);
+
+            if (lv.lockIcon != null)
+                lv.lockIcon.SetActive(!unlocked);
+        }
+
+        Debug.Log("✅ Làm mới xong trạng thái tất cả Level Buttons!");
+    }
+
 }

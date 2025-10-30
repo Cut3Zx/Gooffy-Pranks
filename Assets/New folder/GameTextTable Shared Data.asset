@@ -531,6 +531,26 @@ MonoBehaviour:
     m_Key: level42
     m_Metadata:
       m_Items: []
+  - m_Id: 5226347013025792
+    m_Key: english
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5226424876085248
+    m_Key: vietnamese
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5680771560845312
+    m_Key: LEVEL
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6010792037003264
+    m_Key: sfx
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6239019967918080
+    m_Key: image
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

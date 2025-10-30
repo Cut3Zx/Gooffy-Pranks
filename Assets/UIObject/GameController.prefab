@@ -47,8 +47,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainMenuUI: {fileID: 7615324630662287011, guid: f866ab6f723384341a4d28cfed1a419b, type: 3}
-  levelSelectUI: {fileID: 0}
+  levelSelectUI: {fileID: 8268943482628945292, guid: 35754121ac4a3ca4c9aa5b40a24788c0, type: 3}
   pauseUI: {fileID: 9207429257946962009, guid: accd21878007c1b4a92e214c804a5ef0, type: 3}
+  loadingPrefab: {fileID: 0}
+  loadingResourceName: SceneLoading
 --- !u!114 &7190559702590383100
 MonoBehaviour:
   m_ObjectHideFlags: 0

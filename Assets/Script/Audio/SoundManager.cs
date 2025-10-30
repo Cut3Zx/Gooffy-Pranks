@@ -19,6 +19,7 @@ public class SoundManager : MonoBehaviour
     public AudioClip loseSound;
 
     private bool musicMuted;
+    private bool sfxMuted;
 
     private void Awake()
     {
@@ -30,6 +31,7 @@ public class SoundManager : MonoBehaviour
         else
         {
             Destroy(gameObject);
+            return;
         }
     }
 
@@ -37,9 +39,12 @@ public class SoundManager : MonoBehaviour
     {
         SceneManager.sceneLoaded += OnSceneLoaded;
 
-        // Lấy trạng thái lưu từ PlayerPrefs
+        // 🔸 Lấy trạng thái lưu từ PlayerPrefs
         musicMuted = PlayerPrefs.GetInt("MusicMuted", 0) == 1;
+        sfxMuted = PlayerPrefs.GetInt("SfxMuted", 0) == 1;
+
         musicSource.mute = musicMuted;
+        sfxSource.mute = sfxMuted;
 
         PlayMusicForScene(SceneManager.GetActiveScene().name);
     }
@@ -62,13 +67,12 @@ public class SoundManager : MonoBehaviour
 
         musicSource.clip = clip;
         musicSource.loop = true;
+
         if (!musicMuted)
             musicSource.Play();
     }
 
-    // ======================
-    // 🔊 Chỉ tắt/bật nhạc nền
-    // ======================
+    // 🎵 Toggle nhạc nền
     public void ToggleMusic()
     {
         musicMuted = !musicMuted;
@@ -78,10 +82,34 @@ public class SoundManager : MonoBehaviour
         PlayerPrefs.Save();
     }
 
-    // ======================
-    // 🔔 Luôn cho phép phát SFX
-    // ======================
-    public void PlayClick() { sfxSource.PlayOneShot(clickSound); }
-    public void PlayWin() { sfxSource.PlayOneShot(winSound); }
-    public void PlayLose() { sfxSource.PlayOneShot(loseSound); }
+    // 🔊 Toggle hiệu ứng SFX
+    public void ToggleSFX()
+    {
+        sfxMuted = !sfxMuted;
+        sfxSource.mute = sfxMuted;
+
+        PlayerPrefs.SetInt("SfxMuted", sfxMuted ? 1 : 0);
+        PlayerPrefs.Save();
+
+        Debug.Log($"🔈 SFX: {(sfxMuted ? "Tắt" : "Bật")}");
+    }
+
+    // 🪄 Các hàm phát âm thanh
+    public void PlayClick()
+    {
+        if (!sfxMuted && clickSound != null)
+            sfxSource.PlayOneShot(clickSound);
+    }
+
+    public void PlayWin()
+    {
+        if (!sfxMuted && winSound != null)
+            sfxSource.PlayOneShot(winSound);
+    }
+
+    public void PlayLose()
+    {
+        if (!sfxMuted && loseSound != null)
+            sfxSource.PlayOneShot(loseSound);
+    }
 }

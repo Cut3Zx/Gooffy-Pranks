@@ -9,7 +9,7 @@ public class CardController : MonoBehaviour, IPointerClickHandler
     [Header("Ảnh mặt sau của thẻ")]
     public GameObject back;
 
-    [Header("Tên định danh để so sánh (ví dụ: 'Cat', 'Dog', 'Apple')")]
+    [Header("Tên định danh (ví dụ: 'Cat', 'Dog')")]
     public string cardID;
 
     private bool isFlipped = false;
@@ -17,7 +17,11 @@ public class CardController : MonoBehaviour, IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        if (isMatched || isFlipped) return; // đã khớp hoặc đang mở thì bỏ qua
+        if (isMatched || isFlipped) return;
+
+        // 🚫 Khi FindPairManager đang check, không cho click
+        if (FindPairManager.Instance != null && FindPairManager.Instance.IsChecking())
+            return;
 
         Flip(true);
         FindPairManager.Instance.CheckCard(this);
@@ -25,6 +29,7 @@ public class CardController : MonoBehaviour, IPointerClickHandler
 
     public void Flip(bool showFront)
     {
+        Debug.Log($"🃏 Flip {cardID} → {(showFront ? "Front" : "Back")}");
         isFlipped = showFront;
         front.SetActive(showFront);
         back.SetActive(!showFront);
@@ -33,8 +38,7 @@ public class CardController : MonoBehaviour, IPointerClickHandler
     public void SetMatched()
     {
         isMatched = true;
-        // Ẩn thẻ sau khi khớp
-        StartCoroutine(HideAfterDelay(0.3f));
+        StartCoroutine(HideAfterDelay(0.25f));
     }
 
     private System.Collections.IEnumerator HideAfterDelay(float delay)
@@ -42,4 +46,6 @@ public class CardController : MonoBehaviour, IPointerClickHandler
         yield return new WaitForSeconds(delay);
         gameObject.SetActive(false);
     }
+    
+
 }

@@ -56,5 +56,9 @@ public class WeighSnapManager : MonoBehaviour
             winImage.SetActive(true);
             Debug.Log($"🏆 Ảnh thắng đã hiện sau {winDelay} giây!");
         }
+
+        // 🟩 GỌI HÀM THẮNG CỦA GAME MANAGER (thêm dòng này)
+        if (GameManager.Instance != null)
+            GameManager.Instance.EndGame(true);
     }
 }

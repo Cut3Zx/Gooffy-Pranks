@@ -2,22 +2,26 @@
 using UnityEngine.EventSystems;
 using TMPro;
 using UnityEngine.UI;
+using System.Collections;
 
 public class QuizSubmitButton : BaseObjectManager
 {
     [Header("References")]
-    public TMP_InputField answerField;   // Ô nhập
-    public TextMeshProUGUI feedbackText; // Text hiển thị phản hồi
+    public TMP_InputField answerField;
+    public TextMeshProUGUI feedbackText;
 
-    [Header("Answer")]
-    public string correctAnswer = "2";   // Đáp án đúng
-    public bool trimWhitespace = true;   // Cắt khoảng trắng
-    public bool acceptLeadingZeros = true; // Cho phép "02" = "2"
+    [Header("Answer Settings")]
+    public string correctAnswer = "2";
+    public bool trimWhitespace = true;
+    public bool acceptLeadingZeros = true;
 
-    [Header("UI & Sound Effects (Optional)")]
-    public GameObject correctFX;         // Hiệu ứng khi đúng
-    public GameObject wrongFX;           // Hiệu ứng khi sai
-    public AudioSource audioSource;      // Nguồn âm thanh
+    [Header("Visual Feedback")]
+    public GameObject correctMark;   // ✅ icon đúng
+    public GameObject wrongMark;     // ❌ icon sai
+    public float markShowTime = 1.5f; // thời gian hiện icon sai
+
+    [Header("Audio")]
+    public AudioSource audioSource;
     public AudioClip sfxCorrect;
     public AudioClip sfxWrong;
 
@@ -29,12 +33,10 @@ public class QuizSubmitButton : BaseObjectManager
 
         if (answerField != null)
         {
-            // Giới hạn chỉ cho nhập số
             answerField.contentType = TMP_InputField.ContentType.IntegerNumber;
             answerField.characterValidation = TMP_InputField.CharacterValidation.Integer;
         }
 
-        // Gán sự kiện cho nút Xác nhận (nếu có)
         Button btn = GetComponent<Button>();
         if (btn != null)
             btn.onClick.AddListener(CheckAnswer);
@@ -42,7 +44,6 @@ public class QuizSubmitButton : BaseObjectManager
 
     public override void OnPointerClick(PointerEventData eventData)
     {
-        // Nếu không có Button component, vẫn xử lý được click
         CheckAnswer();
     }
 
@@ -55,11 +56,8 @@ public class QuizSubmitButton : BaseObjectManager
         if (trimWhitespace)
             userInput = userInput.Trim();
 
-        if (acceptLeadingZeros)
-        {
-            if (int.TryParse(userInput, out int val))
-                userInput = val.ToString();
-        }
+        if (acceptLeadingZeros && int.TryParse(userInput, out int val))
+            userInput = val.ToString();
 
         bool isCorrect = userInput == correctAnswer;
 
@@ -79,16 +77,25 @@ public class QuizSubmitButton : BaseObjectManager
     private void ShowFeedback(bool correct)
     {
         if (feedbackText != null)
-        {
             feedbackText.text = correct ? "✅ Chính xác!" : "❌ Sai rồi, thử lại nhé!";
-        }
 
         if (audioSource != null)
-        {
             audioSource.PlayOneShot(correct ? sfxCorrect : sfxWrong);
-        }
 
-        if (correctFX != null) correctFX.SetActive(correct);
-        if (wrongFX != null) wrongFX.SetActive(!correct);
+        // Hiển thị icon đúng / sai
+        if (correctMark != null) correctMark.SetActive(correct);
+        if (wrongMark != null)
+        {
+            wrongMark.SetActive(!correct);
+            if (!correct)
+                StartCoroutine(HideWrongMark());
+        }
+    }
+
+    private IEnumerator HideWrongMark()
+    {
+        yield return new WaitForSeconds(markShowTime);
+        if (wrongMark != null)
+            wrongMark.SetActive(false);
     }
 }
