@@ -40,7 +40,11 @@ public class CrackedEggClick : BaseObjectManager
     {
         // Ẩn crack
         if (crackTop != null) crackTop.SetActive(false);
-        if (crackBottom != null) crackBottom.SetActive(false);
+        if (crackBottom != null)
+        {
+            SFXManager.Instance.PlaySFX("Ga");
+            crackBottom.SetActive(false);
+        }
 
         if (revealsChick)
         {

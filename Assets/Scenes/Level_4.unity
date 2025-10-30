@@ -1128,6 +1128,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tutorial Manager click
       objectReference: {fileID: 0}
+    - target: {fileID: 5141028698994120868, guid: 8ad772611b156ad429a192ed6797baa4, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6152687023865905990, guid: 8ad772611b156ad429a192ed6797baa4, type: 3}
       propertyPath: m_Sprite
       value: 
