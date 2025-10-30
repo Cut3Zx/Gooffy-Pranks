@@ -10,6 +10,9 @@ public class DragAndSnap : BaseObjectManager
     public float snapDistance = 100f;
     public bool lockAfterSnap = true;
 
+    [Header("Âm Thanh Khi Chạm")]
+    public string TouchSoundName;
+
     static Dictionary<RectTransform, GameObject> occupied = new();
 
     bool isSnapped = false;
@@ -41,6 +44,10 @@ public class DragAndSnap : BaseObjectManager
             occupied[closest] = gameObject;
 
             Debug.Log($"✅ {gameObject.name} đã gắn vào vùng {closest.name}");
+            if (SFXManager.Instance != null && !string.IsNullOrEmpty(TouchSoundName))
+            {
+                SFXManager.Instance.PlaySFX(TouchSoundName);
+            }
             SnapManager.Instance?.RegisterSnappedObject();
         }
         else

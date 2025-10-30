@@ -40,6 +40,7 @@ public class EightToInfinityOnPull : MonoBehaviour, IBeginDragHandler, IDragHand
         float dragDistanceX = eventData.position.x - startDragPos.x;
         if (Mathf.Abs(dragDistanceX) >= dragThreshold)
         {
+            SFXManager.Instance.PlaySFX("Xoay");
             StartCoroutine(RotateThenChangeFace());
         }
     }

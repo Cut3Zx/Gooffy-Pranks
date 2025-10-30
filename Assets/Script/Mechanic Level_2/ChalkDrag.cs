@@ -99,6 +99,7 @@ public class ChalkDrag : BaseObjectManager
     // ============================================
     private IEnumerator DrawAndReveal()
     {
+        SFXManager.Instance.PlaySFX("Drawing");
         // ✅ Hiện hình tô màu
         if (compassColored != null) compassColored.SetActive(true);
         Debug.Log("🎨 Đang tô màu compa...");

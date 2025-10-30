@@ -210,7 +210,7 @@ GameObject:
   - component: {fileID: 47586161}
   m_Layer: 5
   m_Name: woot
-  m_TagString: Untagged
+  m_TagString: Wood
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -285,7 +285,7 @@ GameObject:
   - component: {fileID: 129840169}
   m_Layer: 5
   m_Name: stone
-  m_TagString: Untagged
+  m_TagString: Stone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -529,6 +529,26 @@ PrefabInstance:
       propertyPath: pauseUI
       value: 
       objectReference: {fileID: 1301874601}
+    - target: {fileID: 2243157991682192985, guid: 4f817fb9ea9a4194286566f8ecfd85ce, type: 3}
+      propertyPath: soundEffects.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2243157991682192985, guid: 4f817fb9ea9a4194286566f8ecfd85ce, type: 3}
+      propertyPath: soundEffects.Array.data[0].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 29018c1b9d9d9864aad31d25f76ad333, type: 3}
+    - target: {fileID: 2243157991682192985, guid: 4f817fb9ea9a4194286566f8ecfd85ce, type: 3}
+      propertyPath: soundEffects.Array.data[0].name
+      value: Woodplace
+      objectReference: {fileID: 0}
+    - target: {fileID: 2243157991682192985, guid: 4f817fb9ea9a4194286566f8ecfd85ce, type: 3}
+      propertyPath: soundEffects.Array.data[1].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: c7e66420ee8a620468d4b78a969f4c1f, type: 3}
+    - target: {fileID: 2243157991682192985, guid: 4f817fb9ea9a4194286566f8ecfd85ce, type: 3}
+      propertyPath: soundEffects.Array.data[1].name
+      value: Stoneplace
+      objectReference: {fileID: 0}
     - target: {fileID: 5208262269772516046, guid: 4f817fb9ea9a4194286566f8ecfd85ce, type: 3}
       propertyPath: m_Name
       value: GameController
@@ -1567,6 +1587,8 @@ MonoBehaviour:
   snapZone2: {fileID: 47586160}
   snapDistance: 100
   lockAfterSnap: 1
+  TouchSoundName: Stoneplace
+  TouchSoundName2: Stoneplace
 --- !u!114 &1552498747
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1873,10 +1895,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d584bf0c800bc284eb686f1d2d398d4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  snapZone1: {fileID: 129840168}
+  snapZone1: {fileID: 0}
   snapZone2: {fileID: 47586160}
   snapDistance: 100
   lockAfterSnap: 1
+  TouchSoundName: Woodplace
+  TouchSoundName2: Stoneplace
 --- !u!114 &1849046446
 MonoBehaviour:
   m_ObjectHideFlags: 0

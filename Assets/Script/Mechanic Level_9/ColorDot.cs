@@ -39,6 +39,7 @@ public class ColorDot : BaseObjectManager
 
         if (collidedDot != null)
         {
+            SFXManager.Instance.PlaySFX("Mixcolor");
             TryMixColor(collidedDot);
         }
 

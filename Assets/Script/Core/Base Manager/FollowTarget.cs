@@ -30,6 +30,8 @@ public class FollowAndWin : BaseObjectManager
         if (!isFollowing)
         {
             isFollowing = true;
+            SFXManager.Instance.PlaySFX("Bee");
+            SFXManager.Instance.PlaySFX("Bat");
             Debug.Log($"{gameObject.name} bắt đầu đuổi {target.name}");
         }
 

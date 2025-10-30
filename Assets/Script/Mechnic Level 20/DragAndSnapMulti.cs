@@ -10,6 +10,7 @@ public class DragAndSnapMulti : MonoBehaviour, IBeginDragHandler, IDragHandler, 
 
     [Header("Tuỳ chọn")]
     public bool lockAfterSnap = true;
+    public string TouchSoundName;
 
     private RectTransform rectTransform;
     private Canvas canvas;
@@ -52,6 +53,10 @@ public class DragAndSnapMulti : MonoBehaviour, IBeginDragHandler, IDragHandler, 
 
             // ✅ Nếu vùng trống thì gắn vào
             rectTransform.anchoredPosition = closest.anchoredPosition;
+            if (SFXManager.Instance != null && !string.IsNullOrEmpty(TouchSoundName))
+            {
+                SFXManager.Instance.PlaySFX(TouchSoundName);
+            }
             isSnapped = lockAfterSnap;
 
             // Đánh dấu vùng này là đã bị chiếm

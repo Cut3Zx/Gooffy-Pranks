@@ -749,6 +749,26 @@ PrefabInstance:
       propertyPath: pauseUI
       value: 
       objectReference: {fileID: 685778426}
+    - target: {fileID: 2243157991682192985, guid: 4f817fb9ea9a4194286566f8ecfd85ce, type: 3}
+      propertyPath: soundEffects.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2243157991682192985, guid: 4f817fb9ea9a4194286566f8ecfd85ce, type: 3}
+      propertyPath: soundEffects.Array.data[0].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 507087205ed0c4b428b3a61418a39291, type: 3}
+    - target: {fileID: 2243157991682192985, guid: 4f817fb9ea9a4194286566f8ecfd85ce, type: 3}
+      propertyPath: soundEffects.Array.data[0].name
+      value: Drawing
+      objectReference: {fileID: 0}
+    - target: {fileID: 2243157991682192985, guid: 4f817fb9ea9a4194286566f8ecfd85ce, type: 3}
+      propertyPath: soundEffects.Array.data[1].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 8d5bcadf00937224b8661cc4d338a4dc, type: 3}
+    - target: {fileID: 2243157991682192985, guid: 4f817fb9ea9a4194286566f8ecfd85ce, type: 3}
+      propertyPath: soundEffects.Array.data[1].name
+      value: Openpaper
+      objectReference: {fileID: 0}
     - target: {fileID: 5208262269772516046, guid: 4f817fb9ea9a4194286566f8ecfd85ce, type: 3}
       propertyPath: m_Name
       value: GameController

@@ -19,6 +19,8 @@ public class LightningController : MonoBehaviour
 
     private IEnumerator LightningSequence()
     {
+        SFXManager.Instance.PlaySFX("Thunder");
+        SFXManager.Instance.PlaySFX("Fire");
         hasTriggered = true;
 
         // ⚡ Sét xuất hiện chớp nhanh

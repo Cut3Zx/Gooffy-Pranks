@@ -413,6 +413,26 @@ PrefabInstance:
       propertyPath: pauseUI
       value: 
       objectReference: {fileID: 1301874601}
+    - target: {fileID: 2243157991682192985, guid: 4f817fb9ea9a4194286566f8ecfd85ce, type: 3}
+      propertyPath: soundEffects.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2243157991682192985, guid: 4f817fb9ea9a4194286566f8ecfd85ce, type: 3}
+      propertyPath: soundEffects.Array.data[0].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: a0ec698b99d7c35408e92d34077d33c0, type: 3}
+    - target: {fileID: 2243157991682192985, guid: 4f817fb9ea9a4194286566f8ecfd85ce, type: 3}
+      propertyPath: soundEffects.Array.data[0].name
+      value: Fire
+      objectReference: {fileID: 0}
+    - target: {fileID: 2243157991682192985, guid: 4f817fb9ea9a4194286566f8ecfd85ce, type: 3}
+      propertyPath: soundEffects.Array.data[1].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: e9d828800eff32b40b6959553f93c907, type: 3}
+    - target: {fileID: 2243157991682192985, guid: 4f817fb9ea9a4194286566f8ecfd85ce, type: 3}
+      propertyPath: soundEffects.Array.data[1].name
+      value: Thunder
+      objectReference: {fileID: 0}
     - target: {fileID: 5208262269772516046, guid: 4f817fb9ea9a4194286566f8ecfd85ce, type: 3}
       propertyPath: m_Name
       value: GameController

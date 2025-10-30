@@ -193,6 +193,18 @@ PrefabInstance:
       propertyPath: pauseUI
       value: 
       objectReference: {fileID: 1301874601}
+    - target: {fileID: 2243157991682192985, guid: 4f817fb9ea9a4194286566f8ecfd85ce, type: 3}
+      propertyPath: soundEffects.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2243157991682192985, guid: 4f817fb9ea9a4194286566f8ecfd85ce, type: 3}
+      propertyPath: soundEffects.Array.data[0].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 8f7e0e058f70dad4f90a5184449cd2d5, type: 3}
+    - target: {fileID: 2243157991682192985, guid: 4f817fb9ea9a4194286566f8ecfd85ce, type: 3}
+      propertyPath: soundEffects.Array.data[0].name
+      value: Bee
+      objectReference: {fileID: 0}
     - target: {fileID: 5208262269772516046, guid: 4f817fb9ea9a4194286566f8ecfd85ce, type: 3}
       propertyPath: m_Name
       value: GameController
@@ -236,6 +248,14 @@ PrefabInstance:
     - target: {fileID: 5757291932627739932, guid: 4f817fb9ea9a4194286566f8ecfd85ce, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7190559702590383100, guid: 4f817fb9ea9a4194286566f8ecfd85ce, type: 3}
+      propertyPath: onAllCollected.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7190559702590383100, guid: 4f817fb9ea9a4194286566f8ecfd85ce, type: 3}
+      propertyPath: onAllCollected.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

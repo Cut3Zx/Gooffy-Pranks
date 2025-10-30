@@ -268,6 +268,26 @@ PrefabInstance:
       propertyPath: pauseUI
       value: 
       objectReference: {fileID: 1301874601}
+    - target: {fileID: 2243157991682192985, guid: 4f817fb9ea9a4194286566f8ecfd85ce, type: 3}
+      propertyPath: soundEffects.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2243157991682192985, guid: 4f817fb9ea9a4194286566f8ecfd85ce, type: 3}
+      propertyPath: soundEffects.Array.data[0].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 43fbba0cba21e81478f19ed3d2565f38, type: 3}
+    - target: {fileID: 2243157991682192985, guid: 4f817fb9ea9a4194286566f8ecfd85ce, type: 3}
+      propertyPath: soundEffects.Array.data[0].name
+      value: Khunglong
+      objectReference: {fileID: 0}
+    - target: {fileID: 2243157991682192985, guid: 4f817fb9ea9a4194286566f8ecfd85ce, type: 3}
+      propertyPath: soundEffects.Array.data[1].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: d12e4e0ea76cb3449afd4421809e16da, type: 3}
+    - target: {fileID: 2243157991682192985, guid: 4f817fb9ea9a4194286566f8ecfd85ce, type: 3}
+      propertyPath: soundEffects.Array.data[1].name
+      value: Voi
+      objectReference: {fileID: 0}
     - target: {fileID: 5208262269772516046, guid: 4f817fb9ea9a4194286566f8ecfd85ce, type: 3}
       propertyPath: m_Name
       value: GameController
@@ -518,6 +538,7 @@ MonoBehaviour:
   snapZones: []
   snapDistance: 100
   lockAfterSnap: 1
+  TouchSoundName: 
 --- !u!114 &522125933
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -977,6 +998,7 @@ MonoBehaviour:
   - {fileID: 469876462}
   snapDistance: 100
   lockAfterSnap: 1
+  TouchSoundName: 
 --- !u!114 &1034392112
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1107,6 +1129,7 @@ MonoBehaviour:
   - {fileID: 469876462}
   snapDistance: 100
   lockAfterSnap: 1
+  TouchSoundName: 
 --- !u!114 &1139581607
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1879,6 +1902,7 @@ MonoBehaviour:
   - {fileID: 469876462}
   snapDistance: 100
   lockAfterSnap: 1
+  TouchSoundName: Khunglong
 --- !u!114 &1453032434
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2343,6 +2367,7 @@ MonoBehaviour:
   - {fileID: 469876462}
   snapDistance: 100
   lockAfterSnap: 1
+  TouchSoundName: Voi
 --- !u!114 &1686732396
 MonoBehaviour:
   m_ObjectHideFlags: 0

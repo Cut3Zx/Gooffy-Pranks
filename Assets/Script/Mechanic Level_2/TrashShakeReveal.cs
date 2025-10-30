@@ -42,7 +42,7 @@ public class TrashShakeFall : MonoBehaviour
     private System.Collections.IEnumerator FallTrash()
     {
         hasFallen = true;
-
+        SFXManager.Instance.PlaySFX("Trashcanfall");
         float t = 0;
         while (t < 1)
         {

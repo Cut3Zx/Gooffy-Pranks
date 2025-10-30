@@ -288,6 +288,7 @@ MonoBehaviour:
   - {fileID: 2023633571}
   - {fileID: 1675425859}
   snapDistance: 100
+  TouchSoundName: Ladder
 --- !u!114 &145277761
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -412,6 +413,18 @@ PrefabInstance:
       propertyPath: pauseUI
       value: 
       objectReference: {fileID: 1301874601}
+    - target: {fileID: 2243157991682192985, guid: 4f817fb9ea9a4194286566f8ecfd85ce, type: 3}
+      propertyPath: soundEffects.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2243157991682192985, guid: 4f817fb9ea9a4194286566f8ecfd85ce, type: 3}
+      propertyPath: soundEffects.Array.data[0].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 24ecc4e8dc152b34cb89417a291b79bc, type: 3}
+    - target: {fileID: 2243157991682192985, guid: 4f817fb9ea9a4194286566f8ecfd85ce, type: 3}
+      propertyPath: soundEffects.Array.data[0].name
+      value: Ladder
+      objectReference: {fileID: 0}
     - target: {fileID: 5208262269772516046, guid: 4f817fb9ea9a4194286566f8ecfd85ce, type: 3}
       propertyPath: m_Name
       value: GameController
@@ -703,6 +716,7 @@ MonoBehaviour:
   - {fileID: 2023633571}
   - {fileID: 1675425859}
   snapDistance: 100
+  TouchSoundName: Ladder
 --- !u!114 &415947606
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1309,6 +1323,7 @@ MonoBehaviour:
   - {fileID: 2023633571}
   - {fileID: 1675425859}
   snapDistance: 100
+  TouchSoundName: Ladder
 --- !u!114 &1155596219
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1953,6 +1968,7 @@ MonoBehaviour:
   - {fileID: 2023633571}
   - {fileID: 1675425859}
   snapDistance: 100
+  TouchSoundName: Ladder
 --- !u!114 &1592050082
 MonoBehaviour:
   m_ObjectHideFlags: 0

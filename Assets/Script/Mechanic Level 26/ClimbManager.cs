@@ -23,7 +23,7 @@ public class ClimbManager : MonoBehaviour
     public void RegisterStepFilled()
     {
         if (hasWon) return; // nếu đã thắng thì bỏ qua
-
+        SFXManager.Instance.PlaySFX("Ladder");
         filledSteps++;
         Debug.Log($"🧩 Bậc thang đã lắp: {filledSteps}/{totalSteps}");
 
