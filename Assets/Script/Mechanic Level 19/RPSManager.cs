@@ -32,11 +32,13 @@ public class RPSManager : MonoBehaviour
         if (tag1 == "Scissors" && tag2 == "Paper")
         {
             Debug.Log("✂️ Kéo cắt Bao → Bao biến mất!");
+            SFXManager.Instance.PlaySFX("Keo");
             obj2.SetActive(false);
         }
         else if (tag1 == "Paper" && tag2 == "Scissors")
         {
             Debug.Log("✂️ Bao chạm Kéo → Bao bị cắt mất!");
+            SFXManager.Instance.PlaySFX("Keo");
             obj1.SetActive(false);
         }
 
@@ -44,11 +46,13 @@ public class RPSManager : MonoBehaviour
         else if (tag1 == "Paper" && tag2 == "Rock")
         {
             Debug.Log("📄 Bao bọc Búa → Búa biến mất!");
+            SFXManager.Instance.PlaySFX("Bao");
             obj2.SetActive(false);
         }
         else if (tag1 == "Rock" && tag2 == "Paper")
         {
             Debug.Log("📄 Búa chạm Bao → Búa bị bọc mất!");
+            SFXManager.Instance.PlaySFX("Bao");
             obj1.SetActive(false);
         }
 
@@ -56,6 +60,7 @@ public class RPSManager : MonoBehaviour
         else if (tag1 == "Rock" && tag2 == "Scissors")
         {
             Debug.Log("🪨 Búa đập Kéo → Kéo biến mất!");
+            SFXManager.Instance.PlaySFX("Bua");
             obj2.SetActive(false);
             LoseImmediately();
             return;
@@ -63,6 +68,7 @@ public class RPSManager : MonoBehaviour
         else if (tag1 == "Scissors" && tag2 == "Rock")
         {
             Debug.Log("🪨 Kéo chạm Búa → Kéo bị đập vỡ!");
+            SFXManager.Instance.PlaySFX("Bua");
             obj1.SetActive(false);
             LoseImmediately();
             return;

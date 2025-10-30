@@ -64,6 +64,7 @@ public class PictureMountSnap : BaseObjectManager
         if (isSnapped)
         {
             // Treo tranh thành công => giữ nguyên bản treo, ẩn tranh rơi
+            SFXManager.Instance.PlaySFX("Tranh");
             Debug.Log("🖼 Tranh đã được treo lên tường!");
             groundPicture.enabled = false;
             mountedPicture.SetActive(true);

@@ -25,6 +25,7 @@ public class CupboardFix : BaseObjectManager
         fixedCupboard.SetActive(true);
 
         Debug.Log("🪑 Tủ đã được dựng lại!");
+        SFXManager.Instance.PlaySFX("Tusach");
         if (CleanupManager.Instance != null)
             CleanupManager.Instance.AddFixedObject();
     }

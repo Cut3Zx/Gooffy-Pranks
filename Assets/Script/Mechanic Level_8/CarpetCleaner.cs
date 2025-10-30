@@ -56,6 +56,7 @@ public class BroomCleaner : BaseObjectManager
     {
         isCleaned = true;
         Debug.Log("🧹 Chổi đã dọn sạch rác!");
+        SFXManager.Instance.PlaySFX("Quet");
 
         if (trash != null)
             Destroy(trash);

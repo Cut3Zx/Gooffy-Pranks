@@ -52,7 +52,7 @@ public class EggPeel : BaseObjectManager
         if (crackedEgg != null) crackedEgg.SetActive(true);
 
         if (sfx != null) sfx.Play();
-
+        SFXManager.Instance.PlaySFX("Vo");
         Debug.Log("🥚 Trứng nứt ra!");
     }
 
