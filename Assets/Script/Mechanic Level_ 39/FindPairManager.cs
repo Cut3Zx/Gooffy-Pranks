@@ -54,6 +54,7 @@ public class FindPairManager : MonoBehaviour
             firstCard.SetMatched();
             secondCard.SetMatched();
             matchedPairs++;
+            SFXManager.Instance.PlaySFX("Dung");
 
             yield return new WaitForSeconds(0.4f); // đợi animation biến mất
 
@@ -65,7 +66,7 @@ public class FindPairManager : MonoBehaviour
                 if (GameManager.Instance != null)
                     GameManager.Instance.EndGame(true);
 
-                
+
             }
         }
         else
@@ -74,6 +75,7 @@ public class FindPairManager : MonoBehaviour
             firstCard.Flip(false);
             secondCard.Flip(false);
             yield return new WaitForSeconds(0.3f);
+            SFXManager.Instance.PlaySFX("Sai");
         }
 
         ResetCards();

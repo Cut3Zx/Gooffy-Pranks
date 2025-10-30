@@ -376,6 +376,26 @@ PrefabInstance:
       propertyPath: pauseUI
       value: 
       objectReference: {fileID: 1301874601}
+    - target: {fileID: 2243157991682192985, guid: 4f817fb9ea9a4194286566f8ecfd85ce, type: 3}
+      propertyPath: soundEffects.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2243157991682192985, guid: 4f817fb9ea9a4194286566f8ecfd85ce, type: 3}
+      propertyPath: soundEffects.Array.data[0].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 8b19bd80529f3de428d5270d1cb0e7cb, type: 3}
+    - target: {fileID: 2243157991682192985, guid: 4f817fb9ea9a4194286566f8ecfd85ce, type: 3}
+      propertyPath: soundEffects.Array.data[0].name
+      value: NangCap
+      objectReference: {fileID: 0}
+    - target: {fileID: 2243157991682192985, guid: 4f817fb9ea9a4194286566f8ecfd85ce, type: 3}
+      propertyPath: soundEffects.Array.data[1].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 9e790d1cf894c144ba0e5a774546472f, type: 3}
+    - target: {fileID: 2243157991682192985, guid: 4f817fb9ea9a4194286566f8ecfd85ce, type: 3}
+      propertyPath: soundEffects.Array.data[1].name
+      value: PhaThap
+      objectReference: {fileID: 0}
     - target: {fileID: 5208262269772516046, guid: 4f817fb9ea9a4194286566f8ecfd85ce, type: 3}
       propertyPath: m_Name
       value: GameController
@@ -507,6 +527,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85374bccc543d54478e21f208dcd8d1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  touchSoundName: PhaThap
   objectToHide1: {fileID: 860818132}
   objectToHide2: {fileID: 0}
   objectToHide3: {fileID: 0}
@@ -601,6 +622,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3817463afd0940e47b5ba3deab674532, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitSoundName: NangCap
 --- !u!114 &551823129
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -75,6 +75,7 @@ public class WrongClickAnywhere : MonoBehaviour
 
             // 🟥 Không đúng => hiện ❌
             SpawnWrongMark(screenPos);
+            SFXManager.Instance.PlaySFX("Sai");
         }
     }
 
