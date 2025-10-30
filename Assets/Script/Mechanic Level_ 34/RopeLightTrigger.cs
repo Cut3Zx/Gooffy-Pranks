@@ -23,12 +23,14 @@ public class RopeLightTrigger : MonoBehaviour, IPointerDownHandler
     {
         isPulled = true;
         Vector2 targetPos = startPos - new Vector2(0, pullLength);
+        SFXManager.Instance.PlaySFX("BatDen");
 
         // Kéo xuống
         while (Vector2.Distance(rope.anchoredPosition, targetPos) > 0.1f)
         {
             rope.anchoredPosition = Vector2.Lerp(rope.anchoredPosition, targetPos, Time.deltaTime * pullSpeed);
             yield return null;
+
         }
 
         // Quay lại
@@ -41,5 +43,9 @@ public class RopeLightTrigger : MonoBehaviour, IPointerDownHandler
         // Bật đèn
         lightObject.SetActive(true);
         isPulled = false;
+
+        // Delay trước khi phát âm thanh "GaGay"
+        yield return new WaitForSeconds(0.2f);
+        SFXManager.Instance.PlaySFX("Gagay");
     }
 }

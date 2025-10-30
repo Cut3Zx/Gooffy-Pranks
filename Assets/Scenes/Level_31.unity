@@ -645,6 +645,34 @@ PrefabInstance:
       propertyPath: pauseUI
       value: 
       objectReference: {fileID: 1301874601}
+    - target: {fileID: 2243157991682192985, guid: 4f817fb9ea9a4194286566f8ecfd85ce, type: 3}
+      propertyPath: soundEffects.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2243157991682192985, guid: 4f817fb9ea9a4194286566f8ecfd85ce, type: 3}
+      propertyPath: soundEffects.Array.data[0].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 4ddc18ed4f47c504492fcdb01e540cc4, type: 3}
+    - target: {fileID: 2243157991682192985, guid: 4f817fb9ea9a4194286566f8ecfd85ce, type: 3}
+      propertyPath: soundEffects.Array.data[0].name
+      value: Sai
+      objectReference: {fileID: 0}
+    - target: {fileID: 2243157991682192985, guid: 4f817fb9ea9a4194286566f8ecfd85ce, type: 3}
+      propertyPath: soundEffects.Array.data[1].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 396458349d74cb6459ad832e2410b2ef, type: 3}
+    - target: {fileID: 2243157991682192985, guid: 4f817fb9ea9a4194286566f8ecfd85ce, type: 3}
+      propertyPath: soundEffects.Array.data[1].name
+      value: Cat
+      objectReference: {fileID: 0}
+    - target: {fileID: 2243157991682192985, guid: 4f817fb9ea9a4194286566f8ecfd85ce, type: 3}
+      propertyPath: soundEffects.Array.data[2].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 6b11fac811eb0db4dbdc26cf5751e6e6, type: 3}
+    - target: {fileID: 2243157991682192985, guid: 4f817fb9ea9a4194286566f8ecfd85ce, type: 3}
+      propertyPath: soundEffects.Array.data[2].name
+      value: NhayDu
+      objectReference: {fileID: 0}
     - target: {fileID: 5208262269772516046, guid: 4f817fb9ea9a4194286566f8ecfd85ce, type: 3}
       propertyPath: m_Name
       value: GameController
@@ -824,6 +852,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85374bccc543d54478e21f208dcd8d1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  touchSoundName: Cat
   objectToHide1: {fileID: 183110879}
   objectToHide2: {fileID: 57721481}
   objectToHide3: {fileID: 0}
@@ -1875,6 +1904,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85374bccc543d54478e21f208dcd8d1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  touchSoundName: 
   objectToHide1: {fileID: 721626949}
   objectToHide2: {fileID: 0}
   objectToHide3: {fileID: 0}
@@ -2276,6 +2306,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85374bccc543d54478e21f208dcd8d1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  touchSoundName: NhayDu
   objectToHide1: {fileID: 569113285}
   objectToHide2: {fileID: 1823499642}
   objectToHide3: {fileID: 36795463}

@@ -29,6 +29,7 @@ public class FindDifferenceManager : MonoBehaviour
 
         if (foundCount >= totalDifferences)
             StartCoroutine(ShowWinWithDelay());
+        SFXManager.Instance.PlaySFX("Dung");
     }
 
     private IEnumerator ShowWinWithDelay()
@@ -45,7 +46,7 @@ public class FindDifferenceManager : MonoBehaviour
             GameManager.Instance.EndGame(true);
 
         // 🔓 Mở khóa màn kế tiếp (nếu có hệ thống mở khóa)
-        
+
 
         Debug.Log("🏆 Tìm đủ điểm khác biệt — WIN!");
     }

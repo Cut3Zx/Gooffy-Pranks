@@ -10,7 +10,8 @@ public class ShakeToSwitchObject : MonoBehaviour
 
     [Header("🔵 Object sẽ hiện khi lắc")]
     public GameObject objectToShow;
-
+    [Header("Âm thanh sau khi lắc")]
+    public string shakeSoundName;
     private Vector3 lastAccel;
     private bool switched = false;
 
@@ -48,5 +49,10 @@ public class ShakeToSwitchObject : MonoBehaviour
             objectToShow.SetActive(true);
 
         Debug.Log("📱 Lắc mạnh! Đã ẩn object cũ và hiện object mới!");
+        // Phát âm thanh lắc
+        if (SFXManager.Instance != null && !string.IsNullOrEmpty(shakeSoundName))
+        {
+            SFXManager.Instance.PlaySFX(shakeSoundName);
+        }
     }
 }

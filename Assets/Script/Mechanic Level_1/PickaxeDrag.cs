@@ -3,6 +3,8 @@ using UnityEngine.EventSystems;
 
 public class PickaxeDrag : BaseObjectManager
 {
+    [Header("Âm Thanh sau khi chạm")]
+    public string hitSoundName;
     private Canvas canvas;
     private Vector2 startPos;
 
@@ -41,6 +43,11 @@ public class PickaxeDrag : BaseObjectManager
                 RockInteraction rockScript = rock.GetComponent<RockInteraction>();
                 if (rockScript != null)
                     rockScript.BreakRock();
+                // Phát âm thanh chạm
+                if (SFXManager.Instance != null && !string.IsNullOrEmpty(hitSoundName))
+                {
+                    SFXManager.Instance.PlaySFX(hitSoundName);
+                }
             }
         }
 

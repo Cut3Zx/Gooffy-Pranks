@@ -31,6 +31,7 @@ public class CupObject : MonoBehaviour
         {
             image.sprite = emptyCupSprite;
             Debug.Log($"💧 {name} bị đổ nước!");
+            SFXManager.Instance.PlaySFX("DoNuoc");
         }
     }
 }

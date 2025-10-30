@@ -69,5 +69,6 @@ public class BurgerFeedPrankster : MonoBehaviour, IBeginDragHandler, IDragHandle
         gameObject.SetActive(false);
 
         Debug.Log("😋 Prankster đã ăn burger to!");
+        SFXManager.Instance.PlaySFX("An");
     }
 }

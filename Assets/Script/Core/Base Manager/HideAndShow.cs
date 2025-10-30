@@ -3,6 +3,9 @@ using UnityEngine.EventSystems;
 
 public class HideAndShowUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
+    [Header("Âm thanh khi chạm")]
+    public string touchSoundName;
+
     [Header("Các đối tượng cần ẩn khi chạm")]
     public GameObject objectToHide1;
     public GameObject objectToHide2;
@@ -44,6 +47,11 @@ public class HideAndShowUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
             RectTransform targetRect = objectToHide1.GetComponent<RectTransform>();
             if (targetRect && RectTransformUtility.RectangleContainsScreenPoint(targetRect, Input.mousePosition, canvas.worldCamera))
             {
+                if (SFXManager.Instance != null && !string.IsNullOrEmpty(touchSoundName))
+                {
+                    SFXManager.Instance.PlaySFX(touchSoundName);
+                }
+
                 Debug.Log($"🎯 {name} chạm {objectToHide1.name}");
 
                 // Ẩn
