@@ -8,6 +8,8 @@ public class MainMenuUIControl : MonoBehaviour
     public GameObject levelSelectUI;
     public GameObject albumUI;
     public GameObject pauseUI;
+    public GameObject shopUI;
+    public GameObject adsblockUI; // MỚI THÊM
 
     [Header("Loading (Prefab)")]
     [SerializeField] private GameObject loadingPrefab;
@@ -60,7 +62,11 @@ public class MainMenuUIControl : MonoBehaviour
             if (mainMenuUI) mainMenuUI.SetActive(true);
             if (levelSelectUI) levelSelectUI.SetActive(false);
         }
+
+        // Ẩn tất cả các panel phụ khi bắt đầu
         if (albumUI) albumUI.SetActive(false);
+        if (shopUI) shopUI.SetActive(false);
+        if (adsblockUI) adsblockUI.SetActive(false); // MỚI THÊM
     }
 
     public void WaybackHome() => LoadWithLoading("MainMenu");
@@ -82,6 +88,9 @@ public class MainMenuUIControl : MonoBehaviour
             // Nếu đang ở menu sẵn → chỉ mở bình thường
             if (mainMenuUI) mainMenuUI.SetActive(false);
             if (levelSelectUI) levelSelectUI.SetActive(true);
+            if (albumUI) albumUI.SetActive(false);
+            if (shopUI) shopUI.SetActive(false);
+            if (adsblockUI) adsblockUI.SetActive(false); // MỚI THÊM
         }
     }
 
@@ -116,6 +125,9 @@ public class MainMenuUIControl : MonoBehaviour
     {
         if (mainMenuUI) mainMenuUI.SetActive(false);
         if (levelSelectUI) levelSelectUI.SetActive(true);
+        if (albumUI) albumUI.SetActive(false);
+        if (shopUI) shopUI.SetActive(false);
+        if (adsblockUI) adsblockUI.SetActive(false); // MỚI THÊM
     }
 
     public void OnBackButton()
@@ -197,11 +209,15 @@ public class MainMenuUIControl : MonoBehaviour
         var levelManager = FindObjectOfType<LevelSelectManager>();
         if (levelManager) levelManager.RefreshLevelsUI();
     }
+
+    // ----- Album UI -----
     public void OnOpenAlbum()
     {
         if (mainMenuUI) mainMenuUI.SetActive(false);
         if (levelSelectUI) levelSelectUI.SetActive(false);
         if (albumUI) albumUI.SetActive(true);
+        if (shopUI) shopUI.SetActive(false);
+        if (adsblockUI) adsblockUI.SetActive(false); // MỚI THÊM
 
         var albumManager = albumUI.GetComponent<AlbumManager>();
         if (albumManager != null)
@@ -214,4 +230,30 @@ public class MainMenuUIControl : MonoBehaviour
         if (mainMenuUI) mainMenuUI.SetActive(true);
     }
 
+    // ----- Shop UI -----
+    public void OnOpenShop()
+    {
+        if (mainMenuUI) mainMenuUI.SetActive(false);
+        if (levelSelectUI) levelSelectUI.SetActive(false);
+        if (albumUI) albumUI.SetActive(false);
+        if (shopUI) shopUI.SetActive(true);
+        if (adsblockUI) adsblockUI.SetActive(false); // MỚI THÊM
+    }
+
+    public void OnCloseShop()
+    {
+        if (shopUI) shopUI.SetActive(false);
+        if (mainMenuUI) mainMenuUI.SetActive(true);
+    }
+
+    // ----- Adsblock UI ----- // MỚI THÊM TOÀN BỘ PHẦN NÀY
+    public void OnOpenAdsblock()
+    {
+        if (adsblockUI) adsblockUI.SetActive(true);
+    }
+
+    public void OnCloseAdsblock()
+    {
+        if (adsblockUI) adsblockUI.SetActive(false);
+    }
 }

@@ -544,6 +544,42 @@ MonoBehaviour:
     m_Localized: IMAGE
     m_Metadata:
       m_Items: []
+  - m_Id: 6773020620513280
+    m_Localized: STORE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6773213839515648
+    m_Localized: SUPER PACK
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6773603326779392
+    m_Localized: STARTER PACK
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6773717311184896
+    m_Localized: HINT 1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6773720087814144
+    m_Localized: HINT 2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6773720695988224
+    m_Localized: HINT 3
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7102279121657856
+    m_Localized: MONEY 1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7102385766031360
+    m_Localized: MONEY 2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7115414301859840
+    m_Localized: MONEY 3
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
