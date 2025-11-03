@@ -580,15 +580,25 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 7102279121657856
-    m_Localized: "TI\u1EC0N 1"
+    m_Localized: XU 1
     m_Metadata:
       m_Items: []
   - m_Id: 7102385766031360
-    m_Localized: "TI\u1EC0N 2"
+    m_Localized: XU 2
     m_Metadata:
       m_Items: []
   - m_Id: 7115414301859840
-    m_Localized: "TI\u1EC0N 3\n"
+    m_Localized: 'XU 3
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8023405200957440
+    m_Localized: "G\u1EE2I \xDD"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8023407499436032
+    m_Localized: XU
     m_Metadata:
       m_Items: []
   references:

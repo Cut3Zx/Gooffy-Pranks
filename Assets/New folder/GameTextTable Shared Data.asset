@@ -587,6 +587,14 @@ MonoBehaviour:
     m_Key: "G\xF3i ti\u1EC1n 3"
     m_Metadata:
       m_Items: []
+  - m_Id: 8023405200957440
+    m_Key: Title shop hint
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8023407499436032
+    m_Key: Title shop Coin
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

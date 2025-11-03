@@ -569,15 +569,23 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 7102279121657856
-    m_Localized: MONEY 1
+    m_Localized: COIN  1
     m_Metadata:
       m_Items: []
   - m_Id: 7102385766031360
-    m_Localized: MONEY 2
+    m_Localized: COIN 2
     m_Metadata:
       m_Items: []
   - m_Id: 7115414301859840
-    m_Localized: MONEY 3
+    m_Localized: COIN 3
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8023405200957440
+    m_Localized: 'HINT '
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8023407499436032
+    m_Localized: COIN
     m_Metadata:
       m_Items: []
   references:

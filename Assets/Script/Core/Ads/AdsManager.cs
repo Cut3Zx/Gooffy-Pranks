@@ -13,24 +13,71 @@ public class AdsManager : MonoBehaviour
     private InterstitialAd interAd;
     private RewardedAd rewardedAd;
 
+    // Biến kiểm tra đã mua gỡ quảng cáo chưa
+    private bool adsDisabled = false;
+
     private void Awake()
     {
         Instance = this;
         DontDestroyOnLoad(gameObject);
+
+        // Kiểm tra xem đã mua gỡ quảng cáo chưa
+        CheckAdsStatus();
     }
 
     private void Start()
     {
-        // Initialize the Google Mobile Ads SDK
-        MobileAds.Initialize(initStatus =>
+        // Chỉ khởi tạo ads nếu chưa gỡ
+        if (!adsDisabled)
         {
-            Debug.Log("✅ Admob SDK Initialized");
+            // Initialize the Google Mobile Ads SDK
+            MobileAds.Initialize(initStatus =>
+            {
+                Debug.Log("✅ Admob SDK Initialized");
 
-            // Load ads after initialization
-            LoadBannerAd();
-            LoadInterstitialAd();
-            LoadRewardedAd();
-        });
+                // Load ads after initialization
+                LoadBannerAd();
+                LoadInterstitialAd();
+                LoadRewardedAd();
+            });
+        }
+        else
+        {
+            Debug.Log("🚫 Quảng cáo đã bị vô hiệu hóa");
+        }
+    }
+
+    // --------------------------
+    // Kiểm tra trạng thái quảng cáo
+    // --------------------------
+    private void CheckAdsStatus()
+    {
+        adsDisabled = PlayerPrefs.GetInt("AdsBlock", 0) == 1;
+    }
+
+    // --------------------------
+    // 🚫 TẮT QUẢNG CÁO (khi mua AdsBlock)
+    // --------------------------
+    public void DisableAds()
+    {
+        adsDisabled = true;
+
+        // Ẩn banner nếu đang hiển thị
+        if (bannerView != null)
+        {
+            bannerView.Hide();
+            bannerView.Destroy();
+            bannerView = null;
+        }
+
+        // Hủy interstitial
+        if (interAd != null)
+        {
+            interAd.Destroy();
+            interAd = null;
+        }
+
+        Debug.Log("🚫 ĐÃ TẮT TẤT CẢ QUẢNG CÁO!");
     }
 
     // --------------------------
@@ -38,6 +85,8 @@ public class AdsManager : MonoBehaviour
     // --------------------------
     private void LoadBannerAd()
     {
+        if (adsDisabled) return; // Không load nếu đã tắt
+
         bannerView = new BannerView(bannerId, AdSize.Banner, AdPosition.Bottom);
 
         AdRequest request = new AdRequest();
@@ -47,11 +96,12 @@ public class AdsManager : MonoBehaviour
         bannerView.LoadAd(request);
     }
 
-    // --------------------------
     // Interstitial Ad
-    // --------------------------
+
     private void LoadInterstitialAd()
     {
+        if (adsDisabled) return; // Không load nếu đã tắt
+
         if (interAd != null)
         {
             interAd.Destroy();
@@ -79,6 +129,12 @@ public class AdsManager : MonoBehaviour
 
     public void ShowInterstialAd()
     {
+        if (adsDisabled)
+        {
+            Debug.Log("🚫 Quảng cáo đã bị tắt");
+            return;
+        }
+
         if (interAd != null && interAd.CanShowAd())
         {
             interAd.Show();
@@ -89,11 +145,10 @@ public class AdsManager : MonoBehaviour
         }
     }
 
-    // --------------------------
     // Rewarded Ad
-    // --------------------------
     private void LoadRewardedAd()
     {
+
         if (rewardedAd != null)
         {
             rewardedAd.Destroy();
@@ -136,17 +191,29 @@ public class AdsManager : MonoBehaviour
             Debug.Log("⚠️ Rewarded ad not ready");
         }
     }
-
-    // --------------------------
     // 🏆 PHẦN THƯỞNG SAU KHI XEM QUẢNG CÁO
-    // --------------------------
+
     private void AddHintReward()
     {
-        int currentHints = PlayerPrefs.GetInt("hintCount", 0);
-        currentHints++;
-        PlayerPrefs.SetInt("hintCount", currentHints);
-        PlayerPrefs.Save();
+        // Sử dụng ResourceManager thay vì PlayerPrefs trực tiếp
+        if (ResourceManager.Instance != null)
+        {
+            ResourceManager.Instance.AddHints(1);
+        }
+        else
+        {
+            // Fallback nếu chưa có ResourceManager
+            int currentHints = PlayerPrefs.GetInt("Hints", 0);
+            currentHints++;
+            PlayerPrefs.SetInt("Hints", currentHints);
+            PlayerPrefs.Save();
+            Debug.Log($"🎁 +1 Hint! Total hints now: {currentHints}");
+        }
+    }
 
-        Debug.Log($"🎁 +1 Hint! Total hints now: {currentHints}");
+    //  KIỂM TRA TRẠNG THÁI
+    public bool AreAdsDisabled()
+    {
+        return adsDisabled;
     }
 }
