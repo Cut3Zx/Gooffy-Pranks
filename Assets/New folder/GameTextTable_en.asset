@@ -593,7 +593,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 8131461487734784
-    m_Localized: You so smart !
+    m_Localized: It is the largest value
     m_Metadata:
       m_Items: []
   - m_Id: 8132523724582912
@@ -601,67 +601,67 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 8133467132604416
-    m_Localized: What a naughty chick
+    m_Localized: So the chick was hiding in there!
     m_Metadata:
       m_Items: []
   - m_Id: 8134402839883776
-    m_Localized: Congrat !
+    m_Localized: Because you competed for the number 2 position
     m_Metadata:
       m_Items: []
   - m_Id: 8135790269509632
-    m_Localized: "Monochromatic life is boring\r"
+    m_Localized: Mixing yellow and red makes orange
     m_Metadata:
       m_Items: []
   - m_Id: 8138234646966272
-    m_Localized: That pizza looks delicious !
+    m_Localized: There are pieces hidden underneath
     m_Metadata:
       m_Items: []
   - m_Id: 8140146553335808
-    m_Localized: "Sharp eyes\r"
+    m_Localized: Was there an even darker one?
     m_Metadata:
       m_Items: []
   - m_Id: 8141526655512576
-    m_Localized: Magnifying glasses can magnify objects.
+    m_Localized: A magnifying glass helps to see the ant clearly
     m_Metadata:
       m_Items: []
   - m_Id: 8142338429497344
-    m_Localized: Bees love flowers because of their sweet nectar
+    m_Localized: Bees love flowers because of their sweet nectar inside
     m_Metadata:
       m_Items: []
   - m_Id: 8143993422163968
-    m_Localized: careful with burnt fish
+    m_Localized: You have to use a match to light the stove
     m_Metadata:
       m_Items: []
   - m_Id: 8144840214392832
-    m_Localized: Bats use echolocation to hunt at night
+    m_Localized: Bats are only awake in the morning
     m_Metadata:
       m_Items: []
   - m_Id: 8145576100835328
-    m_Localized: "draw a perfect circle!\r"
+    m_Localized: The compass appeared after using chalk
     m_Metadata:
       m_Items: []
   - m_Id: 8146113969991680
-    m_Localized: Bears like honey because it is rich in energy
+    m_Localized: The vine helps the bear get honey
     m_Metadata:
       m_Items: []
   - m_Id: 8146752317894656
-    m_Localized: "Honey can be preserved for thousands of years.\r"
+    m_Localized: We need to make a place for the bear to get honey.
     m_Metadata:
       m_Items: []
   - m_Id: 8147645809504256
-    m_Localized: "The area of \u200B\u200Bthe sun is 12 times larger than the earth\r"
+    m_Localized: Just because it's farther away doesn't mean it's smaller
     m_Metadata:
       m_Items: []
   - m_Id: 8150192448286720
-    m_Localized: transparent glass slippers
+    m_Localized: The remaining one is hidden inside the mirror
     m_Metadata:
       m_Items: []
   - m_Id: 8161602934878208
-    m_Localized: "Low enough!\r"
+    m_Localized: The princess can only go if it's that low.
     m_Metadata:
       m_Items: []
   - m_Id: 8162650374221824
-    m_Localized: That Long hair
+    m_Localized: Hair can also be tied into a rope.
     m_Metadata:
       m_Items: []
   - m_Id: 7765814215127040
@@ -674,19 +674,19 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 8228789510942720
-    m_Localized: Surprisingly, chickens were once dinosaurs
+    m_Localized: It must be a dinosaur to weigh more than 6 tons
     m_Metadata:
       m_Items: []
   - m_Id: 8229975114854400
-    m_Localized: "Pinwheels spinning in the wind\r"
+    m_Localized: So it turns out he was hiding in the title
     m_Metadata:
       m_Items: []
   - m_Id: 8231154137903104
     m_Localized: Pass!
     m_Metadata:
       m_Items: []
-  - m_Id: 8232262197522432
-    m_Localized: Wish this wasn't a dream :(
+  - m_Id: 8382305993515008
+    m_Localized: Not acting is also patience
     m_Metadata:
       m_Items: []
   - m_Id: 8219888644206592
@@ -694,18 +694,15 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 8224987739271168
-    m_Localized: 'Male African elephants weigh an average of 5-7 tons, female elephants
-      weigh 2-4 tons.
-
-'
+    m_Localized: Don't overthink it
     m_Metadata:
       m_Items: []
   - m_Id: 8234775835521024
-    m_Localized: Dring water everyday
+    m_Localized: A fake cup can't hold water.
     m_Metadata:
       m_Items: []
   - m_Id: 8237411502600192
-    m_Localized: "Patience is a necessary virtue\r"
+    m_Localized: The size of the fish increases with the size of the pond.
     m_Metadata:
       m_Items: []
   - m_Id: 8239547485466624
@@ -713,11 +710,11 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 8240053079453696
-    m_Localized: "What a silly chicken!\r"
+    m_Localized: Maybe the rooster thought it was morning
     m_Metadata:
       m_Items: []
   - m_Id: 8240542948995072
-    m_Localized: Venture princess
+    m_Localized: Using a skirt as a parachute, very clever
     m_Metadata:
       m_Items: []
   - m_Id: 8241434834186240
@@ -725,7 +722,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 8242926978805760
-    m_Localized: You so good
+    m_Localized: "It is in a place we did not expect\r"
     m_Metadata:
       m_Items: []
   - m_Id: 8245025733029888
@@ -741,13 +738,15 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 8246605408579584
-    m_Localized: Yummy
+    m_Localized: It takes adding two together to make enough.
     m_Metadata:
       m_Items: []
   - m_Id: 8247073207693312
-    m_Localized: 'Holding your breath helps you concentrate and control your emotions.
-
-'
+    m_Localized: Tight like a balloon
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8231590437793792
+    m_Localized: Wish this wasn't a dream :(
     m_Metadata:
       m_Items: []
   references:
