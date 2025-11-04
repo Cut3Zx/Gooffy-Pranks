@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2469061780689326569}
   - component: {fileID: 2369800898475306707}
-  - component: {fileID: 4183298208526280063}
   m_Layer: 0
   m_Name: Language_Manager
   m_TagString: Untagged
@@ -45,17 +44,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7c0cdb6c18e8e24fbf5dfd6fb797743, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &4183298208526280063
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6272710982202217280}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 247f9fcdae9081349a10d4606092b5f3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  buttonEnglish: {fileID: 0}
-  buttonVietnamese: {fileID: 0}

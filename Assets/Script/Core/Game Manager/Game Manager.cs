@@ -124,7 +124,7 @@ public class GameManager : MonoBehaviour
             int.TryParse(numeric, out currentLevel);
         }
 
-        AdsManager.Instance?.OnLevelCompleted(currentLevel);
+        // AdsManager.Instance?.OnLevelCompleted(currentLevel);
 
     }
 
