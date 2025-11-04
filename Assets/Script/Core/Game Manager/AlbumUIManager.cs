@@ -11,6 +11,7 @@ public class AlbumManager : MonoBehaviour
         public Image image;               // Ảnh chính hiển thị
         public TextMeshProUGUI label;     // Tên ảnh (Level 1, Level 2,...)
         public Sprite unlockedSprite;     // Ảnh thật khi mở khóa
+        public TextMeshProUGUI description;   // Mô tả ảnh (nếu cần)
     }
 
     [Header("Danh sách ảnh Album (theo thứ tự Level)")]
@@ -45,6 +46,10 @@ public class AlbumManager : MonoBehaviour
 
             if (item.label != null)
                 item.label.text = $"Level {i + 1}";
+
+            if (item.description != null)
+                item.description.text = unlocked ? $"Ảnh Level {i + 1} đã mở khóa." : "Ảnh chưa được mở khóa.";
+
         }
 
         Debug.Log("📸 Album đã được cập nhật hiển thị!");
