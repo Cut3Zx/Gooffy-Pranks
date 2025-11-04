@@ -656,6 +656,14 @@ MonoBehaviour:
     m_Localized: transparent glass slippers
     m_Metadata:
       m_Items: []
+  - m_Id: 8161602934878208
+    m_Localized: "Low enough!\r"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8162650374221824
+    m_Localized: That Long hair
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
