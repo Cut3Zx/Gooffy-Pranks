@@ -17,6 +17,8 @@ public class SoundManager : MonoBehaviour
     public AudioClip clickSound;
     public AudioClip winSound;
     public AudioClip loseSound;
+    public AudioClip cameraSound;
+    public AudioClip errorClickSound;
 
     private bool musicMuted;
     private bool sfxMuted;
@@ -111,5 +113,17 @@ public class SoundManager : MonoBehaviour
     {
         if (!sfxMuted && loseSound != null)
             sfxSource.PlayOneShot(loseSound);
+    }
+
+    public void PlayCamera()
+    {
+        if (!sfxMuted && cameraSound != null)
+            sfxSource.PlayOneShot(cameraSound);
+    }
+
+    public void PlayErrorClick()
+    {
+        if (!sfxMuted && errorClickSound != null)
+            sfxSource.PlayOneShot(errorClickSound);
     }
 }

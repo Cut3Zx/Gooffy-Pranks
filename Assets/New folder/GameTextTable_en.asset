@@ -569,15 +569,99 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 7102279121657856
-    m_Localized: MONEY 1
+    m_Localized: COIN  1
     m_Metadata:
       m_Items: []
   - m_Id: 7102385766031360
-    m_Localized: MONEY 2
+    m_Localized: COIN 2
     m_Metadata:
       m_Items: []
   - m_Id: 7115414301859840
-    m_Localized: MONEY 3
+    m_Localized: COIN 3
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8023405200957440
+    m_Localized: 'HINT '
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8023407499436032
+    m_Localized: COIN
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8129506237427712
+    m_Localized: The room is so neat
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8131461487734784
+    m_Localized: You so smart !
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8132523724582912
+    m_Localized: Rock paper Scissors !
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8133467132604416
+    m_Localized: What a naughty chick
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8134402839883776
+    m_Localized: Congrat !
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8135790269509632
+    m_Localized: "Monochromatic life is boring\r"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8138234646966272
+    m_Localized: That pizza looks delicious !
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8140146553335808
+    m_Localized: "Sharp eyes\r"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8141526655512576
+    m_Localized: Magnifying glasses can magnify objects.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8142338429497344
+    m_Localized: Bees love flowers because of their sweet nectar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8143993422163968
+    m_Localized: careful with burnt fish
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8144840214392832
+    m_Localized: Bats use echolocation to hunt at night
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8145576100835328
+    m_Localized: "draw a perfect circle!\r"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8146113969991680
+    m_Localized: Bears like honey because it is rich in energy
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8146752317894656
+    m_Localized: "Honey can be preserved for thousands of years.\r"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8147645809504256
+    m_Localized: "The area of \u200B\u200Bthe sun is 12 times larger than the earth\r"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8150192448286720
+    m_Localized: transparent glass slippers
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8161602934878208
+    m_Localized: "Low enough!\r"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8162650374221824
+    m_Localized: That Long hair
     m_Metadata:
       m_Items: []
   - m_Id: 7765814215127040

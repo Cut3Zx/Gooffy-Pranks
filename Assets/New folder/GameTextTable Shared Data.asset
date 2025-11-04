@@ -587,8 +587,88 @@ MonoBehaviour:
     m_Key: "G\xF3i ti\u1EC1n 3"
     m_Metadata:
       m_Items: []
-  - m_Id: 7765814215127040
-    m_Key: privacy
+  - m_Id: 8023405200957440
+    m_Key: Title shop hint
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8023407499436032
+    m_Key: Title shop Coin
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8129506237427712
+    m_Key: WinImgLv1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8131461487734784
+    m_Key: WinImgLv2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8132523724582912
+    m_Key: WinImgLv3
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8133467132604416
+    m_Key: WinImgLv4
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8134402839883776
+    m_Key: WinImgLv5
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8135790269509632
+    m_Key: WinImgLv6
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8138234646966272
+    m_Key: WinImgLv7
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8140146553335808
+    m_Key: WinImgLv8
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8141526655512576
+    m_Key: WinImgLv9
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8142338429497344
+    m_Key: WinImglv10
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8143993422163968
+    m_Key: WinImgLv11
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8144840214392832
+    m_Key: WinImgLv12
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8145576100835328
+    m_Key: WinImgLv13
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8146113969991680
+    m_Key: WinImgLv14
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8146752317894656
+    m_Key: WinImgLv15
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8147645809504256
+    m_Key: WinImglv16
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8150192448286720
+    m_Key: WinImgLv17
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8161602934878208
+    m_Key: WinImgLv18
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8162650374221824
+    m_Key: WinImgLv19
     m_Metadata:
       m_Items: []
   m_Metadata:
