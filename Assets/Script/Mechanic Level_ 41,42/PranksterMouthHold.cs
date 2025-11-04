@@ -56,7 +56,7 @@ public class PranksterMouthHold : MonoBehaviour, IPointerDownHandler, IPointerUp
             // Giữ đủ lâu → phồng lên
             pranksterMouthHold.SetActive(false);
             pranksterFat.SetActive(true);
-
+            SFXManager.Instance.PlaySFX("Balloon");
             Debug.Log("🎈 Prankster phồng lên — sẵn sàng bay!");
         }
 

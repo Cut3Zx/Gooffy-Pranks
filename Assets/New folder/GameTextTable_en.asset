@@ -656,6 +656,10 @@ MonoBehaviour:
     m_Localized: transparent glass slippers
     m_Metadata:
       m_Items: []
+  - m_Id: 8161486075879424
+    m_Localized: Holding your breath helps you focus and control your emotions
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

@@ -673,6 +673,11 @@ MonoBehaviour:
     m_Localized: "Gi\xE0y th\u1EE7y tinh trong su\u1ED1t"
     m_Metadata:
       m_Items: []
+  - m_Id: 8161486075879424
+    m_Localized: "N\xEDn th\u1EDF gi\xFAp t\u1EADp trung, ki\u1EC3m so\xE1t c\u1EA3m
+      x\xFAc"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:
