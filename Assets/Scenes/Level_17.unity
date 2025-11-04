@@ -136,7 +136,6 @@ GameObject:
   - component: {fileID: 151618592}
   - component: {fileID: 151618591}
   - component: {fileID: 151618597}
-  - component: {fileID: 151618596}
   m_Layer: 5
   m_Name: Big boob evil princess
   m_TagString: Collectible
@@ -233,22 +232,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0.000030517578, y: -31}
   m_SizeDelta: {x: 244, y: 540}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &151618596
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 151618590}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1f5f9ff6c1ed1d04fab018c6114458a6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isCorrect: 1
-  correctMarkPrefab: {fileID: 490110087}
-  markDuration: 1
-  targetCanvas: {fileID: 0}
 --- !u!114 &151618597
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -261,8 +244,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ac3beefa4148044db3fd826700ae3d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  correctMarkPrefab: {fileID: 0}
-  targetCanvas: {fileID: 0}
+  correctMarkPrefab: {fileID: 490110087}
+  targetCanvas: {fileID: 875051997}
   autoHideTime: 1.5
 --- !u!1 &240806936
 GameObject:
@@ -524,6 +507,10 @@ PrefabInstance:
       propertyPath: targetCanvas
       value: 
       objectReference: {fileID: 875051997}
+    - target: {fileID: 5821342183791808075, guid: 02b9114f85d058748a5a2ecd69d8adb2, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9183802755720568198, guid: 02b9114f85d058748a5a2ecd69d8adb2, type: 3}
       propertyPath: m_LocalPosition.x
       value: -126.29626
@@ -700,6 +687,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85374bccc543d54478e21f208dcd8d1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  touchSoundName: 
   objectToHide1: {fileID: 1445000390}
   objectToHide2: {fileID: 661982778}
   objectToHide3: {fileID: 0}
@@ -2351,6 +2339,14 @@ PrefabInstance:
     - target: {fileID: 8933947677649603816, guid: 41198332bd98a2243845460e40b6a849, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8973115252213565303, guid: 41198332bd98a2243845460e40b6a849, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1309912556}
+    - target: {fileID: 8973115252213565303, guid: 41198332bd98a2243845460e40b6a849, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ShowRewardedAd
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

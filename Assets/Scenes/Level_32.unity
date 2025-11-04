@@ -313,6 +313,7 @@ MonoBehaviour:
   - {fileID: 992669812}
   snapDistance: 100
   lockAfterSnap: 1
+  TouchSoundName: 
 --- !u!114 &303501185
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -577,6 +578,7 @@ MonoBehaviour:
   - {fileID: 697478821}
   snapDistance: 100
   lockAfterSnap: 1
+  TouchSoundName: 
 --- !u!114 &396047246
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -690,6 +692,7 @@ MonoBehaviour:
   - {fileID: 821563720}
   snapDistance: 100
   lockAfterSnap: 1
+  TouchSoundName: 
 --- !u!114 &485568929
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -884,6 +887,7 @@ MonoBehaviour:
   - {fileID: 1819502463}
   snapDistance: 100
   lockAfterSnap: 1
+  TouchSoundName: 
 --- !u!114 &785146768
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1289,6 +1293,7 @@ MonoBehaviour:
   - {fileID: 1984979274}
   snapDistance: 100
   lockAfterSnap: 1
+  TouchSoundName: 
 --- !u!114 &1029552036
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2278,6 +2283,7 @@ MonoBehaviour:
   - {fileID: 1726248977}
   snapDistance: 100
   lockAfterSnap: 1
+  TouchSoundName: 
 --- !u!114 &1705562840
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2541,6 +2547,7 @@ MonoBehaviour:
   - {fileID: 1547556420}
   snapDistance: 100
   lockAfterSnap: 1
+  TouchSoundName: 
 --- !u!114 &1891660354
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3125,6 +3132,14 @@ PrefabInstance:
     - target: {fileID: 8933947677649603816, guid: 41198332bd98a2243845460e40b6a849, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8973115252213565303, guid: 41198332bd98a2243845460e40b6a849, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1309912556}
+    - target: {fileID: 8973115252213565303, guid: 41198332bd98a2243845460e40b6a849, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ShowRewardedAd
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

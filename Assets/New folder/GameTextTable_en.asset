@@ -580,6 +580,15 @@ MonoBehaviour:
     m_Localized: MONEY 3
     m_Metadata:
       m_Items: []
+  - m_Id: 7765814215127040
+    m_Localized: "Last updated: Nov 2025\n\nYour privacy matters to us. Goofy Pranks,
+      developed by Vietnam Game Laughpad, uses Google AdMob to show ads.\nAdMob may
+      collect limited data (like device ID or ad interactions) to improve ad quality.\nYou
+      can choose:\nAccept \u2192 personalized ads\nDecline \u2192 non-personalized
+      ads\nWe follow Google Play and GDPR (EEA) consent rules.\nMore info: Google
+      Privacy Policy\nviethoa127205@gmail.com"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

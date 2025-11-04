@@ -13,7 +13,7 @@ public class HintUI : MonoBehaviour
     public TextMeshProUGUI hintMessage;   // 🔹 Text hiển thị hint (bạn setup sẵn text ở đây trong Editor)
 
     [Header("Hint Config")]
-    public int defaultHint = 3;
+    public int defaultHint = 0;
     public int maxHint = 1000;
 
     private void Start()
@@ -116,4 +116,6 @@ public class HintUI : MonoBehaviour
         PlayerPrefs.Save();
         UpdateHintUI();
     }
+
+    
 }

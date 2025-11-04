@@ -252,10 +252,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1044584771}
     m_Modifications:
+    - target: {fileID: 768922122139072380, guid: d46dd8fc350edfa47a9494bb7bbe8ecc, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 1654.3965
+      objectReference: {fileID: 0}
+    - target: {fileID: 768922122139072380, guid: d46dd8fc350edfa47a9494bb7bbe8ecc, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -683.026
+      objectReference: {fileID: 0}
     - target: {fileID: 2774836711797076698, guid: d46dd8fc350edfa47a9494bb7bbe8ecc, type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 20b68fbfe24a83a459e614be1b8ebf4b, type: 3}
+    - target: {fileID: 3956555275822508014, guid: d46dd8fc350edfa47a9494bb7bbe8ecc, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4346555228950262829, guid: d46dd8fc350edfa47a9494bb7bbe8ecc, type: 3}
       propertyPath: m_Name
       value: Image (2)
@@ -266,7 +278,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4703595221093973367, guid: d46dd8fc350edfa47a9494bb7bbe8ecc, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 590
+      value: 613
       objectReference: {fileID: 0}
     - target: {fileID: 4703595221093973367, guid: d46dd8fc350edfa47a9494bb7bbe8ecc, type: 3}
       propertyPath: m_LocalPosition.z
@@ -937,6 +949,14 @@ PrefabInstance:
     - target: {fileID: 8933947677649603816, guid: 41198332bd98a2243845460e40b6a849, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8973115252213565303, guid: 41198332bd98a2243845460e40b6a849, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1309912556}
+    - target: {fileID: 8973115252213565303, guid: 41198332bd98a2243845460e40b6a849, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ShowRewardedAd
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

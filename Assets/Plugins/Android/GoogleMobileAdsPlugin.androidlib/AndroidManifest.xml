@@ -1,16 +1,32 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.google.unity.ads" android:versionName="1.0" android:versionCode="1">
-  <!-- ⚙️ Quy định mức SDK tối thiểu -->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools" package="com.laughpad.GoofyPrank">
+  <!-- ⚙️ Mức SDK tối thiểu -->
   <uses-sdk android:minSdkVersion="21" />
-  <!-- ⚙️ Cấp quyền mạng (bắt buộc để tải quảng cáo) -->
+  <!-- 🌐 Quyền mạng cần thiết cho quảng cáo -->
   <uses-permission android:name="android.permission.INTERNET" />
   <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-  <application>
-    <!-- ⚙️ Dành cho các API cũ -->
-    <uses-library android:name="org.apache.http.legacy" android:required="false" />
-    <!-- ✅ App ID chính thức của bạn -->
+  <!-- 🪪 Quyền ID quảng cáo -->
+  <uses-permission android:name="com.google.android.gms.ads.permission.AD_ID" />
+  <!-- 🔔 Thông báo (Android 13+) -->
+  <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+  <!-- 🕒 Xóa quyền Exact Alarm nếu plugin nào tự thêm -->
+  <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" tools:node="remove" />
+  <application android:usesCleartextTraffic="true" tools:targetApi="31">
+    <!-- ✅ App ID AdMob của bạn -->
     <meta-data android:name="com.google.android.gms.ads.APPLICATION_ID" android:value="ca-app-pub-1945244255127558~9822899831" />
-    <!-- ⚙️ Phiên bản Unity (tự động nhận) -->
+    <!-- ⏱ Trì hoãn measurement cho đến khi người dùng chấp nhận -->
+    <meta-data android:name="com.google.android.gms.ads.DELAY_APP_MEASUREMENT_INIT" android:value="true" />
+    <!-- 🧩 Hỗ trợ HTTP (một số plugin Unity cũ cần) -->
+    <uses-library android:name="org.apache.http.legacy" android:required="false" />
+    <!-- 🎮 Activity chính của Unity -->
+    <activity android:name="com.unity3d.player.UnityPlayerActivity" android:theme="@style/UnityThemeSelector" android:exported="true">
+      <intent-filter>
+        <action android:name="android.intent.action.MAIN" />
+        <category android:name="android.intent.category.LAUNCHER" />
+      </intent-filter>
+      <meta-data android:name="unityplayer.UnityActivity" android:value="true" />
+    </activity>
+    <!-- 🧱 Ghi chú phiên bản Unity -->
     <meta-data android:name="com.google.unity.ads.UNITY_VERSION" android:value="2022.3.62f2" />
   </application>
 </manifest>

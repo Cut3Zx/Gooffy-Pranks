@@ -128,7 +128,7 @@ MonoBehaviour:
   useHintButton: {fileID: 4478727988522626192}
   hintPanel: {fileID: 331561412899786936}
   hintMessage: {fileID: 5349181527623058597}
-  defaultHint: 1000
+  defaultHint: 10
   maxHint: 1000
 --- !u!1 &3806253461916523799
 GameObject:

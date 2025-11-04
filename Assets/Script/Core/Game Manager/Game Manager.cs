@@ -85,6 +85,7 @@ public class GameManager : MonoBehaviour
 
         if (isWin) StartCoroutine(HandleWinSequence());
         else HandleLose();
+        
     }
 
     private IEnumerator HandleWinSequence()
@@ -115,6 +116,16 @@ public class GameManager : MonoBehaviour
 
         Time.timeScale = 0f;
         ChangeState(GameState.GameOver);
+        string sceneName = SceneManager.GetActiveScene().name;
+        int currentLevel = 0;
+        if (sceneName.StartsWith("Level"))
+        {
+            string numeric = System.Text.RegularExpressions.Regex.Replace(sceneName, "[^0-9]", "");
+            int.TryParse(numeric, out currentLevel);
+        }
+
+        AdsManager.Instance?.OnLevelCompleted(currentLevel);
+
     }
 
     private IEnumerator FlashEffectRoutine()

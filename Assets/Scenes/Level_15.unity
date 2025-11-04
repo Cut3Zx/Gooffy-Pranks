@@ -1588,7 +1588,6 @@ MonoBehaviour:
   snapDistance: 100
   lockAfterSnap: 1
   TouchSoundName: Stoneplace
-  TouchSoundName2: Stoneplace
 --- !u!114 &1552498747
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1900,7 +1899,6 @@ MonoBehaviour:
   snapDistance: 100
   lockAfterSnap: 1
   TouchSoundName: Woodplace
-  TouchSoundName2: Stoneplace
 --- !u!114 &1849046446
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2613,6 +2611,14 @@ PrefabInstance:
     - target: {fileID: 8933947677649603816, guid: 41198332bd98a2243845460e40b6a849, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8973115252213565303, guid: 41198332bd98a2243845460e40b6a849, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1309912556}
+    - target: {fileID: 8973115252213565303, guid: 41198332bd98a2243845460e40b6a849, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ShowRewardedAd
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

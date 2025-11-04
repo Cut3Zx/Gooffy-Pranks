@@ -234,7 +234,6 @@ RectTransform:
   - {fileID: 395444406}
   - {fileID: 825768132}
   - {fileID: 1743443177}
-  - {fileID: 747882641}
   m_Father: {fileID: 1109051977}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -399,6 +398,7 @@ MonoBehaviour:
   snapZone2: {fileID: 1155039485}
   snapDistance: 100
   lockAfterSnap: 0
+  TouchSoundName: 
 --- !u!114 &107817441
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -508,6 +508,7 @@ MonoBehaviour:
   snapZone2: {fileID: 1155039485}
   snapDistance: 100
   lockAfterSnap: 1
+  TouchSoundName: 
 --- !u!114 &127035013
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1106,6 +1107,7 @@ MonoBehaviour:
   - {fileID: 1155039485}
   snapDistance: 100
   lockAfterSnap: 1
+  TouchSoundName: 
 --- !u!114 &663907900
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1127,7 +1129,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 40177968}
+    m_TransformParent: {fileID: 1099682812}
     m_Modifications:
     - target: {fileID: 2774836711797076698, guid: d46dd8fc350edfa47a9494bb7bbe8ecc, type: 3}
       propertyPath: m_Sprite
@@ -1138,16 +1140,28 @@ PrefabInstance:
       value: Image
       objectReference: {fileID: 0}
     - target: {fileID: 4703595221093973367, guid: d46dd8fc350edfa47a9494bb7bbe8ecc, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.90582186
+      objectReference: {fileID: 0}
+    - target: {fileID: 4703595221093973367, guid: d46dd8fc350edfa47a9494bb7bbe8ecc, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.90582186
+      objectReference: {fileID: 0}
+    - target: {fileID: 4703595221093973367, guid: d46dd8fc350edfa47a9494bb7bbe8ecc, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.90582186
+      objectReference: {fileID: 0}
+    - target: {fileID: 4703595221093973367, guid: d46dd8fc350edfa47a9494bb7bbe8ecc, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1138.6019
+      value: -1138.602
       objectReference: {fileID: 0}
     - target: {fileID: 4703595221093973367, guid: d46dd8fc350edfa47a9494bb7bbe8ecc, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 590
+      value: 508.47617
       objectReference: {fileID: 0}
     - target: {fileID: 4703595221093973367, guid: d46dd8fc350edfa47a9494bb7bbe8ecc, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -13.592248
+      value: -13.592247
       objectReference: {fileID: 0}
     - target: {fileID: 4703595221093973367, guid: d46dd8fc350edfa47a9494bb7bbe8ecc, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1737,6 +1751,7 @@ MonoBehaviour:
   snapZone2: {fileID: 1155039485}
   snapDistance: 100
   lockAfterSnap: 1
+  TouchSoundName: 
 --- !u!114 &1053446570
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1848,6 +1863,7 @@ RectTransform:
   m_Children:
   - {fileID: 1742693122}
   - {fileID: 1273898328}
+  - {fileID: 747882641}
   - {fileID: 1301874602}
   - {fileID: 465096389}
   m_Father: {fileID: 1109051977}
@@ -2223,6 +2239,7 @@ MonoBehaviour:
   - {fileID: 1155039485}
   snapDistance: 100
   lockAfterSnap: 1
+  TouchSoundName: 
 --- !u!114 &1184460087
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3916,6 +3933,7 @@ MonoBehaviour:
   snapZone2: {fileID: 1155039485}
   snapDistance: 100
   lockAfterSnap: 1
+  TouchSoundName: 
 --- !u!114 &2003264222
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4303,6 +4321,14 @@ PrefabInstance:
     - target: {fileID: 8933947677649603816, guid: 41198332bd98a2243845460e40b6a849, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8973115252213565303, guid: 41198332bd98a2243845460e40b6a849, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1309912556}
+    - target: {fileID: 8973115252213565303, guid: 41198332bd98a2243845460e40b6a849, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ShowRewardedAd
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
