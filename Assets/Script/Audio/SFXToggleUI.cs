@@ -15,16 +15,15 @@ public class SFXToggleUI : MonoBehaviour
 
     void Start()
     {
-        sfxOn = PlayerPrefs.GetInt("SfxMuted", 0) == 0;
+        sfxOn = PlayerPrefs.GetInt("SFXMuted", 0) == 0;
         UpdateUI();
-
         btnSFX.onClick.AddListener(OnToggleSFX);
     }
 
     void OnToggleSFX()
     {
-        if (SoundManager.Instance != null)
-            SoundManager.Instance.ToggleSFX();
+        if (SFXControl.Instance != null)
+            SFXControl.Instance.ToggleMute();
 
         sfxOn = !sfxOn;
         UpdateUI();

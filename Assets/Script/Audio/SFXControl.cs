@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using UnityEngine.Audio;
-// using UnityEngine.UI; // Không cần thiết nữa
 
 public class SFXControl : MonoBehaviour
 {
@@ -11,11 +10,21 @@ public class SFXControl : MonoBehaviour
     [Header("Tên Tham Số (Parameter)")]
     [Tooltip("Tên chính xác của tham số Volume SFX đã expose")]
     [SerializeField] private string sfxVolumeParam = "SFXVolume";
-
-    // Đã loại bỏ phần [Header("UI (Tùy chọn)")]
-
     private const float MIN_VOLUME = -80f;
     private const float MAX_VOLUME = 0f;
+    public static SFXControl Instance;
+
+    private void Awake() 
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
 
     // Biến để lưu trạng thái hiện tại
     private bool isMuted;
@@ -29,9 +38,6 @@ public class SFXControl : MonoBehaviour
         ApplyMuteState(isMuted);
     }
 
-    /// <summary>
-    /// Hàm này sẽ được gán vào sự kiện OnClick của Button trong Inspector.
-    /// </summary>
     public void ToggleMute()
     {
         // 1. Đảo ngược trạng thái
@@ -45,22 +51,18 @@ public class SFXControl : MonoBehaviour
         PlayerPrefs.Save();
     }
 
-    /// <summary>
-    /// Hàm riêng để cập nhật Audio Mixer
-    /// </summary>
+
     private void ApplyMuteState(bool muteState)
     {
         if (muteState)
         {
             // TẮT TIẾNG
             mainMixer.SetFloat(sfxVolumeParam, MIN_VOLUME);
-            // Đã loại bỏ code cập nhật UI
         }
         else
         {
             // BẬT TIẾNG
             mainMixer.SetFloat(sfxVolumeParam, MAX_VOLUME);
-            // Đã loại bỏ code cập nhật UI
         }
     }
 }
