@@ -50,6 +50,7 @@ public class PranksterDragToLeft : MonoBehaviour, IBeginDragHandler, IDragHandle
         // kiểm tra nếu kéo đủ xa sang trái → thắng
         if (rect.anchoredPosition.x <= minX + 10f)
         {
+            SFXManager.Instance.PlaySFX("Correct");
             Debug.Log("✅ Kéo sang trái — WIN!");
             isWin = true;
 
@@ -66,6 +67,7 @@ public class PranksterDragToLeft : MonoBehaviour, IBeginDragHandler, IDragHandle
         }
         else
         {
+            SFXManager.Instance.PlaySFX("Wrong");
             // Nếu không kéo đủ xa thì quay lại vị trí cũ
             rect.anchoredPosition = startPos;
         }
