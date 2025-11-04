@@ -231,8 +231,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -149.17201, y: -218.61359}
-  m_SizeDelta: {x: 222.376, y: 135.9929}
+  m_AnchoredPosition: {x: -140.69, y: -396.65}
+  m_SizeDelta: {x: 476.97, y: 293.95}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &47586161
 MonoBehaviour:
@@ -241,20 +241,20 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 47586159}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.20392157}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 1858256863, guid: eb6b8642f7e09ec4abe86997bfd8bc33, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -306,8 +306,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -140.52, y: -405.1646}
-  m_SizeDelta: {x: 205.07, y: 130.6937}
+  m_AnchoredPosition: {x: -110.99, y: -239.2}
+  m_SizeDelta: {x: 417.58, y: 262.6169}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &129840169
 MonoBehaviour:
@@ -316,20 +316,20 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 129840167}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.21960786, g: 0.21960786, b: 0.21960786, a: 0.23921569}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: -1155980068, guid: 9add04dafd1074f4b90868e4cd83f8f1, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -380,11 +380,11 @@ RectTransform:
   m_Children:
   - {fileID: 12855368}
   - {fileID: 598006103}
+  - {fileID: 47586160}
+  - {fileID: 129840168}
   - {fileID: 1849046443}
   - {fileID: 1552498744}
   - {fileID: 806845963}
-  - {fileID: 129840168}
-  - {fileID: 47586160}
   - {fileID: 1667359350}
   - {fileID: 442875665}
   - {fileID: 629709766}
