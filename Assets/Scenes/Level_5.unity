@@ -1200,17 +1200,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 6482141238316427637, guid: accd21878007c1b4a92e214c804a5ef0, type: 3}
   m_PrefabInstance: {fileID: 872669011}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &536170618 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4183298208526280063, guid: c646c8ded57603740a60b6635754c40e, type: 3}
-  m_PrefabInstance: {fileID: 149384117}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 247f9fcdae9081349a10d4606092b5f3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &536170619 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2369800898475306707, guid: c646c8ded57603740a60b6635754c40e, type: 3}
@@ -1569,6 +1558,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: WrongClickManager
       objectReference: {fileID: 0}
+    - target: {fileID: 1626515819432610092, guid: 02b9114f85d058748a5a2ecd69d8adb2, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5743823591193990444, guid: 02b9114f85d058748a5a2ecd69d8adb2, type: 3}
       propertyPath: targetCanvas
       value: 
@@ -1829,7 +1822,7 @@ PrefabInstance:
     - target: {fileID: 2645652906687723840, guid: accd21878007c1b4a92e214c804a5ef0, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 536170618}
+      objectReference: {fileID: 0}
     - target: {fileID: 2645652906687723840, guid: accd21878007c1b4a92e214c804a5ef0, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: ToggleLanguageOptions
