@@ -55,7 +55,7 @@ MonoBehaviour:
   winSound: {fileID: 8300000, guid: b031b58bbdc9b7149a0aa1233f94babc, type: 3}
   loseSound: {fileID: 8300000, guid: 4872c06bd1ea4da48b277374f38df1fb, type: 3}
   cameraSound: {fileID: 8300000, guid: 064f4f73e3295154c80dce8aeffa894f, type: 3}
-  errorClickSound: {fileID: 8300000, guid: 783134884d22dd04c8618e0a9def7b37, type: 3}
+  errorClickSound: {fileID: 8300000, guid: a6c0f7a5ab61d0748adf41f2475c5f1a, type: 3}
 --- !u!114 &6051954730876235074
 MonoBehaviour:
   m_ObjectHideFlags: 0

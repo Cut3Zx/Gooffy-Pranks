@@ -20,11 +20,6 @@ public class QuizSubmitButton : BaseObjectManager
     public GameObject wrongMark;     // ❌ icon sai
     public float markShowTime = 1.5f; // thời gian hiện icon sai
 
-    [Header("Audio")]
-    public AudioSource audioSource;
-    public AudioClip sfxCorrect;
-    public AudioClip sfxWrong;
-
     private bool solved = false;
 
     protected override void Awake()
@@ -65,11 +60,13 @@ public class QuizSubmitButton : BaseObjectManager
         {
             solved = true;
             ShowFeedback(true);
+
             if (GameManager.Instance != null)
                 GameManager.Instance.EndGame(true);
         }
         else
         {
+            SoundManager.Instance.PlayErrorClick();
             ShowFeedback(false);
         }
     }
@@ -78,9 +75,6 @@ public class QuizSubmitButton : BaseObjectManager
     {
         if (feedbackText != null)
             feedbackText.text = correct ? "✅ Chính xác!" : "❌ Sai rồi, thử lại nhé!";
-
-        if (audioSource != null)
-            audioSource.PlayOneShot(correct ? sfxCorrect : sfxWrong);
 
         // Hiển thị icon đúng / sai
         if (correctMark != null) correctMark.SetActive(correct);

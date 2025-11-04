@@ -101,7 +101,7 @@ public class GameManager : MonoBehaviour
         if (winImage)
         {
             winImage.SetActive(true);
-            yield return new WaitForSeconds(3f); // 👈 hiển thị 1 giây trước khi xoay
+            yield return new WaitForSeconds(2.2f);
 
             var rect = winImage.GetComponent<RectTransform>();
             if (winTarget) yield return AnimateWinImage(rect, winTarget.anchoredPosition);
