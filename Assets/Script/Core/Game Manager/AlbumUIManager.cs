@@ -48,10 +48,14 @@ public class AlbumManager : MonoBehaviour
                 item.label.text = $"Level {i + 1}";
 
             if (item.description != null)
-                item.description.text = unlocked ? $"Ảnh Level {i + 1} đã mở khóa." : "Ảnh chưa được mở khóa.";
-
+            {
+                item.description.gameObject.SetActive(unlocked);
+                if (unlocked)
+                {
+                    item.description.text = $"Ảnh Level {i + 1} đã mở khóa.";
+                }
+            }
         }
-
         Debug.Log("📸 Album đã được cập nhật hiển thị!");
     }
 }
