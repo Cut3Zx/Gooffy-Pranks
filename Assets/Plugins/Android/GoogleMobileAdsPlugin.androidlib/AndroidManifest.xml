@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools" package="com.laughpad.GoofyPrank">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools" package="com.laughpad.GoofyPrank.ads">
   <!-- ⚙️ Mức SDK tối thiểu -->
   <uses-sdk android:minSdkVersion="21" />
   <!-- 🌐 Quyền mạng cần thiết cho quảng cáo -->
